@@ -39,6 +39,18 @@ describe('ChartPage', () => {
     expect(within(row('Ascendant')).getByText('1')).toBeInTheDocument();
   });
 
+  it('shows Big Three meanings and keywords from static text', async () => {
+    await renderChart(carrascal);
+    const bigThree = screen.getByRole('region', { name: 'Big Three' });
+    expect(
+      within(bigThree).getByText(/Your core self is curious, quick and full of questions/),
+    ).toBeInTheDocument();
+    expect(
+      within(bigThree).getByText(/You may come across as calm, intense and a bit mysterious/),
+    ).toBeInTheDocument();
+    expect(within(bigThree).getAllByRole('list', { name: 'Keywords' })).toHaveLength(3);
+  });
+
   it('renders the wheel with a text summary', async () => {
     await renderChart(carrascal);
     const wheel = screen.getByRole('img', { name: /Birth chart wheel/ });

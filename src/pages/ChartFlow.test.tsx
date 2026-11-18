@@ -39,7 +39,9 @@ describe('Birth form → chart (PRD F1 acceptance)', () => {
     fireEvent.click(screen.getByRole('button', { name: 'See my chart' }));
 
     expect(await screen.findByRole('heading', { name: 'Your Big Three' })).toBeInTheDocument();
-    const cards = screen.getAllByRole('listitem').slice(0, 3);
+    const bigThree = screen.getByRole('region', { name: 'Big Three' });
+    const cards = [...bigThree.querySelectorAll(':scope > ul > li')];
+    expect(cards).toHaveLength(3);
     expect(within(cards[0] as HTMLElement).getByText(/Gemini/)).toBeInTheDocument();
     expect(within(cards[1] as HTMLElement).getByText(/Virgo/)).toBeInTheDocument();
     expect(within(cards[2] as HTMLElement).getByText(/Scorpio/)).toBeInTheDocument();

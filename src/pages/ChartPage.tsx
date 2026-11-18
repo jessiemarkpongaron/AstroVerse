@@ -1,7 +1,11 @@
 import { useMemo, useState, type ReactNode } from 'react';
 import { Link, useLocation } from 'react-router';
 import { AspectsList } from '../components/AspectsList/AspectsList.tsx';
-import { BigThreeCard } from '../components/BigThreeCard/BigThreeCard.tsx';
+import {
+  BigThreeCard,
+  type BigThreeMeaning,
+  type BigThreePoint,
+} from '../components/BigThreeCard/BigThreeCard.tsx';
 import { ChartWheel } from '../components/ChartWheel/ChartWheel.tsx';
 import { PlacementsTable } from '../components/PlacementsTable/PlacementsTable.tsx';
 import { SegmentedControl } from '../components/ui/SegmentedControl.tsx';
@@ -11,6 +15,7 @@ import { BirthInputError } from '../lib/astro/time.ts';
 import type { BirthInput, Chart, HouseSystemChoice } from '../lib/astro/types.ts';
 import type { ChartLocationState } from '../lib/chartState.ts';
 import { isBigThreeCardFlag } from '../lib/flags.ts';
+import { bigThreeEntry } from '../lib/interpret/staticText.ts';
 import { buildShareUrl, decodeBirthHash } from '../lib/shareLink.ts';
 
 const HOUSE_OPTIONS = [
@@ -99,6 +104,15 @@ export function ChartPage() {
   }
 
   const fellBack = chart.houses?.system === 'porphyry';
+  const meanings: Partial<Record<BigThreePoint, BigThreeMeaning>> = {};
+  for (const [point, key] of [
+    ['Sun', 'sun'],
+    ['Moon', 'moon'],
+    ['Ascendant', 'rising'],
+  ] as const) {
+    const p = chart.points.find((x) => x.name === point);
+    if (p) meanings[point] = bigThreeEntry(key, p.sign);
+  }
 
   return (
     <div className="space-y-8">
@@ -114,7 +128,7 @@ export function ChartPage() {
         </p>
       </header>
 
-      <BigThreeCard chart={chart} />
+      <BigThreeCard chart={chart} meanings={meanings} />
 
       <UncertaintyNotes flags={chart.flags.filter((f) => !isBigThreeCardFlag(f))} />
 

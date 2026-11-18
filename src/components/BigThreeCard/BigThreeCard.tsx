@@ -11,10 +11,15 @@ const CARDS: { point: BigThreePoint; label: string; role: string }[] = [
   { point: 'Ascendant', label: 'Rising', role: 'Your first impression' },
 ];
 
+export interface BigThreeMeaning {
+  meaning: string;
+  keywords: readonly string[];
+}
+
 interface BigThreeCardProps {
   chart: Chart;
-  /** Short meanings per point, keyed by point (optional; filled from static text). */
-  meanings?: Partial<Record<BigThreePoint, string>> | undefined;
+  /** Short meanings per point (from static text). Optional so the card works without them. */
+  meanings?: Partial<Record<BigThreePoint, BigThreeMeaning>> | undefined;
 }
 
 export function BigThreeCard({ chart, meanings }: BigThreeCardProps) {
@@ -50,9 +55,21 @@ export function BigThreeCard({ chart, meanings }: BigThreeCardProps) {
                     </span>
                   </p>
                   {meanings?.[point] && (
-                    <p className="mt-2 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
-                      {meanings[point]}
-                    </p>
+                    <>
+                      <p className="mt-2 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
+                        {meanings[point].meaning}
+                      </p>
+                      <ul className="mt-3 flex flex-wrap gap-1.5" aria-label="Keywords">
+                        {meanings[point].keywords.map((k) => (
+                          <li
+                            key={k}
+                            className="rounded-full bg-slate-100 px-2.5 py-0.5 text-xs text-slate-700 dark:bg-dusk dark:text-slate-300"
+                          >
+                            {k}
+                          </li>
+                        ))}
+                      </ul>
+                    </>
                   )}
                 </>
               ) : (

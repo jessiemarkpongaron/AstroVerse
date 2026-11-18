@@ -1,0 +1,234 @@
+{
+  "_comment": "Original AstroVerse text. Sun/Moon/Rising meaning per sign. Tone and guardrails: docs/INTERPRETATION.md. Review status: APPROVED by owner 2026-11-18.",
+  "version": 1,
+  "sun": {
+    "Aries": {
+      "meaning": "Your core self is bold, direct and ready to start things. You tend to feel most alive when you're facing a new challenge or leading the way. Learning patience can help your fire last longer than the first spark.",
+      "keywords": ["Courage", "Initiative", "Energy", "Independence"],
+      "strengths": ["Brave in new situations", "Quick to act", "Honest and direct"],
+      "challenges": ["Impatience", "Starting more than you finish", "Reacting before thinking"]
+    },
+    "Taurus": {
+      "meaning": "At your core you value steadiness, comfort and things that last. You tend to build your life slowly and carefully, and people can count on you. Staying open to change keeps your strength from turning into stubbornness.",
+      "keywords": ["Stability", "Loyalty", "Patience", "Comfort"],
+      "strengths": [
+        "Reliable and loyal",
+        "Patient with long-term goals",
+        "Enjoys simple pleasures"
+      ],
+      "challenges": ["Stubbornness", "Resisting change", "Holding on too long"]
+    },
+    "Gemini": {
+      "meaning": "Your core self is curious, quick and full of questions. You tend to learn by talking, reading and trying many things, and you can connect with almost anyone. Choosing a few interests to go deep on can help your bright mind feel less scattered.",
+      "keywords": ["Curiosity", "Communication", "Adaptability", "Wit"],
+      "strengths": ["Easy to talk to", "Learns fast", "Adapts to change"],
+      "challenges": ["Restlessness", "Spreading yourself thin", "Overthinking"]
+    },
+    "Cancer": {
+      "meaning": "At your core you are caring, protective and deeply loyal to the people you call family. You may feel things strongly and remember how others made you feel. Caring for yourself as gently as you care for others helps you stay strong.",
+      "keywords": ["Care", "Home", "Loyalty", "Sensitivity"],
+      "strengths": ["Nurturing", "Emotionally aware", "Protective of loved ones"],
+      "challenges": ["Moodiness", "Taking things personally", "Hiding in your shell"]
+    },
+    "Leo": {
+      "meaning": "Your core self is warm, generous and made to shine. You tend to bring energy and heart to whatever you do, and you light up when your efforts are seen. Remembering that your worth doesn't depend on applause helps your confidence stay steady.",
+      "keywords": ["Confidence", "Creativity", "Generosity", "Warmth"],
+      "strengths": ["Big-hearted", "Natural leader", "Creative and fun"],
+      "challenges": ["Needing praise", "Pride", "Taking over the spotlight"]
+    },
+    "Virgo": {
+      "meaning": "At your core you like to be useful and to get things right. You tend to notice details others miss and enjoy making things work better. Being as kind to yourself as you are helpful to others keeps your high standards from turning into worry.",
+      "keywords": ["Service", "Detail", "Practicality", "Improvement"],
+      "strengths": ["Careful and thorough", "Helpful", "Good at solving problems"],
+      "challenges": ["Self-criticism", "Worry", "Perfectionism"]
+    },
+    "Libra": {
+      "meaning": "Your core self looks for balance, fairness and harmony. You tend to see every side of a situation, and you work well with others. Learning to say what you really want, even when it causes a little friction, helps you find true balance.",
+      "keywords": ["Harmony", "Fairness", "Partnership", "Grace"],
+      "strengths": ["Diplomatic", "Good listener", "Strong sense of beauty and style"],
+      "challenges": ["Indecision", "People-pleasing", "Avoiding conflict"]
+    },
+    "Scorpio": {
+      "meaning": "At your core you are intense, private and loyal. You tend to look beneath the surface, and you want relationships and work that feel real and deep. Letting trust grow slowly but surely helps you share the strength you carry inside.",
+      "keywords": ["Depth", "Loyalty", "Focus", "Transformation"],
+      "strengths": ["Determined", "Emotionally strong", "Sees through pretense"],
+      "challenges": ["Jealousy", "Holding grudges", "Difficulty trusting"]
+    },
+    "Sagittarius": {
+      "meaning": "Your core self is adventurous, hopeful and hungry for meaning. You tend to grow through travel, learning and big ideas, and your optimism can lift others. Following through on the details helps your big dreams take real shape.",
+      "keywords": ["Freedom", "Optimism", "Adventure", "Wisdom"],
+      "strengths": ["Positive outlook", "Open-minded", "Honest"],
+      "challenges": ["Restlessness", "Overpromising", "Bluntness"]
+    },
+    "Capricorn": {
+      "meaning": "At your core you are responsible, patient and focused on the long game. You tend to work steadily toward your goals and earn respect through effort. Making room for rest and fun reminds you that you are more than what you achieve.",
+      "keywords": ["Ambition", "Discipline", "Responsibility", "Patience"],
+      "strengths": ["Hardworking", "Reliable under pressure", "Plans ahead"],
+      "challenges": ["Being too serious", "Fear of failure", "Working too much"]
+    },
+    "Aquarius": {
+      "meaning": "Your core self is independent, original and future-minded. You tend to think differently from the crowd and care about fairness for everyone. Letting people close to your heart, not just your ideas, helps you feel truly connected.",
+      "keywords": ["Originality", "Independence", "Friendship", "Vision"],
+      "strengths": ["Inventive", "Open to all kinds of people", "Stands up for causes"],
+      "challenges": ["Seeming distant", "Stubborn about ideas", "Rebelling for its own sake"]
+    },
+    "Pisces": {
+      "meaning": "At your core you are gentle, imaginative and deeply caring. You tend to feel what others feel, and you may find comfort in music, art, faith or dreams. Setting kind but clear boundaries helps you give without losing yourself.",
+      "keywords": ["Compassion", "Imagination", "Intuition", "Gentleness"],
+      "strengths": ["Kind and forgiving", "Creative", "Intuitive"],
+      "challenges": ["Escapism", "Weak boundaries", "Feeling overwhelmed"]
+    }
+  },
+  "moon": {
+    "Aries": {
+      "meaning": "Your feelings tend to come fast and strong, then pass just as quickly. You feel safest when you can act, speak up and do things your own way. Pausing for a breath before reacting can help you and the people around you.",
+      "keywords": ["Passion", "Spontaneity", "Independence"],
+      "strengths": ["Honest about feelings", "Bounces back quickly", "Brave"],
+      "challenges": ["Short temper", "Impatience", "Acting on impulse"]
+    },
+    "Taurus": {
+      "meaning": "You feel most at ease with routine, comfort and people you can rely on. Good food, a calm space and time in nature may help you recharge. Gentle change, taken one step at a time, can feel safer than sudden shifts.",
+      "keywords": ["Calm", "Comfort", "Security"],
+      "strengths": ["Emotionally steady", "Soothing presence", "Loyal"],
+      "challenges": ["Resisting change", "Comfort-seeking", "Possessiveness"]
+    },
+    "Gemini": {
+      "meaning": "You tend to process feelings by talking them through or writing them down. Variety, conversation and new ideas help you feel alive and at ease. Noticing what you feel, not only what you think, can bring you more inner calm.",
+      "keywords": ["Conversation", "Variety", "Lightness"],
+      "strengths": ["Can lighten heavy moments", "Easy to talk to", "Adaptable"],
+      "challenges": ["Overthinking feelings", "Restlessness", "Avoiding deep emotions"]
+    },
+    "Cancer": {
+      "meaning": "Your feelings run deep, and home and family matter a great deal to you. You feel safe when you belong and when you can take care of others. Asking for care in return helps keep your emotional cup full.",
+      "keywords": ["Nurture", "Belonging", "Sensitivity"],
+      "strengths": ["Caring", "Strong intuition about people", "Loyal"],
+      "challenges": ["Moodiness", "Clinging to the past", "Feeling hurt easily"]
+    },
+    "Leo": {
+      "meaning": "You feel good when you are appreciated and can express yourself warmly. Play, creativity and loving attention help you recharge. Reminding yourself that you are lovable even on quiet days can keep your heart steady.",
+      "keywords": ["Warmth", "Pride", "Playfulness"],
+      "strengths": ["Generous with love", "Cheerful", "Loyal"],
+      "challenges": ["Hurt pride", "Needing attention", "Drama when upset"]
+    },
+    "Virgo": {
+      "meaning": "You may feel calmest when things are in order and you're being useful. Helping others and solving small problems can be how you show love. Giving yourself the same patience you give others helps quiet your inner critic.",
+      "keywords": ["Order", "Care", "Usefulness"],
+      "strengths": ["Thoughtful", "Practical helper", "Notices what others need"],
+      "challenges": ["Worry", "Self-criticism", "Finding it hard to relax"]
+    },
+    "Libra": {
+      "meaning": "You feel most at peace when your relationships are calm and fair. Beauty, kindness and good company can lift your mood quickly. Remember that your own needs count too, even when someone else might be disappointed.",
+      "keywords": ["Peace", "Partnership", "Kindness"],
+      "strengths": ["Gracious", "Good at making peace", "Considerate"],
+      "challenges": ["Avoiding conflict", "Relying on others' approval", "Indecision"]
+    },
+    "Scorpio": {
+      "meaning": "Your emotions are deep and private, and you feel things all the way through. You need trust and honesty to feel safe with someone. Letting feelings out in healthy ways, instead of holding them in, can bring real relief.",
+      "keywords": ["Intensity", "Privacy", "Trust"],
+      "strengths": ["Emotionally brave", "Loyal", "Strong in hard times"],
+      "challenges": ["Holding grudges", "Suspicion", "Bottling up feelings"]
+    },
+    "Sagittarius": {
+      "meaning": "You feel free and happy when you have room to explore, laugh and learn. Hope comes naturally to you, and a change of scene can lift your mood. Staying with hard feelings a little longer, instead of rushing past them, can help you heal fully.",
+      "keywords": ["Freedom", "Hope", "Humor"],
+      "strengths": ["Optimistic", "Good sense of humor", "Encourages others"],
+      "challenges": ["Restlessness", "Avoiding heavy emotions", "Bluntness"]
+    },
+    "Capricorn": {
+      "meaning": "You tend to handle feelings with self-control and quiet strength. Having a plan and feeling capable helps you feel safe. Allowing yourself to be soft and to lean on others is a strength, not a weakness.",
+      "keywords": ["Self-control", "Duty", "Resilience"],
+      "strengths": ["Calm under pressure", "Dependable", "Resilient"],
+      "challenges": ["Hiding feelings", "Being hard on yourself", "Seeming reserved"]
+    },
+    "Aquarius": {
+      "meaning": "You may look at your feelings from a little distance, thinking them through before showing them. Friendship, freedom and being accepted as you are help you feel safe. Letting people see your softer side can bring you closer to those you trust.",
+      "keywords": ["Independence", "Friendship", "Openness"],
+      "strengths": ["Accepting of others", "Calm and objective", "Loyal friend"],
+      "challenges": ["Emotional distance", "Needing lots of space", "Detaching when upset"]
+    },
+    "Pisces": {
+      "meaning": "You are emotionally sensitive and may soak up the moods around you. Quiet time, music, prayer or creative work can help you recharge. Protecting your energy with gentle limits helps your kindness stay strong.",
+      "keywords": ["Empathy", "Dreaminess", "Compassion"],
+      "strengths": ["Deeply compassionate", "Imaginative", "Forgiving"],
+      "challenges": [
+        "Absorbing others' stress",
+        "Escaping into daydreams",
+        "Finding it hard to say no"
+      ]
+    }
+  },
+  "rising": {
+    "Aries": {
+      "meaning": "People may see you as energetic, confident and quick to act. You tend to meet new situations head-on and like to get things moving. Slowing down at the start can help others warm up to your strong first impression.",
+      "keywords": ["Bold", "Active", "Direct"],
+      "strengths": ["Confident starter", "Energizes others", "Brave"],
+      "challenges": ["Seeming pushy", "Rushing", "Impatience with slow starts"]
+    },
+    "Taurus": {
+      "meaning": "You may come across as calm, steady and pleasant to be around. You tend to approach new things carefully and take your time to decide. Your easygoing presence helps people trust you quickly.",
+      "keywords": ["Calm", "Grounded", "Gentle"],
+      "strengths": ["Reassuring presence", "Patient", "Graceful"],
+      "challenges": ["Slow to adapt", "Stubborn first reactions", "Resisting new things"]
+    },
+    "Gemini": {
+      "meaning": "People may see you as friendly, lively and curious. You tend to break the ice easily and ask lots of questions. Showing your deeper side over time helps people see there's more to you than quick wit.",
+      "keywords": ["Friendly", "Curious", "Lively"],
+      "strengths": ["Easy conversation starter", "Youthful energy", "Adaptable"],
+      "challenges": ["Seeming scattered", "Nervous energy", "Hard to know deeply"]
+    },
+    "Cancer": {
+      "meaning": "You may come across as gentle, caring and a little reserved at first. You tend to feel out new people and places before fully opening up. Once you feel safe, your warmth makes others feel at home.",
+      "keywords": ["Gentle", "Caring", "Protective"],
+      "strengths": ["Makes others feel welcome", "Kind", "Intuitive about people"],
+      "challenges": ["Shy at first", "Guarded", "Moody first impressions"]
+    },
+    "Leo": {
+      "meaning": "People may notice your warmth, style and confident presence right away. You tend to enter a room with energy and make others feel welcome. Sharing the spotlight helps your natural charm feel even more inviting.",
+      "keywords": ["Warm", "Expressive", "Confident"],
+      "strengths": ["Charismatic", "Generous", "Encouraging"],
+      "challenges": ["Seeming proud", "Needing to make an impression", "Sensitive to being ignored"]
+    },
+    "Virgo": {
+      "meaning": "You may come across as thoughtful, modest and well put together. You tend to observe first and notice small details about people and places. Letting yourself relax in new settings helps others see your warm, helpful side.",
+      "keywords": ["Thoughtful", "Modest", "Observant"],
+      "strengths": ["Polite and attentive", "Helpful", "Organized"],
+      "challenges": ["Seeming critical", "Nervous at first", "Overly careful"]
+    },
+    "Libra": {
+      "meaning": "People may see you as charming, polite and easy to get along with. You tend to make others feel comfortable and look for common ground. Being clear about your own opinions helps people know the real you.",
+      "keywords": ["Charming", "Gracious", "Fair"],
+      "strengths": ["Socially graceful", "Makes a good first impression", "Diplomatic"],
+      "challenges": ["Hiding true opinions", "Indecision", "Too eager to please"]
+    },
+    "Scorpio": {
+      "meaning": "You may come across as calm, intense and a bit mysterious. People can sense your strength even when you say little, and you tend to watch carefully before sharing. Letting people in a little at a time helps them see your loyal, caring nature.",
+      "keywords": ["Magnetic", "Private", "Intense"],
+      "strengths": ["Strong presence", "Perceptive", "Self-controlled"],
+      "challenges": ["Seeming guarded", "Intimidating at first", "Slow to trust"]
+    },
+    "Sagittarius": {
+      "meaning": "People may see you as cheerful, open and ready for adventure. You tend to meet new situations with humor and a sense of possibility. Thinking before you speak helps your honesty land kindly.",
+      "keywords": ["Cheerful", "Open", "Adventurous"],
+      "strengths": ["Friendly and upbeat", "Inspires others", "Easygoing"],
+      "challenges": ["Tactless at times", "Restless", "Overconfident starts"]
+    },
+    "Capricorn": {
+      "meaning": "You may come across as serious, capable and mature for your age. You tend to approach new things with caution and a clear plan. As people get to know you, they discover your dry humor and quiet warmth.",
+      "keywords": ["Capable", "Reserved", "Mature"],
+      "strengths": ["Earns respect", "Dependable", "Composed"],
+      "challenges": ["Seeming cold at first", "Too formal", "Guarded"]
+    },
+    "Aquarius": {
+      "meaning": "People may see you as unique, friendly and a little unpredictable. You tend to stand out in your own way and treat everyone as an equal. Showing your feelings, not just your ideas, helps people feel close to you.",
+      "keywords": ["Unique", "Friendly", "Independent"],
+      "strengths": ["Open-minded", "Original", "At ease with all kinds of people"],
+      "challenges": ["Seeming detached", "Contrarian", "Hard to get close to"]
+    },
+    "Pisces": {
+      "meaning": "You may come across as gentle, dreamy and kind. You tend to sense the mood of a room and adapt to it, which makes people feel understood. Keeping a clear sense of your own wishes helps you stay yourself around others.",
+      "keywords": ["Gentle", "Intuitive", "Kind"],
+      "strengths": ["Compassionate presence", "Artistic", "Easy to open up to"],
+      "challenges": ["Easily influenced", "Hard to read", "Absorbs others' moods"]
+    }
+  }
+}
