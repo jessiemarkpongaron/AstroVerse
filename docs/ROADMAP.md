@@ -61,9 +61,8 @@ its acceptance items are checked.
       (2026-11-18)
 - [ ] Google OAuth client (optional) · custom SMTP (before real users)
 
-### M8. AI natal reading
-- [x] Static interpretation JSON: `bigThree.json` + `planetInSign.json` (approved). Houses,
-      planet-in-house and aspect texts are deferred — the AI reading doesn't need them.
+### M8. Natal reading — free (static) done; AI built, switched off
+- [x] Static interpretation JSON: `bigThree.json` + `planetInSign.json` (approved)
 - [x] `buildPayload.ts` (structured flags, no free text), `generate-reading` Edge Function,
       shared zod schemas, cache by input hash, 20/day rate limit (`reading_generations`)
 - [x] Reading page with sections, loading skeleton, error state; links from My charts and
@@ -72,9 +71,10 @@ its acceptance items are checked.
 - [x] **Free full reading** from static text at `/reading` (owner decision 2026-11-18: no API
       cost). Links from the chart page, My charts and after saving. AI reading hidden behind
       `VITE_AI_READINGS` until API credits exist (then premium).
-- [ ] Static text batches for the free reading (review each): planet-in-house Sun/Moon/Mercury
-      (drafted) → Venus/Mars/Jupiter → Saturn/Uranus/Neptune/Pluto → Midheaven by sign →
-      North Node → aspects
+- [x] Static text batches for the free reading, each owner-reviewed (2026-11-18):
+      planet-in-house (120), Midheaven + North Node by sign (24), aspects (5 templates + 13
+      themes). The free reading now covers all 8 sections.
+- **M8 done (2026-11-18)** except the AI go-live below.
 - [ ] Later, with API credits: run migration `20261118120000_reading_generations.sql`, set
       `ANTHROPIC_API_KEY`, deploy the function, set `VITE_AI_READINGS=true`, review first reading
 

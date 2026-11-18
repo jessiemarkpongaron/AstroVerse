@@ -8,7 +8,8 @@ Readings come from two layers:
 
 ## 1. Static text
 - Files: `signs.json`, `planets.json`, `houses.json`, `planetInSign.json` (10 × 12),
-  `planetInHouse.json` (10 × 12), `aspects.json` (by aspect type + planet pair class),
+  `planetInHouse.json` (10 × 12), `pointInSign.json` (Midheaven, North Node),
+  `aspects.json` (template per aspect type + a theme per point),
   `bigThree.json` (Sun/Moon/Rising meaning per sign, 2–3 sentences each).
 - Tone: warm, clear, simple English (Grade 8 level). Second person ("You…").
 - Every entry has `strengths`, `challenges`, `keywords` (3–5) so the UI can show chips.
@@ -16,15 +17,22 @@ Readings come from two layers:
 - Have Claude Code draft them in batches of one planet at a time; review before committing.
 - **Status (2026-11-18):** `bigThree.json` (36) and `planetInSign.json` Mercury–Pluto (96) are
   written and owner-approved; each planet's review status is stored in the file.
-  `planetInHouse.json`: Sun, Moon, Mercury drafted (awaiting review). Only `approved` planets
-  appear in the app (`planetInHouseEntry`).
+  `planetInHouse.json` (120, all ten planets), `pointInSign.json` (Midheaven + North Node, 24)
+  and `aspects.json` (5 aspect templates + 13 point themes) are approved too. Only `approved`
+  batches appear in the app; new batches go in as `draft` first.
 - **Free full reading** (`src/lib/interpret/staticReading.ts`, page `/reading`): the same 8
-  themes as the AI reading, each built from the approved entries for the chart's placements
-  (Big Three, planet-in-sign, planet-in-house). Sections without approved text are omitted, so
-  the reading grows as batches are approved. Still to write: planet-in-house for Venus–Pluto,
-  Midheaven by sign (career), North Node by sign/house, aspects.
+  themes as the AI reading. Each section combines the approved entries for its placements —
+  Big Three, planet in sign, planet in house, Midheaven/North Node by sign — plus up to 2 close
+  aspects (orb ≤ 3°) anchored on the section's planets (no outer–outer or angle–angle pairs;
+  each aspect used once). House, Rising and Midheaven texts are skipped without a birth time.
+- **Aspects** use one template per type with the two points' themes filled in
+  (`aspectEntry`), e.g. "Your way of loving and your sense of responsibility may pull against
+  each other…". Themes contain no "and" so joined sentences read cleanly (tested).
 - Extra guardrail tests: 2nd/8th-house texts avoid money/luck/inheritance wording; 5th/6th-house
-  texts avoid health and pregnancy wording.
+  texts avoid health and pregnancy wording; Venus/Mars never present jealousy or control as
+  romantic; Saturn houses point to growth; outer-planet 8th/12th houses avoid loss/crisis
+  wording; Midheaven suggests rather than promises; North Node avoids destiny/fate/karma; every
+  one of the 780 filled-in aspect sentences passes the style checks.
 - `planetInSign.json` snippets are **1–2 sentences**. Uranus/Neptune/Pluto stay in a sign for
   years, so their snippets are framed around **your generation** plus one personal line.
 - Guardrail tests (`src/lib/interpret/staticText.test.ts`) enforce: sentence counts, second

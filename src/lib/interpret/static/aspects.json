@@ -1,7 +1,7 @@
 {
   "_comment": "Aspect texts: one template per aspect type; {A}/{b} are filled with the two points' themes (capitalized / lower-case). Only shown when review is 'approved'.",
   "version": 1,
-  "review": "draft",
+  "review": "approved",
   "themes": {
     "Sun": "your sense of self",
     "Moon": "your emotional needs",

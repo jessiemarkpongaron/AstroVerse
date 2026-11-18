@@ -72,7 +72,13 @@ describe('FullReadingPage (free, static text)', () => {
     expect(
       within(mind).getByRole('heading', { name: /^Mercury in the \d+(st|nd|rd|th) house$/ }),
     ).toBeInTheDocument();
-    expect(within(mind).getAllByText('Strengths')).toHaveLength(2);
+    expect(
+      within(mind).getByRole('heading', { name: 'Mercury opposition Pluto' }),
+    ).toBeInTheDocument();
+    expect(
+      within(mind).getByText(/The way you think and your hunger for depth/),
+    ).toBeInTheDocument();
+    expect(within(mind).getAllByText('Strengths')).toHaveLength(4);
     expect(screen.getByRole('region', { name: 'Life Lessons' })).toHaveTextContent(
       /Pluto in Scorpio/,
     );
