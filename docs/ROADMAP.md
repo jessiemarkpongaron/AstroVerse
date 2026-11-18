@@ -57,13 +57,20 @@ its acceptance items are checked.
 - [x] Auth UI: magic link + Google; "Save chart" (consent for others); "My charts"; delete chart
 - [x] Hosted config: Cloudflare build variables `VITE_SUPABASE_*` (verified in live bundle; only the
       publishable key ships), Supabase Auth URLs
-- [ ] Owner end-to-end test on the live site: magic-link sign-in, save, My charts, delete
+- [x] Owner end-to-end test on the live site: magic-link sign-in, save, My charts, delete
+      (2026-11-18)
 - [ ] Google OAuth client (optional) · custom SMTP (before real users)
 
 ### M8. AI natal reading
-- [ ] Static interpretation JSON (draft in batches, I review)
-- [ ] `buildPayload.ts`, `generate-reading` Edge Function, zod schemas, caching, rate limit
-- [ ] Reading page with sections, loading skeleton, error state
+- [x] Static interpretation JSON: `bigThree.json` + `planetInSign.json` (approved). Houses,
+      planet-in-house and aspect texts are deferred — the AI reading doesn't need them.
+- [x] `buildPayload.ts` (structured flags, no free text), `generate-reading` Edge Function,
+      shared zod schemas, cache by input hash, 20/day rate limit (`reading_generations`)
+- [x] Reading page with sections, loading skeleton, error state; links from My charts and
+      after saving a chart
+- [x] Local end-to-end (`npm run test:db`) with a mock Claude API
+- [ ] Hosted: run migration `20261118120000_reading_generations.sql`, set `ANTHROPIC_API_KEY`
+      secret, deploy the function, first real reading reviewed by the owner
 
 ### M9. Forecast & career
 - [ ] `transits.ts` scanner + tests (known transit windows)

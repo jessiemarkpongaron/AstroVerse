@@ -32,10 +32,13 @@ server-side secrets go in Supabase function secrets, never in `VITE_*` vars.
 | `npm test`             | Vitest (unit + component tests)                         |
 | `npm run test:e2e`     | Playwright e2e on the production build (360px Chromium) |
 | `npm run gen:fixtures` | Regenerate engine fixtures (Swiss Ephemeris, dev-only)  |
+| `npm run test:db`      | DB + Edge Function tests on the local Supabase stack    |
 
 ## Project layout
 
 - `src/lib/astro/` — pure TypeScript astrology engine (no React, no network)
+- `supabase/functions/generate-reading/` — AI reading Edge Function (Deno; the only place that
+  calls Claude). `supabase/functions/_shared/` holds the zod schemas shared with the browser.
 - `src/components/`, `src/pages/`, `src/hooks/` — UI
 - `scripts/` — dev-only tools (e.g. fixture generation with Swiss Ephemeris; never bundled)
 - `docs/` — PRD, architecture, engine spec, interpretation guide, roadmap
@@ -52,7 +55,8 @@ Local development uses the Supabase CLI (Docker required):
 
 ```bash
 npx supabase start -x studio,imgproxy,edge-runtime,logflare,vector,realtime,storage-api,mailpit,postgres-meta,supavisor
-npm run test:db      # pgTAP RLS tests + app integration test against the local stack
+npm run test:db      # pgTAP RLS tests + app integration tests + generate-reading end to end
+                     # (serves the function with a mock Claude API — no key, no spend)
 npm run gen:types    # regenerate src/lib/database.types.ts after schema changes
 npx supabase stop
 ```
@@ -74,6 +78,22 @@ Hosted project setup (once):
    (Authentication → Emails → SMTP) before launch.
 5. Cloudflare build env: `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY` (publishable key), then
    redeploy. The CSP in `public/_headers` already allows the project's `*.supabase.co` origin.
+
+### AI readings (generate-reading Edge Function)
+
+1. Get an API key at console.anthropic.com and add it in Supabase → Edge Functions → Secrets as
+   `ANTHROPIC_API_KEY` (never in `.env.local`, Cloudflare, or any `VITE_*` variable).
+2. Apply new migrations (`npx supabase db push`) — M8 adds the `reading_generations` rate-limit
+   table.
+3. Deploy: `npx supabase functions deploy generate-reading` (`verify_jwt = false` comes from
+   `supabase/config.toml`; the function verifies the user itself).
+4. Local run: `npx supabase functions serve --env-file supabase/functions/.env` with your own
+   key in that git-ignored file.
+
+The browser sends only a compact, fully enumerated chart summary (no names, dates, times or
+places); the function checks the user owns the chart, serves cached readings, allows 20 new
+readings per user per 24 hours, and validates Claude's output (schema + guardrails) before
+storing it.
 
 ## Deploy (Cloudflare)
 
