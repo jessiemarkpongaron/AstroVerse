@@ -40,10 +40,12 @@ its acceptance items are checked.
       (2026-11-18, mobile profile: home 100/100, chart 97/100; chart page lazy-loaded)
 
 ### M6. Deploy Phase 1
-- [x] Cloudflare deploy (2026-11-18): Workers static assets on `*.workers.dev`, Git-connected;
-      live check passed — headers/CSP served, `/chart` deep link, SW offline reload, PRD F1
+- [x] Cloudflare deploy (2026-11-18): Workers static assets, Git-connected, custom domain
+      **https://astroverse.digitalverseph.com**. Live check passed — TLS, headers/CSP, `/chart`
+      deep link, SW offline reload, PRD F1. Pending: "Always Use HTTPS" redirect (dashboard).
 - [x] SPA fallback, PWA manifest + service worker, `_headers` (CSP, caching), e2e tests
-- [ ] Basic analytics (Cloudflare Web Analytics — enable in dashboard; see README)
+- [x] Basic analytics (Cloudflare Web Analytics, enabled 2026-11-18). Verified: beacon allowed by
+      CSP; RUM payload records `/chart` only — no fragment, no birth data
 
 ## Phase 2 — Accounts, AI readings, forecast
 

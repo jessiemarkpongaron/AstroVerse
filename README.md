@@ -48,7 +48,8 @@ server-side secrets go in Supabase function secrets, never in `VITE_*` vars.
 
 ## Deploy (Cloudflare)
 
-The live site runs as a Cloudflare **Worker with static assets** connected to this repo (the
+Live: **https://astroverse.digitalverseph.com** (custom domain on the `digitalverseph.com` Cloudflare
+zone). The site runs as a Cloudflare **Worker with static assets** connected to this repo (the
 newer default; `_headers` and SPA fallback behave as on Pages). Classic Pages setup:
 
 1. Cloudflare dashboard → **Workers & Pages → Create → Pages → Connect to Git** → pick this repo.
