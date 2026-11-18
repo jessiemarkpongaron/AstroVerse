@@ -5,10 +5,13 @@ import {
   HOUSE_PLANETS,
   PLANET_IN_HOUSE_TEXT,
   PLANET_IN_SIGN_TEXT,
+  POINT_IN_SIGN_TEXT,
+  SIGN_POINTS,
   SNIPPET_PLANETS,
   bigThreeEntry,
   planetInHouseEntry,
   planetInSignEntry,
+  pointInSignEntry,
   type StaticEntry,
 } from './staticText.ts';
 
@@ -231,5 +234,67 @@ describe('planetInHouse.json', () => {
     const approved = housePlanets.find((p) => PLANET_IN_HOUSE_TEXT.review[p] === 'approved');
     if (approved) expect(planetInHouseEntry(approved, 12)?.meaning).toBeTruthy();
     expect(planetInHouseEntry('Pluto', 13, { includeDrafts: true })).toBeNull();
+  });
+});
+
+const pointSnippets: [string, StaticEntry][] = SIGN_POINTS.flatMap((p) =>
+  SIGN_NAMES.map((sign): [string, StaticEntry] => [
+    `${p}.${sign}`,
+    POINT_IN_SIGN_TEXT.points[p]?.[sign] as StaticEntry,
+  ]),
+);
+
+describe('pointInSign.json (Midheaven, North Node)', () => {
+  it('has all 12 signs and a review status for each point', () => {
+    for (const p of SIGN_POINTS) {
+      expect(Object.keys(POINT_IN_SIGN_TEXT.points[p] ?? {}).sort()).toEqual(
+        [...SIGN_NAMES].sort(),
+      );
+      expect(['draft', 'approved']).toContain(POINT_IN_SIGN_TEXT.review[p]);
+    }
+  });
+
+  it.each(pointSnippets)('%s follows the style and guardrails', (_id, e) => {
+    checkEntry(e, 1, 2);
+  });
+
+  it.each(pointSnippets.filter(([id]) => id.startsWith('Midheaven.')))(
+    '%s suggests, never promises, and avoids money/luck words',
+    (_id, e) => {
+      const text = [e.meaning, ...e.keywords, ...e.strengths, ...e.challenges].join(' ');
+      expect(text).not.toMatch(
+        /\b(luck|lucky|money|wealth|fortune|rich|salary|will become|will be)\b/i,
+      );
+      expect(e.meaning).toMatch(/\b(may|can)\b/);
+    },
+  );
+
+  it.each(pointSnippets.filter(([id]) => id.startsWith('NorthNode.')))(
+    '%s frames growth as a choice, not destiny or karma',
+    (_id, e) => {
+      const text = [e.meaning, ...e.keywords, ...e.strengths, ...e.challenges].join(' ');
+      expect(text).not.toMatch(
+        /\b(destiny|destined|fate|fated|karma\w*|past li(fe|ves)|soul contract)\b/i,
+      );
+      expect(e.meaning).toMatch(/^Your path of growth may/);
+    },
+  );
+
+  it('point snippets are unique and differ from all other static text', () => {
+    const texts = [
+      ...pointSnippets.map(([, e]) => e.meaning),
+      ...houseSnippets.map(([, e]) => e.meaning),
+      ...snippets.map(([, e]) => e.meaning),
+      ...all.map(([, e]) => e.meaning),
+    ];
+    expect(new Set(texts).size).toBe(texts.length);
+  });
+
+  it('pointInSignEntry hides drafts unless asked', () => {
+    for (const p of SIGN_POINTS) {
+      const approved = POINT_IN_SIGN_TEXT.review[p] === 'approved';
+      expect(pointInSignEntry(p, 4) !== null).toBe(approved);
+      expect(pointInSignEntry(p, 4, { includeDrafts: true })?.meaning).toBeTruthy();
+    }
   });
 });

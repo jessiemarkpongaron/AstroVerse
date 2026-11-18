@@ -6,7 +6,9 @@ import {
   bigThreeEntry,
   planetInHouseEntry,
   planetInSignEntry,
+  pointInSignEntry,
   type HousePlanet,
+  type SignPoint,
   type SnippetPlanet,
   type StaticEntry,
 } from './staticText.ts';
@@ -29,7 +31,8 @@ export interface StaticReadingSection {
 type Source =
   | { kind: 'bigThree'; point: 'Sun' | 'Moon' | 'Ascendant' }
   | { kind: 'sign'; point: SnippetPlanet }
-  | { kind: 'house'; point: HousePlanet };
+  | { kind: 'house'; point: HousePlanet }
+  | { kind: 'point'; point: SignPoint };
 
 /** Which placements feed each section (same themes as the AI reading, PRD F4). */
 const PLAN: Record<SectionId, Source[]> = {
@@ -58,10 +61,11 @@ const PLAN: Record<SectionId, Source[]> = {
     { kind: 'sign', point: 'Jupiter' },
     { kind: 'house', point: 'Jupiter' },
   ],
-  career: [],
+  career: [{ kind: 'point', point: 'Midheaven' }],
   lessons: [
     { kind: 'sign', point: 'Saturn' },
     { kind: 'house', point: 'Saturn' },
+    { kind: 'point', point: 'NorthNode' },
     { kind: 'sign', point: 'Uranus' },
     { kind: 'sign', point: 'Neptune' },
     { kind: 'sign', point: 'Pluto' },
@@ -83,6 +87,13 @@ function item(source: Source, p: ChartPoint): StaticReadingItem | null {
       const entry = planetInSignEntry(source.point, p.sign);
       return entry
         ? { key: `${source.point}.sign`, placement: `${source.point} in ${sign}`, entry }
+        : null;
+    }
+    case 'point': {
+      const entry = pointInSignEntry(source.point, p.sign);
+      const label = source.point === 'NorthNode' ? 'North Node' : source.point;
+      return entry
+        ? { key: `${source.point}.sign`, placement: `${label} in ${sign}`, entry }
         : null;
     }
     case 'house': {

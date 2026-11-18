@@ -3,6 +3,7 @@ import { SIGN_NAMES, type SignName } from '../astro/zodiac.ts';
 import bigThreeJson from './static/bigThree.json';
 import planetInHouseJson from './static/planetInHouse.json';
 import planetInSignJson from './static/planetInSign.json';
+import pointInSignJson from './static/pointInSign.json';
 
 /** One static interpretation entry (docs/INTERPRETATION.md §1). */
 export interface StaticEntry {
@@ -105,4 +106,26 @@ export function planetInHouseEntry(
 ): StaticEntry | null {
   if (!opts.includeDrafts && PLANET_IN_HOUSE_TEXT.review[planet] !== 'approved') return null;
   return PLANET_IN_HOUSE_TEXT.planets[planet]?.[String(house) as HouseKey] ?? null;
+}
+
+/** Points with their own sign snippets: career direction and path of growth. */
+export type SignPoint = 'Midheaven' | 'NorthNode';
+export const SIGN_POINTS: readonly SignPoint[] = ['Midheaven', 'NorthNode'];
+
+type PointInSignText = {
+  version: number;
+  review: Partial<Record<SignPoint, ReviewStatus>>;
+  points: Partial<Record<SignPoint, Record<SignName, StaticEntry>>>;
+};
+
+export const POINT_IN_SIGN_TEXT = pointInSignJson as unknown as PointInSignText;
+
+/** Midheaven / North Node by sign; only approved batches unless `includeDrafts`. */
+export function pointInSignEntry(
+  point: SignPoint,
+  sign: SignIndex,
+  opts: { includeDrafts?: boolean } = {},
+): StaticEntry | null {
+  if (!opts.includeDrafts && POINT_IN_SIGN_TEXT.review[point] !== 'approved') return null;
+  return POINT_IN_SIGN_TEXT.points[point]?.[SIGN_NAMES[sign]] ?? null;
 }

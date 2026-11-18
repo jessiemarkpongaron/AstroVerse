@@ -1,7 +1,7 @@
 import { buildChart } from '../astro/chart.ts';
 import type { BirthInput } from '../astro/types.ts';
 import { composeStaticReading } from './staticReading.ts';
-import { PLANET_IN_HOUSE_TEXT } from './staticText.ts';
+import { PLANET_IN_HOUSE_TEXT, POINT_IN_SIGN_TEXT } from './staticText.ts';
 
 const carrascal: BirthInput = {
   date: '1990-05-31',
@@ -32,12 +32,16 @@ describe('composeStaticReading', () => {
   });
 
   it('frames the outer planets in the lessons section', () => {
-    expect(section('lessons')?.items.map((i) => i.placement)).toEqual([
+    const signs = section('lessons')
+      ?.items.filter((i) => i.key.endsWith('.sign') && !i.key.startsWith('NorthNode'))
+      .map((i) => i.placement);
+    expect(signs).toEqual([
       'Saturn in Capricorn',
       'Uranus in Capricorn',
       'Neptune in Capricorn',
       'Pluto in Scorpio',
     ]);
+    expect(section('lessons')?.items.map((i) => i.key)).toContain('Saturn.house');
   });
 
   it('includes house texts only once a planet is approved', () => {
@@ -47,6 +51,17 @@ describe('composeStaticReading', () => {
       expect(PLANET_IN_HOUSE_TEXT.review[planet]).toBe('approved');
       expect(i.placement).toMatch(/in the \d+(st|nd|rd|th) house$/);
     }
+  });
+
+  it('adds Career Direction (Midheaven) and the North Node once approved', () => {
+    const mcApproved = POINT_IN_SIGN_TEXT.review.Midheaven === 'approved';
+    expect(section('career')?.items.map((i) => i.placement)).toEqual(
+      mcApproved ? ['Midheaven in Leo'] : undefined,
+    );
+    const nn = section('lessons')?.items.find((i) => i.key === 'NorthNode.sign');
+    expect(nn?.placement).toBe(
+      POINT_IN_SIGN_TEXT.review.NorthNode === 'approved' ? 'North Node in Aquarius' : undefined,
+    );
   });
 
   it('unknown birth time: no Rising, no houses', () => {

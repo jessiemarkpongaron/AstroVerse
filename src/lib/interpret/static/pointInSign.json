@@ -1,0 +1,158 @@
+{
+  "_comment": "Sign snippets for the Midheaven (career direction) and North Node (path of growth). 1–2 sentences, second person. Only 'approved' points are shown in the app.",
+  "version": 1,
+  "review": {
+    "Midheaven": "draft",
+    "NorthNode": "draft"
+  },
+  "points": {
+    "Midheaven": {
+      "Aries": {
+        "meaning": "You may be drawn to work where you can lead, start new things and act with courage. Careers that reward initiative and independence can suit you.",
+        "keywords": ["Pioneering", "Bold", "Independent"],
+        "strengths": ["Takes the lead", "Starts projects", "Brave decisions"],
+        "challenges": ["Impatient for results", "Clashes with bosses", "Burns out fast"]
+      },
+      "Taurus": {
+        "meaning": "You may thrive in steady work that builds something real and lasting, at a pace you can trust. Fields linked to beauty, food, nature or craft can appeal to you.",
+        "keywords": ["Steady", "Practical", "Patient"],
+        "strengths": ["Reliable", "Builds over time", "Eye for quality"],
+        "challenges": ["Slow to change paths", "Stubborn", "Too comfortable"]
+      },
+      "Gemini": {
+        "meaning": "You may do well in work full of variety, ideas and communication. Writing, teaching, media or sales can be natural places for your quick mind.",
+        "keywords": ["Versatile", "Communicative", "Curious"],
+        "strengths": ["Adaptable", "Good networker", "Learns fast"],
+        "challenges": ["Scattered focus", "Changes direction often", "Restless"]
+      },
+      "Cancer": {
+        "meaning": "You may be drawn to caring work that makes people feel safe and supported. Roles in teaching, care, food, home or community can feel meaningful to you.",
+        "keywords": ["Caring", "Protective", "Intuitive"],
+        "strengths": ["Nurturing leader", "Reads people well", "Loyal to your team"],
+        "challenges": ["Takes criticism personally", "Mood affects work", "Overprotective"]
+      },
+      "Leo": {
+        "meaning": "You may want work where you can shine, create and inspire others. Leadership, the arts, entertainment or any role with a stage can bring out your best.",
+        "keywords": ["Creative", "Confident", "Warm"],
+        "strengths": ["Natural leader", "Inspires others", "Generous with praise"],
+        "challenges": ["Needs recognition", "Pride", "Dramatic at work"]
+      },
+      "Virgo": {
+        "meaning": "You may thrive in work where your care for detail and wish to help can shine. Fields like service, research, editing or organizing can suit your practical mind.",
+        "keywords": ["Precise", "Helpful", "Organized"],
+        "strengths": ["Skilled with details", "Dependable", "Improves systems"],
+        "challenges": ["Perfectionism", "Overworks", "Self-critical"]
+      },
+      "Libra": {
+        "meaning": "You may be drawn to work that brings people together and creates harmony or beauty. Design, law, diplomacy or client work can suit your fair, friendly style.",
+        "keywords": ["Diplomatic", "Fair", "Artistic"],
+        "strengths": ["Team builder", "Negotiator", "Eye for design"],
+        "challenges": ["Indecisive", "Avoids conflict at work", "Seeks approval"]
+      },
+      "Scorpio": {
+        "meaning": "You may want work with depth, where you can dig into problems, transform things or handle what others avoid. Research, psychology, detective work or problem-solving roles can suit your focus.",
+        "keywords": ["Focused", "Probing", "Determined"],
+        "strengths": ["Strategic", "Calm under pressure", "Uncovers what is hidden"],
+        "challenges": ["Secretive", "Power struggles", "All-or-nothing about work"]
+      },
+      "Sagittarius": {
+        "meaning": "You may be drawn to work that lets you explore, teach or share big ideas. Travel, education, publishing or anything with room to grow can suit you.",
+        "keywords": ["Adventurous", "Inspiring", "Open-minded"],
+        "strengths": ["Big-picture vision", "Inspiring teacher", "Optimistic"],
+        "challenges": ["Restless", "Overpromises", "Dislikes routine"]
+      },
+      "Capricorn": {
+        "meaning": "You may want to build a solid career step by step and earn real respect along the way. Management, business, public service or any field with a clear ladder can suit you.",
+        "keywords": ["Ambitious", "Disciplined", "Responsible"],
+        "strengths": ["Long-term planner", "Strong work ethic", "Natural authority"],
+        "challenges": ["Workaholic", "Too serious", "Fear of failure"]
+      },
+      "Aquarius": {
+        "meaning": "You may be drawn to work that is original, forward-looking or good for society. Technology, science, social causes or independent projects can suit your inventive side.",
+        "keywords": ["Innovative", "Independent", "Humanitarian"],
+        "strengths": ["Original ideas", "Thinks ahead", "Works well in teams"],
+        "challenges": ["Rebels against rules", "Detached", "Restless with tradition"]
+      },
+      "Pisces": {
+        "meaning": "You may be drawn to work that is creative, compassionate or spiritually meaningful. Art, music, caring roles or helping others can feel like a calling to you.",
+        "keywords": ["Compassionate", "Creative", "Intuitive"],
+        "strengths": ["Imaginative", "Empathic", "Inspires kindness"],
+        "challenges": ["Unclear direction", "Avoids structure", "Takes on others' burdens"]
+      }
+    },
+    "NorthNode": {
+      "Aries": {
+        "meaning": "Your path of growth may involve learning to act on your own and trust your instincts. Leaning into courage, rather than always keeping the peace, can help you feel more alive.",
+        "keywords": ["Courage", "Independence", "Initiative"],
+        "strengths": ["Learning to lead", "Speaking up", "Self-trust"],
+        "challenges": ["Over-relying on others", "Fear of conflict", "Waiting for approval"]
+      },
+      "Taurus": {
+        "meaning": "Your path of growth may involve slowing down and building calm, simple security. Finding peace in steady, everyday comforts, rather than constant intensity, can help you feel grounded.",
+        "keywords": ["Calm", "Stability", "Simplicity"],
+        "strengths": ["Building patience", "Enjoying the present", "Self-reliance"],
+        "challenges": ["Drawn to drama", "Restless intensity", "Hard to settle"]
+      },
+      "Gemini": {
+        "meaning": "Your path of growth may involve staying curious, asking questions and listening to other views. Learning from everyday conversations, rather than only big beliefs, can open your mind.",
+        "keywords": ["Curiosity", "Listening", "Learning"],
+        "strengths": ["Open questions", "Flexible thinking", "Connecting with others"],
+        "challenges": ["Rigid beliefs", "Preaching", "Ignoring details"]
+      },
+      "Cancer": {
+        "meaning": "Your path of growth may involve opening up emotionally and making room for home and family. Letting yourself be cared for, rather than only working and achieving, can bring you peace.",
+        "keywords": ["Nurturing", "Belonging", "Tenderness"],
+        "strengths": ["Emotional openness", "Building a home", "Caring for yourself"],
+        "challenges": ["Hides feelings behind work", "Too focused on status", "Hard to rest"]
+      },
+      "Leo": {
+        "meaning": "Your path of growth may involve stepping forward, creating and letting yourself be seen. Sharing your own heart, rather than blending into the group, can help you shine.",
+        "keywords": ["Self-expression", "Creativity", "Confidence"],
+        "strengths": ["Creative courage", "Warm leadership", "Joy"],
+        "challenges": ["Hides in the crowd", "Detached", "Fear of standing out"]
+      },
+      "Virgo": {
+        "meaning": "Your path of growth may involve building helpful routines and practical skills. Turning dreams into small daily steps, rather than drifting, can help you feel steady and useful.",
+        "keywords": ["Practical", "Service", "Focus"],
+        "strengths": ["Good routines", "Skill building", "Useful service"],
+        "challenges": ["Escapism", "Vague plans", "Easily overwhelmed"]
+      },
+      "Libra": {
+        "meaning": "Your path of growth may involve partnership, cooperation and seeing others' needs. Learning to share and compromise, rather than always going alone, can bring you balance.",
+        "keywords": ["Partnership", "Balance", "Cooperation"],
+        "strengths": ["Teamwork", "Fairness", "Diplomacy"],
+        "challenges": ["Too independent", "Impatient with others", "Acts alone"]
+      },
+      "Scorpio": {
+        "meaning": "Your path of growth may involve going deeper, sharing honestly and welcoming change. Letting go of the need for comfort and sameness can help you grow strong.",
+        "keywords": ["Depth", "Transformation", "Honesty"],
+        "strengths": ["Emotional courage", "Deep bonds", "Openness to change"],
+        "challenges": ["Clings to comfort", "Resists change", "Holds on too tightly"]
+      },
+      "Sagittarius": {
+        "meaning": "Your path of growth may involve exploring big questions and trusting your own beliefs. Seeking meaning, rather than only gathering facts and opinions, can give your life direction.",
+        "keywords": ["Meaning", "Faith", "Adventure"],
+        "strengths": ["Big-picture view", "Trust in yourself", "Openness to new places"],
+        "challenges": ["Overthinks small details", "Indecisive", "Scattered"]
+      },
+      "Capricorn": {
+        "meaning": "Your path of growth may involve taking charge of your goals and building something in the world. Stepping into responsibility, rather than staying in your comfort zone, can help you grow.",
+        "keywords": ["Responsibility", "Ambition", "Maturity"],
+        "strengths": ["Setting goals", "Self-discipline", "Leadership"],
+        "challenges": ["Hides at home", "Avoids public roles", "Leans on family"]
+      },
+      "Aquarius": {
+        "meaning": "Your path of growth may involve joining others for a shared cause and valuing what makes you different. Thinking of the wider community, rather than seeking the spotlight, can feel deeply fulfilling.",
+        "keywords": ["Community", "Originality", "Friendship"],
+        "strengths": ["Team spirit", "Fresh ideas", "Fairness"],
+        "challenges": ["Needs attention", "Pride", "Takes things personally"]
+      },
+      "Pisces": {
+        "meaning": "Your path of growth may involve trusting your intuition, compassion and quiet faith. Letting go of perfection and control, rather than over-planning, can bring you peace.",
+        "keywords": ["Compassion", "Intuition", "Surrender"],
+        "strengths": ["Empathy", "Creative imagination", "Inner calm"],
+        "challenges": ["Perfectionism", "Overanalyzing", "Self-criticism"]
+      }
+    }
+  }
+}

@@ -68,7 +68,11 @@ describe('FullReadingPage (free, static text)', () => {
     ).toBeInTheDocument();
     const mind = screen.getByRole('region', { name: 'Mind & Communication' });
     expect(within(mind).getByText(/think things through slowly/)).toBeInTheDocument();
-    expect(within(mind).getByText('Strengths')).toBeInTheDocument();
+    // Sign and house paragraphs for Mercury, each with strengths.
+    expect(
+      within(mind).getByRole('heading', { name: /^Mercury in the \d+(st|nd|rd|th) house$/ }),
+    ).toBeInTheDocument();
+    expect(within(mind).getAllByText('Strengths')).toHaveLength(2);
     expect(screen.getByRole('region', { name: 'Life Lessons' })).toHaveTextContent(
       /Pluto in Scorpio/,
     );
