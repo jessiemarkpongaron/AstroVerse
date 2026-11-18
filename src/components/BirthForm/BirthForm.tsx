@@ -1,4 +1,4 @@
-import { useId, useState, type FormEvent } from 'react';
+import { useId, useState, type FormEvent, type ReactNode } from 'react';
 import type { BirthInput } from '../../lib/astro/types.ts';
 import {
   MAX_DATE,
@@ -13,11 +13,24 @@ import { TimeAccuracySelector } from './TimeAccuracySelector.tsx';
 interface BirthFormProps {
   initial?: Partial<BirthFormValues> | undefined;
   onSubmit: (input: BirthInput, name: string) => void;
+  /** Defaults: 'Name', 'See my chart'. */
+  nameLabel?: string | undefined;
+  submitLabel?: string | undefined;
+  /** Extra fields shown above the submit button (e.g. a consent checkbox). */
+  extra?: ReactNode;
+  submitDisabled?: boolean | undefined;
 }
 
 const EMPTY: BirthFormValues = { name: '', date: '', time: '', accuracy: 'exact', place: null };
 
-export function BirthForm({ initial, onSubmit }: BirthFormProps) {
+export function BirthForm({
+  initial,
+  onSubmit,
+  nameLabel = 'Name',
+  submitLabel = 'See my chart',
+  extra,
+  submitDisabled,
+}: BirthFormProps) {
   const id = useId();
   const [values, setValues] = useState<BirthFormValues>({ ...EMPTY, ...initial });
   const [errors, setErrors] = useState<BirthFormErrors>({});
@@ -41,7 +54,7 @@ export function BirthForm({ initial, onSubmit }: BirthFormProps) {
     <form onSubmit={handleSubmit} noValidate className="space-y-5">
       <div>
         <label htmlFor={`${id}-name`} className="mb-1 block text-sm font-medium">
-          Name <span className="font-normal text-slate-500">(optional)</span>
+          {nameLabel} <span className="font-normal text-slate-500">(optional)</span>
         </label>
         <input
           id={`${id}-name`}
@@ -110,11 +123,14 @@ export function BirthForm({ initial, onSubmit }: BirthFormProps) {
         error={errors.place}
       />
 
+      {extra}
+
       <button
         type="submit"
-        className="min-h-12 w-full rounded-lg bg-ink px-4 py-3 font-semibold text-white hover:bg-dusk focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold dark:bg-gold dark:text-ink dark:hover:bg-gold/90"
+        disabled={submitDisabled}
+        className="min-h-12 w-full rounded-lg bg-ink px-4 py-3 font-semibold text-white hover:bg-dusk focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold disabled:cursor-not-allowed disabled:opacity-50 dark:bg-gold dark:text-ink dark:hover:bg-gold/90"
       >
-        See my chart
+        {submitLabel}
       </button>
     </form>
   );

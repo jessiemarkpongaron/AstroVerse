@@ -1,0 +1,19 @@
+{
+  "_comment": "Compatibility (synastry) texts. {A} = your point's theme (capitalized), {b} = their point's theme, both from aspects.json (\"your\" becomes \"their\" for the other person). Tendencies, never a verdict.",
+  "version": 1,
+  "review": "draft",
+  "templates": {
+    "conjunction": "{A} and {b} meet in the same place, so this part of your connection can feel strong and familiar.",
+    "sextile": "{A} and {b} support each other in a friendly way. A little effort can make this easy to build on.",
+    "trine": "{A} and {b} flow together naturally, which can make this part of your connection feel easy.",
+    "square": "{A} and {b} can rub against each other at times. Talking openly can turn the friction into growth.",
+    "opposition": "{A} and {b} sit on opposite sides, so you may balance each other or pull in different directions. Meeting in the middle can help."
+  },
+  "bands": {
+    "harmony": "Where things may flow easily between you.",
+    "growth": "Where you may learn from each other, with patience and commitment.",
+    "challenges": "Where you may see things differently. Kindness and honest talk help most here."
+  },
+  "intro": "Every relationship has easy parts and harder parts. These patterns describe tendencies, not a verdict on whether you belong together.",
+  "respect": "Healthy relationships are built on respect, trust and free choice, for both of you."
+}

@@ -15,6 +15,9 @@ const ChartPage = lazy(() =>
 const FullReadingPage = lazy(() =>
   import('./pages/FullReadingPage.tsx').then((m) => ({ default: m.FullReadingPage })),
 );
+const CompatibilityPage = lazy(() =>
+  import('./pages/CompatibilityPage.tsx').then((m) => ({ default: m.CompatibilityPage })),
+);
 const CareerPage = lazy(() =>
   import('./pages/CareerPage.tsx').then((m) => ({ default: m.CareerPage })),
 );
@@ -63,6 +66,14 @@ export function App() {
           element={
             <Suspense fallback={<p className="min-h-[200vh] text-center text-sm">Loading…</p>}>
               <CareerPage />
+            </Suspense>
+          }
+        />
+        <Route
+          path="compatibility"
+          element={
+            <Suspense fallback={<p className="min-h-[200vh] text-center text-sm">Loading…</p>}>
+              <CompatibilityPage />
             </Suspense>
           }
         />
