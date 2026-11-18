@@ -3,7 +3,8 @@
   "version": 1,
   "review": {
     "Mercury": "approved",
-    "Venus": "approved"
+    "Venus": "approved",
+    "Mars": "approved"
   },
   "planets": {
     "Mercury": {
@@ -164,6 +165,80 @@
         "keywords": ["Romantic", "Compassionate", "Gentle"],
         "strengths": ["Selfless", "Understanding", "Forgiving"],
         "challenges": ["Idealizing partners", "Self-sacrifice", "Ignoring warning signs"]
+      }
+    },
+    "Mars": {
+      "Aries": {
+        "meaning": "You tend to act fast, start strong and love a challenge. Your energy can move mountains, and choosing your battles helps you use it where it counts.",
+        "keywords": ["Energetic", "Competitive", "Fearless"],
+        "strengths": ["Takes the lead", "Acts with courage", "Quick to recover"],
+        "challenges": ["Short temper", "Rushing in", "Burning out fast"]
+      },
+      "Taurus": {
+        "meaning": "You tend to work at a slow, steady pace and keep going long after others stop. Once you commit, you can be hard to move, which makes you strong in the long run.",
+        "keywords": ["Persistent", "Steady", "Determined"],
+        "strengths": ["Great stamina", "Finishes what you start", "Calm under pressure"],
+        "challenges": ["Stubbornness", "Slow to get started", "Anger that builds quietly"]
+      },
+      "Gemini": {
+        "meaning": "You tend to put your energy into ideas, talking and doing several things at once. You may work best with variety, and finishing one task before the next helps you get more done.",
+        "keywords": ["Versatile", "Quick-witted", "Restless"],
+        "strengths": ["Multitasker", "Persuasive", "Adapts fast"],
+        "challenges": ["Scattered effort", "Arguing with words", "Losing interest midway"]
+      },
+      "Cancer": {
+        "meaning": "You tend to act most strongly when protecting the people and things you love. You may move toward goals in a careful, indirect way rather than charging straight ahead.",
+        "keywords": ["Protective", "Determined", "Intuitive"],
+        "strengths": ["Fierce for loved ones", "Works hard for family", "Senses the right moment"],
+        "challenges": ["Moody energy", "Holding in frustration", "Indirect anger"]
+      },
+      "Leo": {
+        "meaning": "You tend to act with confidence, pride and a big heart. You may shine when you can lead, create or perform, and you work hardest for things you truly love.",
+        "keywords": ["Confident", "Bold", "Creative"],
+        "strengths": ["Natural leader", "Generous effort", "Inspires others"],
+        "challenges": ["Pride", "Needing recognition", "Bossiness"]
+      },
+      "Virgo": {
+        "meaning": "You tend to put your energy into careful, useful work and doing things the right way. You may be at your best fixing problems and improving how things run.",
+        "keywords": ["Diligent", "Efficient", "Precise"],
+        "strengths": ["Hardworking", "Skilled with detail", "Practical problem-solver"],
+        "challenges": ["Perfectionism", "Nervous energy", "Overworking"]
+      },
+      "Libra": {
+        "meaning": "You tend to work best with others and push for what feels fair. You may prefer to settle things calmly, and speaking up early helps you avoid quiet frustration.",
+        "keywords": ["Cooperative", "Fair", "Diplomatic"],
+        "strengths": ["Great teammate", "Stands up for fairness", "Calms tense situations"],
+        "challenges": ["Indecision", "Avoiding confrontation", "Holding back your own wants"]
+      },
+      "Scorpio": {
+        "meaning": "You tend to act with focus, intensity and strong willpower. You may work quietly toward goals and rarely give up once you have decided.",
+        "keywords": ["Intense", "Focused", "Resilient"],
+        "strengths": ["Unstoppable when committed", "Strong under pressure", "Strategic"],
+        "challenges": ["Holding grudges", "Secretive plans", "All-or-nothing effort"]
+      },
+      "Sagittarius": {
+        "meaning": "You tend to chase goals with enthusiasm, hope and a love of freedom. You may be driven by big dreams, and steady follow-through helps you reach them.",
+        "keywords": ["Enthusiastic", "Adventurous", "Optimistic"],
+        "strengths": ["Inspiring energy", "Willing to take chances", "Bounces back fast"],
+        "challenges": ["Restlessness", "Overcommitting", "Impatience with routine"]
+      },
+      "Capricorn": {
+        "meaning": "You tend to work with discipline, patience and a clear plan. You may climb steadily toward goals, and remembering to rest keeps your drive strong.",
+        "keywords": ["Disciplined", "Ambitious", "Patient"],
+        "strengths": ["Strong work ethic", "Self-controlled", "Achieves long-term goals"],
+        "challenges": ["Workaholic tendencies", "Being too hard on yourself", "Rigid methods"]
+      },
+      "Aquarius": {
+        "meaning": "You tend to act in your own original way and put your energy into causes and ideas you believe in. You may resist being told what to do, and working with others multiplies your impact.",
+        "keywords": ["Independent", "Inventive", "Purposeful"],
+        "strengths": ["Fresh approaches", "Fights for fairness", "Team-minded for causes"],
+        "challenges": ["Rebelliousness", "Detached effort", "Stubborn about methods"]
+      },
+      "Pisces": {
+        "meaning": "You tend to act on feelings, inspiration and a wish to help. You may do your best work when you care deeply, and simple routines help you turn dreams into action.",
+        "keywords": ["Compassionate", "Creative", "Intuitive"],
+        "strengths": ["Works hard for others", "Creative energy", "Flexible"],
+        "challenges": ["Low energy when uninspired", "Avoiding conflict", "Drifting from goals"]
       }
     }
   }
