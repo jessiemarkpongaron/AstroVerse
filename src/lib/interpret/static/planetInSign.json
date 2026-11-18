@@ -2,7 +2,8 @@
   "_comment": "Original AstroVerse text. Planet-in-sign snippets (Mercury–Pluto), one planet per review batch. Tone and guardrails: docs/INTERPRETATION.md.",
   "version": 1,
   "review": {
-    "Mercury": "approved"
+    "Mercury": "approved",
+    "Venus": "approved"
   },
   "planets": {
     "Mercury": {
@@ -85,6 +86,84 @@
         "keywords": ["Imaginative", "Intuitive", "Poetic"],
         "strengths": ["Creative thinking", "Understanding", "Artistic expression"],
         "challenges": ["Daydreaming", "Vague communication", "Forgetting details"]
+      }
+    },
+    "Venus": {
+      "Aries": {
+        "meaning": "In love you tend to be direct, eager and drawn to excitement. You may enjoy the thrill of a new connection, and patience helps your feelings grow deeper over time.",
+        "keywords": ["Passionate", "Spontaneous", "Bold"],
+        "strengths": [
+          "Shows affection openly",
+          "Brave about feelings",
+          "Brings energy to relationships"
+        ],
+        "challenges": ["Losing interest quickly", "Impatience", "Wanting things on your terms"]
+      },
+      "Taurus": {
+        "meaning": "You tend to love in a steady, loyal and affectionate way, showing care through time, comfort and small gifts. You may value security and simple pleasures shared with someone you trust.",
+        "keywords": ["Loyal", "Affectionate", "Devoted"],
+        "strengths": ["Faithful", "Patient partner", "Creates comfort"],
+        "challenges": ["Possessiveness", "Resisting change in relationships", "Overindulging"]
+      },
+      "Gemini": {
+        "meaning": "You tend to fall for minds first, and good conversation can feel like the best kind of closeness. You may enjoy variety, fun and a partner who is also a friend.",
+        "keywords": ["Playful", "Talkative", "Curious"],
+        "strengths": ["Fun to be with", "Keeps things fresh", "Great communicator"],
+        "challenges": ["Restlessness", "Avoiding deep emotions", "Sending mixed signals"]
+      },
+      "Cancer": {
+        "meaning": "You tend to love in a nurturing, protective way and want a relationship that feels like home. You may show affection by caring for people and remembering what matters to them.",
+        "keywords": ["Nurturing", "Devoted", "Tender"],
+        "strengths": ["Deeply caring", "Loyal", "Emotionally attentive"],
+        "challenges": ["Clinginess", "Feeling hurt easily", "Fear of rejection"]
+      },
+      "Leo": {
+        "meaning": "You tend to love generously and with your whole heart. You may enjoy romance, big gestures and feeling truly appreciated by the people you care for.",
+        "keywords": ["Romantic", "Generous", "Warm"],
+        "strengths": ["Big-hearted", "Loyal", "Makes others feel special"],
+        "challenges": ["Needing admiration", "Pride after an argument", "Drama"]
+      },
+      "Virgo": {
+        "meaning": "You tend to show love through helpful acts and attention to small needs. You may take your time to trust, but your care is practical and real.",
+        "keywords": ["Devoted", "Thoughtful", "Practical"],
+        "strengths": ["Reliable", "Attentive to details", "Shows love through action"],
+        "challenges": ["Being too critical", "Holding back affection", "Overthinking relationships"]
+      },
+      "Libra": {
+        "meaning": "You tend to value harmony, fairness and beauty in love and friendship. You may be a gracious, considerate partner who works hard to keep the peace.",
+        "keywords": ["Romantic", "Harmonious", "Graceful"],
+        "strengths": ["Considerate", "Charming", "Values equal partnership"],
+        "challenges": ["People-pleasing", "Avoiding conflict", "Losing yourself in others"]
+      },
+      "Scorpio": {
+        "meaning": "You tend to love deeply and want closeness that is honest and wholehearted. You may value loyalty above everything, and trust grows best when both people also feel free.",
+        "keywords": ["Intense", "Loyal", "Devoted"],
+        "strengths": ["Deeply committed", "Emotionally honest", "Protective"],
+        "challenges": ["Jealousy", "Difficulty trusting", "All-or-nothing feelings"]
+      },
+      "Sagittarius": {
+        "meaning": "You tend to love with optimism and a sense of adventure. You may need a partner who shares your curiosity and gives you room to grow.",
+        "keywords": ["Adventurous", "Free-spirited", "Honest"],
+        "strengths": ["Fun and open-hearted", "Honest", "Encourages growth"],
+        "challenges": ["Fear of feeling tied down", "Restlessness", "Bluntness"]
+      },
+      "Capricorn": {
+        "meaning": "You tend to take love seriously and show it through commitment and support. You may be slow to open up, but once you do, you are steady and dependable.",
+        "keywords": ["Committed", "Loyal", "Reserved"],
+        "strengths": ["Dependable", "Patient", "Builds for the long term"],
+        "challenges": ["Seeming cool", "Holding back feelings", "Putting work first"]
+      },
+      "Aquarius": {
+        "meaning": "You tend to value friendship, freedom and honesty in love. You may be drawn to people who are a little different and who respect your independence.",
+        "keywords": ["Independent", "Friendly", "Unconventional"],
+        "strengths": ["Accepting", "Loyal friend", "Respects personal space"],
+        "challenges": ["Emotional distance", "Avoiding commitment", "Unpredictability"]
+      },
+      "Pisces": {
+        "meaning": "You tend to love with compassion and a romantic imagination. You may be gentle and giving, and clear boundaries help your kindness stay healthy.",
+        "keywords": ["Romantic", "Compassionate", "Gentle"],
+        "strengths": ["Selfless", "Understanding", "Forgiving"],
+        "challenges": ["Idealizing partners", "Self-sacrifice", "Ignoring warning signs"]
       }
     }
   }

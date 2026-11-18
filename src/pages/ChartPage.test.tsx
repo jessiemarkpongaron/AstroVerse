@@ -60,6 +60,8 @@ describe('ChartPage', () => {
       within(section).getByText(/You tend to think things through slowly and carefully/),
     ).toBeInTheDocument();
     expect(within(section).getByText(/Not professional advice/)).toBeInTheDocument();
+    expect(within(section).getByRole('heading', { name: /Venus in Taurus/ })).toBeInTheDocument();
+    expect(within(section).getByText(/You tend to love in a steady, loyal/)).toBeInTheDocument();
   });
 
   it('renders the wheel with a text summary', async () => {
