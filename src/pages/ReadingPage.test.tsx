@@ -42,13 +42,26 @@ function Where() {
 
 beforeEach(() => {
   vi.clearAllMocks();
+  // The AI reading route exists only when the owner turns it on.
+  vi.stubEnv('VITE_AI_READINGS', 'true');
   charts.getChart.mockResolvedValue(row);
   readings.findCachedReading.mockResolvedValue(null);
 });
 
 const open = (auth = signedIn()) => render(renderApp(auth, '/charts/chart-1/reading', <Where />));
 
-describe('ReadingPage', () => {
+afterEach(() => {
+  vi.unstubAllEnvs();
+});
+
+describe('ReadingPage (AI)', () => {
+  it('is not routed while AI readings are switched off', async () => {
+    vi.stubEnv('VITE_AI_READINGS', '');
+    open();
+    expect(await screen.findByRole('heading', { name: /not found/i })).toBeInTheDocument();
+    expect(charts.getChart).not.toHaveBeenCalled();
+  });
+
   it('sends signed-out visitors to sign in', async () => {
     open(signedOut());
     await waitFor(() => expect(screen.getByTestId('where')).toHaveTextContent('/login'));
@@ -136,16 +149,5 @@ describe('ReadingPage', () => {
     const nav = await screen.findByRole('navigation', { name: 'Reading links' });
     fireEvent.click(within(nav).getByRole('link', { name: 'View the chart' }));
     await waitFor(() => expect(screen.getByTestId('where')).toHaveTextContent('/chart'));
-  });
-});
-
-describe('Reading entry points', () => {
-  it('My charts links each chart to its full reading', async () => {
-    charts.listCharts.mockResolvedValue([row]);
-    render(renderApp(signedIn(), '/charts', <Where />));
-    fireEvent.click(await screen.findByRole('link', { name: 'Full reading for Mama' }));
-    await waitFor(() =>
-      expect(screen.getByTestId('where')).toHaveTextContent('/charts/chart-1/reading'),
-    );
   });
 });
