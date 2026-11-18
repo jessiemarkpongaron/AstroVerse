@@ -15,8 +15,38 @@ export interface UtcConversion {
   offsetMinutes: number;
   /** True when the time was unknown and 12:00 local was assumed. */
   assumedNoon: boolean;
+  /**
+   * True when tzdb lists DST at this instant but we used standard time instead
+   * (see STANDARD_TIME_ZONES). `tzdbOffsetMinutes` is what tzdb said.
+   */
+  dstIgnored: boolean;
+  tzdbOffsetMinutes: number;
   flags: UncertaintyFlag[];
 }
+
+export interface BirthToUtcOptions {
+  /**
+   * For zones in STANDARD_TIME_ZONES: set true to honour tzdb's historical DST instead of
+   * forcing standard time (e.g. a user who knows clocks were on DST). Default false.
+   */
+  observedDst?: boolean;
+}
+
+/**
+ * Product decision (2026-11-18): Philippine births use UTC+8 (Philippine Standard Time).
+ * tzdb lists short DST periods for Asia/Manila (1936–37, 1941, 1945, 1954, 1977, 1990) that
+ * are rarely reflected in recorded birth times, so we ignore them by default. The Japanese
+ * occupation (1942-02-12 → 1945-03-04 local, officially UTC+9 standard time) is kept as tzdb has it.
+ */
+const STANDARD_TIME_ZONES: Record<
+  string,
+  { standardOffsetMinutes: number; keepTzdb: readonly [startUtcMs: number, endUtcMs: number][] }
+> = {
+  'Asia/Manila': {
+    standardOffsetMinutes: 480,
+    keepTzdb: [[Date.UTC(1942, 1, 11, 15), Date.UTC(1945, 2, 3, 15)]],
+  },
+};
 
 const DATE_RE = /^(\d{4})-(\d{2})-(\d{2})$/;
 const TIME_RE = /^([01]\d|2[0-3]):([0-5]\d)$/;
@@ -41,7 +71,10 @@ export function formatOffset(minutes: number): string {
  * or never occurred (clocks moved forward), we pick the EARLIER candidate instant and add
  * a 'dst-ambiguous' flag.
  */
-export function birthToUtc(input: Pick<BirthInput, 'date' | 'time' | 'place'>): UtcConversion {
+export function birthToUtc(
+  input: Pick<BirthInput, 'date' | 'time' | 'place'>,
+  options: BirthToUtcOptions = {},
+): UtcConversion {
   const { date, place } = input;
   const dm = DATE_RE.exec(date);
   if (!dm) throw new BirthInputError(`Invalid date "${date}" (expected YYYY-MM-DD)`);
@@ -63,6 +96,14 @@ export function birthToUtc(input: Pick<BirthInput, 'date' | 'time' | 'place'>): 
     throw new BirthInputError(`Unknown timezone "${place.tz}"`);
   }
   const zone = IANAZone.create(place.tz);
+  const policy = options.observedDst ? undefined : STANDARD_TIME_ZONES[place.tz];
+  /** Offset (minutes) we use at a UTC instant: tzdb, unless the standard-time policy applies. */
+  const offsetAt = (ts: number): number => {
+    const tzdb = zone.offset(ts);
+    if (!policy) return tzdb;
+    if (policy.keepTzdb.some(([a, b]) => ts >= a && ts < b)) return tzdb;
+    return policy.standardOffsetMinutes;
+  };
 
   // The local wall time expressed as if it were UTC; validates the calendar date too.
   const wall = DateTime.utc(year, month, day, hour, minute);
@@ -73,12 +114,12 @@ export function birthToUtc(input: Pick<BirthInput, 'date' | 'time' | 'place'>): 
 
   // Candidate offsets: those in effect a day before/after and at the wall time itself.
   const candidateOffsets = new Set<number>([
-    zone.offset(wallMs - MS_PER_DAY),
-    zone.offset(wallMs),
-    zone.offset(wallMs + MS_PER_DAY),
+    offsetAt(wallMs - MS_PER_DAY),
+    offsetAt(wallMs),
+    offsetAt(wallMs + MS_PER_DAY),
   ]);
   const candidates = [...candidateOffsets].map((off) => wallMs - off * MS_PER_MIN);
-  const valid = candidates.filter((t) => wallMs - zone.offset(t) * MS_PER_MIN === t);
+  const valid = candidates.filter((t) => wallMs - offsetAt(t) * MS_PER_MIN === t);
 
   const flags: UncertaintyFlag[] = [];
   let utcMs: number;
@@ -89,7 +130,7 @@ export function birthToUtc(input: Pick<BirthInput, 'date' | 'time' | 'place'>): 
     flags.push({
       point: null,
       kind: 'dst-ambiguous',
-      message: `${localTime} happened twice on ${date} in ${place.name} because clocks were turned back. We used the earlier one (${formatOffset(zone.offset(utcMs))}).`,
+      message: `${localTime} happened twice on ${date} in ${place.name} because clocks were turned back. We used the earlier one (${formatOffset(offsetAt(utcMs))}).`,
     });
   } else {
     // Nonexistent local time (skipped by a forward clock change): earliest candidate.
@@ -97,15 +138,19 @@ export function birthToUtc(input: Pick<BirthInput, 'date' | 'time' | 'place'>): 
     flags.push({
       point: null,
       kind: 'dst-ambiguous',
-      message: `${localTime} did not exist on ${date} in ${place.name} because clocks moved forward. We used ${formatOffset(zone.offset(utcMs))} for this time.`,
+      message: `${localTime} did not exist on ${date} in ${place.name} because clocks moved forward. We used ${formatOffset(offsetAt(utcMs))} for this time.`,
     });
   }
 
+  const offsetMinutes = offsetAt(utcMs);
+  const tzdbOffsetMinutes = zone.offset(utcMs);
   return {
     utc: new Date(utcMs),
     localTime,
-    offsetMinutes: zone.offset(utcMs),
+    offsetMinutes,
     assumedNoon,
+    dstIgnored: offsetMinutes !== tzdbOffsetMinutes,
+    tzdbOffsetMinutes,
     flags,
   };
 }

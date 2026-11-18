@@ -13,10 +13,45 @@ describe('birthToUtc', () => {
     expect(r.flags).toEqual([]);
   });
 
-  it('applies historical Philippine DST from the tz database (1990-05-21..07-28 → UTC+9)', () => {
+  it('uses UTC+8 for Philippine births even where tzdb lists DST (1990-05-21..07-28)', () => {
     const r = birthToUtc({ date: '1990-05-31', time: '15:30', place: manila });
+    expect(r.offsetMinutes).toBe(480);
+    expect(r.utc.toISOString()).toBe('1990-05-31T07:30:00.000Z');
+    expect(r.dstIgnored).toBe(true);
+    expect(r.tzdbOffsetMinutes).toBe(540);
+    expect(r.flags).toEqual([]);
+  });
+
+  it.each([
+    ['1936-12-01', 'pre-war DST'],
+    ['1954-05-01', '1954 DST'],
+    ['1977-06-01', '1977 DST'],
+  ])('ignores tzdb DST for Manila on %s (%s)', (date) => {
+    const r = birthToUtc({ date, time: '10:00', place: manila });
+    expect(r.offsetMinutes).toBe(480);
+    expect(r.dstIgnored).toBe(true);
+  });
+
+  it('keeps the 1942–45 Japanese occupation time (UTC+9) from tzdb', () => {
+    const r = birthToUtc({ date: '1943-06-01', time: '10:00', place: manila });
+    expect(r.offsetMinutes).toBe(540);
+    expect(r.dstIgnored).toBe(false);
+  });
+
+  it('honours tzdb Philippine DST when observedDst is set', () => {
+    const r = birthToUtc(
+      { date: '1990-05-31', time: '15:30', place: manila },
+      { observedDst: true },
+    );
     expect(r.offsetMinutes).toBe(540);
     expect(r.utc.toISOString()).toBe('1990-05-31T06:30:00.000Z');
+    expect(r.dstIgnored).toBe(false);
+  });
+
+  it('still applies DST for other countries (New York, July → UTC−4)', () => {
+    const r = birthToUtc({ date: '1990-07-04', time: '12:00', place: newYork });
+    expect(r.offsetMinutes).toBe(-240);
+    expect(r.dstIgnored).toBe(false);
   });
 
   it.each(REFERENCE_CHARTS.map((c) => [c.id, c] as const))(

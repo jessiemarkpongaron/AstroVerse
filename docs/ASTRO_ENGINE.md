@@ -15,6 +15,10 @@ Everything here lives in `src/lib/astro/`. Pure TypeScript, deterministic, fully
   UTC+8; tzdb 2026a lists PH DST in 1936–37, 1941–42, 1945, 1954, **1977** (Mar 28–Sep 21)
   and **1990 (May 21–Jul 28, UTC+9)** — luxon handles it. Implementation detail: time.ts
   resolves offsets with `IANAZone.offset()` so it can detect repeated/skipped local times.)
+- **Philippine policy:** for `Asia/Manila` use UTC+8 and ignore tzdb's PH DST periods
+  (1936–37, 1941, 1945, 1954, 1977, 1990); keep the 1942-02-12 → 1945-03-04 occupation
+  time (UTC+9) from tzdb. `birthToUtc(…, { observedDst: true })` restores tzdb behaviour.
+  The result reports `dstIgnored` and `tzdbOffsetMinutes` so the UI can mention it.
 - Unknown time → compute at **12:00 local**, set `house = null` for all points, omit
   Ascendant/Midheaven, and add a `time-unknown` flag. The Moon still gets a sign but
   flag it if it changes sign during that local day.
@@ -93,9 +97,7 @@ Everything here lives in `src/lib/astro/`. Pure TypeScript, deterministic, fully
 - Tolerances: Sun–Pluto ≤ 0.1° (target) / 0.25° (hard fail), Moon ≤ 0.1°,
   ASC/MC ≤ 0.2°, Placidus cusps ≤ 0.3°, mean node ≤ 0.1°.
 - Sanity fixture (approximate, ±1°) — May 31 1990, 15:30, Carrascal, Surigao del Sur
-  (9.37°N, 125.95°E), **assuming UTC+8, i.e. 07:30 UTC**. ⚠ tzdb says the Philippines was on
-  DST (UTC+9) that day, which gives 06:30 UTC and Rising ≈ Libra 22° (open question, see PRD F1).
-  Reference values at 07:30 UTC:
+  (9.37°N, 125.95°E) → UTC+8 (Philippine policy above) = 07:30 UTC:
   Sun ~Gemini 9.6°, Moon ~Virgo 9.2°, ASC ~Scorpio 7°, MC ~Leo 4.6°,
   Mercury ~Taurus 15°, Venus ~Taurus 1°, Jupiter ~Cancer 13°, Saturn ~Capricorn 25° ℞,
   Pluto ~Scorpio 16° ℞. (Mars sits at ~0° Aries — a good cusp-flag test case.)

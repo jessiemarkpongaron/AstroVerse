@@ -25,8 +25,10 @@ interface FixtureSpec {
   place: { name: string; lat: number; lon: number; tz: string };
   date: string;
   time: string;
-  /** Hand-entered UTC offset in minutes, from tzdb. */
+  /** Hand-entered UTC offset in minutes that the app must use (tzdb unless overridden). */
   expectedOffsetMinutes: number;
+  /** Set when the app deliberately differs from tzdb (PH standard-time policy, time.ts). */
+  tzdbOffsetMinutes?: number;
   /** Optional assertion so a fixture keeps its purpose. */
   check?: (bodies: Record<string, { lon: number; speed: number }>) => string | null;
 }
@@ -43,11 +45,12 @@ const SPECS: FixtureSpec[] = [
   {
     id: 'ph-carrascal-1990-dst',
     description:
-      'PRD acceptance birth data. tzdb has Philippine DST 1990-05-21..07-28, so UTC+9 (DST chart)',
+      'PRD F1 acceptance chart. tzdb lists PH DST (UTC+9) that day, but PH births use UTC+8 by policy',
     place: { name: 'Carrascal, Surigao del Sur', lat: 9.37, lon: 125.95, tz: 'Asia/Manila' },
     date: '1990-05-31',
     time: '15:30',
-    expectedOffsetMinutes: 540,
+    expectedOffsetMinutes: 480,
+    tzdbOffsetMinutes: 540,
   },
   {
     id: 'sydney-1985',
@@ -126,8 +129,9 @@ const charts = SPECS.map((s) => {
   const utcMs = wallMs - s.expectedOffsetMinutes * 60_000;
 
   const lux = DateTime.fromISO(`${s.date}T${s.time}`, { zone: s.place.tz });
-  if (lux.offset !== s.expectedOffsetMinutes || lux.toMillis() !== utcMs) {
-    throw new Error(`${s.id}: luxon offset ${lux.offset} ≠ expected ${s.expectedOffsetMinutes}`);
+  const tzdbOffset = s.tzdbOffsetMinutes ?? s.expectedOffsetMinutes;
+  if (lux.offset !== tzdbOffset) {
+    throw new Error(`${s.id}: luxon offset ${lux.offset} ≠ hand-entered tzdb ${tzdbOffset}`);
   }
 
   const u = new Date(utcMs);

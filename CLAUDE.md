@@ -36,6 +36,8 @@ future reading (transits), compatibility, and career themes. Built for Filipino 
    API, read `node_modules/astronomy-engine/astronomy.d.ts`.
 3. **All times go through UTC.** Convert local birth time → UTC with luxon using the
    birthplace's IANA zone (historical rules). Never assume the browser's timezone.
+   **Exception:** Philippine births (`Asia/Manila`) use UTC+8 standard time; tzdb's historical
+   PH DST periods are ignored by default (1942–45 occupation time is kept). See `time.ts`.
 4. **Show uncertainty.** If birth time is unknown or approximate, flag anything that depends
    on it (Ascendant, houses, Moon near a sign edge, any body within 1° of a cusp).
 5. **Secrets** live in `.env.local` / Supabase secrets. Keep `.env.example` current.
