@@ -1,5 +1,6 @@
-import type { Body, SignIndex } from '../astro/types.ts';
+import type { AspectType, Body, PointName, SignIndex } from '../astro/types.ts';
 import { SIGN_NAMES, type SignName } from '../astro/zodiac.ts';
+import aspectsJson from './static/aspects.json';
 import bigThreeJson from './static/bigThree.json';
 import planetInHouseJson from './static/planetInHouse.json';
 import planetInSignJson from './static/planetInSign.json';
@@ -128,4 +129,33 @@ export function pointInSignEntry(
 ): StaticEntry | null {
   if (!opts.includeDrafts && POINT_IN_SIGN_TEXT.review[point] !== 'approved') return null;
   return POINT_IN_SIGN_TEXT.points[point]?.[SIGN_NAMES[sign]] ?? null;
+}
+
+type AspectText = {
+  version: number;
+  review: ReviewStatus;
+  themes: Record<PointName, string>;
+  types: Record<AspectType, Omit<StaticEntry, 'meaning'> & { template: string }>;
+};
+
+export const ASPECT_TEXT = aspectsJson as unknown as AspectText;
+
+const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
+
+/**
+ * Aspect entry: the aspect type's template filled with both points' themes, e.g.
+ * "Your way of loving and your sense of responsibility may pull against each other…".
+ */
+export function aspectEntry(
+  a: PointName,
+  b: PointName,
+  type: AspectType,
+  opts: { includeDrafts?: boolean } = {},
+): StaticEntry | null {
+  if (!opts.includeDrafts && ASPECT_TEXT.review !== 'approved') return null;
+  const t = ASPECT_TEXT.types[type];
+  const meaning = t.template
+    .replace('{A}', capitalize(ASPECT_TEXT.themes[a]))
+    .replace('{b}', ASPECT_TEXT.themes[b]);
+  return { meaning, keywords: t.keywords, strengths: t.strengths, challenges: t.challenges };
 }

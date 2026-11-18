@@ -1,8 +1,9 @@
-import type { Chart, ChartPoint, PointName } from '../astro/types.ts';
+import type { Aspect, Chart, ChartPoint, PointName } from '../astro/types.ts';
 import { SIGN_NAMES } from '../astro/zodiac.ts';
 import { ordinal } from '../astro/uncertainty.ts';
 import { SECTION_TITLES, type SectionId } from '../../../supabase/functions/_shared/reading.ts';
 import {
+  aspectEntry,
   bigThreeEntry,
   planetInHouseEntry,
   planetInSignEntry,
@@ -74,6 +75,52 @@ const PLAN: Record<SectionId, Source[]> = {
 
 const BIG_THREE_KEY = { Sun: 'sun', Moon: 'moon', Ascendant: 'rising' } as const;
 
+/** Points whose aspects belong to each section (an aspect is used once, first match wins). */
+const ASPECT_ANCHORS: Record<SectionId, PointName[]> = {
+  personality: ['Sun', 'Ascendant'],
+  mind: ['Mercury'],
+  love: ['Venus'],
+  work: ['Mars'],
+  emotions: ['Moon'],
+  growth: ['Jupiter'],
+  career: ['Midheaven'],
+  lessons: ['Saturn', 'NorthNode'],
+};
+/** Only close aspects, and at most this many per section, keep the reading focused. */
+export const ASPECT_MAX_ORB = 3;
+export const ASPECTS_PER_SECTION = 2;
+const OUTER = new Set<PointName>(['Uranus', 'Neptune', 'Pluto']);
+const ANGLES = new Set<PointName>(['Ascendant', 'Midheaven']);
+const LABEL: Partial<Record<PointName, string>> = { NorthNode: 'North Node' };
+const label = (p: PointName) => LABEL[p] ?? p;
+
+/** Generational (outer–outer) and angle–angle aspects say little about one person. */
+function personal(a: Aspect): boolean {
+  if (OUTER.has(a.a) && OUTER.has(a.b)) return false;
+  if (ANGLES.has(a.a) && ANGLES.has(a.b)) return false;
+  return a.orb <= ASPECT_MAX_ORB;
+}
+
+function aspectItems(anchors: PointName[], pool: Aspect[], used: Set<Aspect>): StaticReadingItem[] {
+  const out: StaticReadingItem[] = [];
+  for (const asp of pool) {
+    if (out.length >= ASPECTS_PER_SECTION) break;
+    if (used.has(asp)) continue;
+    const anchor = anchors.find((p) => p === asp.a || p === asp.b);
+    if (!anchor) continue;
+    const other = anchor === asp.a ? asp.b : asp.a;
+    const entry = aspectEntry(anchor, other, asp.type);
+    if (!entry) continue;
+    used.add(asp);
+    out.push({
+      key: `aspect.${anchor}-${other}`,
+      placement: `${label(anchor)} ${asp.type} ${label(other)}`,
+      entry,
+    });
+  }
+  return out;
+}
+
 function item(source: Source, p: ChartPoint): StaticReadingItem | null {
   const sign = SIGN_NAMES[p.sign];
   switch (source.kind) {
@@ -118,12 +165,15 @@ function item(source: Source, p: ChartPoint): StaticReadingItem | null {
 export function composeStaticReading(chart: Chart): StaticReadingSection[] {
   const byName = new Map<PointName, ChartPoint>(chart.points.map((p) => [p.name, p]));
   const sections: StaticReadingSection[] = [];
+  const pool = chart.aspects.filter(personal).sort((x, y) => x.orb - y.orb);
+  const used = new Set<Aspect>();
   for (const [id, sources] of Object.entries(PLAN) as [SectionId, Source[]][]) {
     const items = sources.flatMap((s) => {
       const p = byName.get(s.point);
       const it = p ? item(s, p) : null;
       return it ? [it] : [];
     });
+    items.push(...aspectItems(ASPECT_ANCHORS[id], pool, used));
     if (items.length > 0) sections.push({ id, title: SECTION_TITLES[id], items });
   }
   return sections;

@@ -1,7 +1,7 @@
 import { buildChart } from '../astro/chart.ts';
 import type { BirthInput } from '../astro/types.ts';
-import { composeStaticReading } from './staticReading.ts';
-import { PLANET_IN_HOUSE_TEXT, POINT_IN_SIGN_TEXT } from './staticText.ts';
+import { ASPECTS_PER_SECTION, ASPECT_MAX_ORB, composeStaticReading } from './staticReading.ts';
+import { ASPECT_TEXT, PLANET_IN_HOUSE_TEXT, POINT_IN_SIGN_TEXT } from './staticText.ts';
 
 const carrascal: BirthInput = {
   date: '1990-05-31',
@@ -63,6 +63,29 @@ describe('composeStaticReading', () => {
     expect(nn?.placement).toBe(
       POINT_IN_SIGN_TEXT.review.NorthNode === 'approved' ? 'North Node in Aquarius' : undefined,
     );
+  });
+
+  it('adds close, personal aspects once approved: each at most once, ≤2 per section', () => {
+    const chart = buildChart(carrascal);
+    const aspectItems = reading.flatMap((s) => s.items.filter((i) => i.key.startsWith('aspect.')));
+    if (ASPECT_TEXT.review !== 'approved') {
+      expect(aspectItems).toEqual([]);
+      return;
+    }
+    expect(aspectItems.length).toBeGreaterThan(0);
+    expect(new Set(aspectItems.map((i) => i.key)).size).toBe(aspectItems.length);
+    for (const s of reading) {
+      expect(s.items.filter((i) => i.key.startsWith('aspect.')).length).toBeLessThanOrEqual(
+        ASPECTS_PER_SECTION,
+      );
+    }
+    const outer = ['Uranus', 'Neptune', 'Pluto'];
+    for (const i of aspectItems) {
+      const [a, b] = i.key.slice('aspect.'.length).split('-') as [string, string];
+      expect(outer.includes(a) && outer.includes(b)).toBe(false);
+      const asp = chart.aspects.find((x) => (x.a === a && x.b === b) || (x.a === b && x.b === a));
+      expect(asp?.orb).toBeLessThanOrEqual(ASPECT_MAX_ORB);
+    }
   });
 
   it('unknown birth time: no Rising, no houses', () => {

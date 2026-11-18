@@ -1,5 +1,7 @@
 import { SIGN_NAMES } from '../astro/zodiac.ts';
+import type { AspectType, PointName } from '../astro/types.ts';
 import {
+  ASPECT_TEXT,
   BIG_THREE_TEXT,
   HOUSE_KEYS,
   HOUSE_PLANETS,
@@ -8,6 +10,7 @@ import {
   POINT_IN_SIGN_TEXT,
   SIGN_POINTS,
   SNIPPET_PLANETS,
+  aspectEntry,
   bigThreeEntry,
   planetInHouseEntry,
   planetInSignEntry,
@@ -296,5 +299,62 @@ describe('pointInSign.json (Midheaven, North Node)', () => {
       expect(pointInSignEntry(p, 4) !== null).toBe(approved);
       expect(pointInSignEntry(p, 4, { includeDrafts: true })?.meaning).toBeTruthy();
     }
+  });
+});
+
+const ASPECT_TYPES = Object.keys(ASPECT_TEXT.types) as AspectType[];
+const THEMED = Object.keys(ASPECT_TEXT.themes) as PointName[];
+const aspectCombos: [string, StaticEntry][] = ASPECT_TYPES.flatMap((t) =>
+  THEMED.flatMap((a) =>
+    THEMED.filter((b) => b !== a).map((b): [string, StaticEntry] => [
+      `${a} ${t} ${b}`,
+      aspectEntry(a, b, t, { includeDrafts: true }) as StaticEntry,
+    ]),
+  ),
+);
+
+describe('aspects.json', () => {
+  it('has all 5 aspect types, a theme for every point, and a review status', () => {
+    expect(ASPECT_TYPES.sort()).toEqual([
+      'conjunction',
+      'opposition',
+      'sextile',
+      'square',
+      'trine',
+    ]);
+    expect(THEMED).toHaveLength(13);
+    expect(['draft', 'approved']).toContain(ASPECT_TEXT.review);
+    for (const t of ASPECT_TYPES) {
+      expect(ASPECT_TEXT.types[t].template).toContain('{A}');
+      expect(ASPECT_TEXT.types[t].template).toContain('{b}');
+    }
+  });
+
+  it('every filled-in combination follows the style and guardrails', () => {
+    expect(aspectCombos).toHaveLength(5 * 13 * 12);
+    for (const [, e] of aspectCombos) {
+      checkEntry(e, 2, 2);
+      expect(e.meaning).not.toMatch(/[{}]/);
+      expect(e.meaning).toMatch(/^[A-Z]/);
+      expect(e.meaning).not.toMatch(/\b(never|doomed|fate|karma|bad luck|curse)\b/i);
+    }
+  });
+
+  it('themes contain no "and", so joined sentences read cleanly', () => {
+    for (const t of Object.values(ASPECT_TEXT.themes)) expect(t).not.toMatch(/\band\b/);
+  });
+
+  it('templates are distinct per aspect type', () => {
+    const t = ASPECT_TYPES.map((x) => ASPECT_TEXT.types[x].template);
+    expect(new Set(t).size).toBe(t.length);
+  });
+
+  it('fills both themes in order', () => {
+    expect(aspectEntry('Venus', 'Saturn', 'square', { includeDrafts: true })?.meaning).toMatch(
+      /^Your way of loving and your sense of responsibility may pull against each other/,
+    );
+    expect(aspectEntry('Venus', 'Saturn', 'square') !== null).toBe(
+      ASPECT_TEXT.review === 'approved',
+    );
   });
 });

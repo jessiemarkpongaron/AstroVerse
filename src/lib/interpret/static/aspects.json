@@ -1,0 +1,56 @@
+{
+  "_comment": "Aspect texts: one template per aspect type; {A}/{b} are filled with the two points' themes (capitalized / lower-case). Only shown when review is 'approved'.",
+  "version": 1,
+  "review": "draft",
+  "themes": {
+    "Sun": "your sense of self",
+    "Moon": "your emotional needs",
+    "Mercury": "the way you think",
+    "Venus": "your way of loving",
+    "Mars": "your drive",
+    "Jupiter": "your urge to grow",
+    "Saturn": "your sense of responsibility",
+    "Uranus": "your need for freedom",
+    "Neptune": "your imagination",
+    "Pluto": "your hunger for depth",
+    "NorthNode": "your path of growth",
+    "Ascendant": "the first impression you give",
+    "Midheaven": "your career direction"
+  },
+  "types": {
+    "conjunction": {
+      "template": "{A} and {b} work as one in you, so they tend to show up together. This blend can be a real source of strength once you notice it.",
+      "keywords": ["Blended", "Focused", "Strong"],
+      "strengths": ["Clear focus", "Natural talent", "Wholehearted"],
+      "challenges": ["Hard to tell the two apart", "Overdoes this area", "Blind spots"]
+    },
+    "sextile": {
+      "template": "{A} and {b} support each other in a friendly way, offering openings you can choose to use. A little effort here can bring easy, steady progress.",
+      "keywords": ["Supportive", "Helpful", "Opportunity"],
+      "strengths": ["Easy cooperation", "Quick learning", "Useful talents"],
+      "challenges": ["Openings missed without effort", "Takes it for granted", "Coasting"]
+    },
+    "square": {
+      "template": "{A} and {b} may pull against each other, creating a tension you can feel. Working with both, instead of choosing one, can turn this friction into real drive.",
+      "keywords": ["Tension", "Drive", "Challenge"],
+      "strengths": ["Motivation", "Builds resilience", "Pushes you to act"],
+      "challenges": ["Inner conflict", "Frustration", "Stop-start progress"]
+    },
+    "trine": {
+      "template": "{A} and {b} flow together easily, giving you a natural gift in this part of life. Using it on purpose can help it shine even more.",
+      "keywords": ["Harmony", "Ease", "Talent"],
+      "strengths": ["Natural ability", "Flowing energy", "Confidence"],
+      "challenges": ["Takes gifts for granted", "Too comfortable", "Less push to grow"]
+    },
+    "opposition": {
+      "template": "{A} and {b} sit on opposite sides, so you may swing between them or meet one through other people. Finding a balance between the two can help you feel whole.",
+      "keywords": ["Balance", "Awareness", "Contrast"],
+      "strengths": ["Sees both sides", "Learns through others", "Self-awareness"],
+      "challenges": [
+        "Swings between extremes",
+        "Sees your own traits in others",
+        "Tug-of-war feelings"
+      ]
+    }
+  }
+}
