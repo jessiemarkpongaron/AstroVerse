@@ -7,7 +7,11 @@
     "Mercury": "approved",
     "Venus": "approved",
     "Mars": "approved",
-    "Jupiter": "approved"
+    "Jupiter": "approved",
+    "Saturn": "draft",
+    "Uranus": "draft",
+    "Neptune": "draft",
+    "Pluto": "draft"
   },
   "planets": {
     "Sun": {
@@ -464,6 +468,306 @@
         "keywords": ["Compassionate", "Spiritual", "Reflective"],
         "strengths": ["Kind heart", "Inner calm", "Quiet generosity"],
         "challenges": ["Escapism", "Too selfless", "Hard to set limits"]
+      }
+    },
+    "Saturn": {
+      "1": {
+        "meaning": "You may come across as serious, capable and older than your years, especially when you are young. Over time you can grow into a calm, trusted presence that people lean on.",
+        "keywords": ["Mature", "Reserved", "Dependable"],
+        "strengths": ["Self-discipline", "Trustworthy", "Steady presence"],
+        "challenges": ["Shy at first", "Hard on yourself", "Holds back"]
+      },
+      "2": {
+        "meaning": "You may work hard to feel secure and take your responsibilities seriously. With patience, you can build a strong sense of self-worth that does not depend on others.",
+        "keywords": ["Careful", "Patient", "Responsible"],
+        "strengths": ["Sensible", "Persistent", "Values what lasts"],
+        "challenges": ["Worries about security", "Overly cautious", "Holds on tightly"]
+      },
+      "3": {
+        "meaning": "You may think carefully before you speak and take learning seriously. With practice, you can become a clear, trusted voice whose words carry weight.",
+        "keywords": ["Careful", "Focused", "Thoughtful"],
+        "strengths": ["Precise speaker", "Deep study", "Keeps your word"],
+        "challenges": ["Doubts your own voice", "Overthinks", "Slow to share ideas"]
+      },
+      "4": {
+        "meaning": "Home and family may have asked a lot of you, and you may have felt responsible from an early age. Over time you can build the steady, safe home you value.",
+        "keywords": ["Responsible", "Protective", "Private"],
+        "strengths": ["Strong foundations", "Loyal to family", "Inner resilience"],
+        "challenges": ["Carries family duties", "Hard to relax at home", "Keeps feelings in"]
+      },
+      "5": {
+        "meaning": "You may take creativity and fun seriously, and it can take time to let yourself simply play. As you grow, you can learn that joy is allowed and deserved.",
+        "keywords": ["Careful", "Committed", "Disciplined"],
+        "strengths": ["Patient craft", "Serious about love", "Builds lasting creative work"],
+        "challenges": ["Holds back fun", "Fear of looking silly", "Self-critical in love"]
+      },
+      "6": {
+        "meaning": "You may be a dedicated, careful worker who wants to do things right. Learning to balance duty with rest can help you build routines that truly support you.",
+        "keywords": ["Dedicated", "Thorough", "Reliable"],
+        "strengths": ["Strong work habits", "Responsible", "Detail-minded"],
+        "challenges": ["Overworks", "Worries", "Perfectionism"]
+      },
+      "7": {
+        "meaning": "You may take partnerships very seriously and look for loyalty and commitment that can last. With time and patience, you can build relationships on solid trust.",
+        "keywords": ["Committed", "Loyal", "Cautious"],
+        "strengths": ["Faithful partner", "Keeps promises", "Mature in love"],
+        "challenges": ["Slow to commit", "Fear of rejection", "Too serious with partners"]
+      },
+      "8": {
+        "meaning": "You may approach deep bonds carefully and need time before you fully trust someone. Facing hard feelings honestly can help you grow strong and wise.",
+        "keywords": ["Guarded", "Deep", "Resilient"],
+        "strengths": ["Emotional strength", "Keeps confidences", "Handles hard times"],
+        "challenges": ["Slow to open up", "Fear of losing control", "Holds back closeness"]
+      },
+      "9": {
+        "meaning": "You may take your beliefs and studies seriously and want ideas that hold up over time. You can grow into a wise teacher or guide through steady learning.",
+        "keywords": ["Thoughtful", "Principled", "Studious"],
+        "strengths": ["Deep thinker", "Committed learner", "Grounded beliefs"],
+        "challenges": ["Rigid views", "Doubts big dreams", "Cautious about the unknown"]
+      },
+      "10": {
+        "meaning": "You may feel a strong sense of duty about your work and how you are seen. With steady effort, you can build a career and reputation that last.",
+        "keywords": ["Ambitious", "Responsible", "Determined"],
+        "strengths": ["Leadership", "Persistence", "Earns respect"],
+        "challenges": ["Fear of failing", "Works too much", "Pressure from expectations"]
+      },
+      "11": {
+        "meaning": "You may choose friends carefully and prefer a few loyal ones over many. Over time you can build a steady circle and take on a trusted role in groups.",
+        "keywords": ["Selective", "Loyal", "Responsible"],
+        "strengths": ["Dependable friend", "Organizes groups", "Long-term vision"],
+        "challenges": ["Feels like an outsider", "Slow to join in", "Cautious with hopes"]
+      },
+      "12": {
+        "meaning": "You may carry quiet worries that others do not see, and time alone can be important to you. Through reflection and gentle self-care, you can grow calmer and more at peace.",
+        "keywords": ["Reflective", "Private", "Inward"],
+        "strengths": ["Inner strength", "Patience", "Quiet service"],
+        "challenges": ["Hidden worries", "Self-doubt", "Hard to ask for help"]
+      }
+    },
+    "Uranus": {
+      "1": {
+        "meaning": "You may come across as original, unpredictable and a little different from the crowd. Being free to be yourself can matter more to you than fitting in.",
+        "keywords": ["Unique", "Independent", "Spontaneous"],
+        "strengths": ["Original style", "Brave individuality", "Open to change"],
+        "challenges": ["Restless", "Rebellious", "Hard to pin down"]
+      },
+      "2": {
+        "meaning": "Your values may be unusual, and you might find your own creative way to feel secure. Sudden changes can push you to try new ways of using your skills.",
+        "keywords": ["Inventive", "Independent", "Changeable"],
+        "strengths": ["Fresh ideas about value", "Adapts quickly", "Resourceful"],
+        "challenges": ["Unsteady habits", "Resists routine", "Impulsive choices"]
+      },
+      "3": {
+        "meaning": "Your mind may jump to new ideas quickly, and you might think in ways others find surprising. Technology, new subjects or unusual conversations can excite you.",
+        "keywords": ["Inventive", "Quick", "Curious"],
+        "strengths": ["Original thinker", "Fast learner", "Tech-minded"],
+        "challenges": ["Scattered", "Blunt", "Easily bored"]
+      },
+      "4": {
+        "meaning": "Home life may have been changeable, or you may want an unusual home that fits your own style. Freedom to come and go can help you feel at home.",
+        "keywords": ["Independent", "Changeable", "Unconventional"],
+        "strengths": ["Adapts to change", "Open-minded about family", "Creative home"],
+        "challenges": ["Restless at home", "Unsettled roots", "Distance in family"]
+      },
+      "5": {
+        "meaning": "You may express yourself in bold, unexpected ways, and your creativity can be truly original. You might be drawn to exciting, unusual romances.",
+        "keywords": ["Original", "Playful", "Daring"],
+        "strengths": ["Creative spark", "Inventive fun", "Free spirit"],
+        "challenges": ["Sudden crushes", "Restless in love", "Thrill-seeking"]
+      },
+      "6": {
+        "meaning": "You may prefer flexible routines and work that lets you try new methods. Using technology or fresh ideas can make your daily work more exciting.",
+        "keywords": ["Inventive", "Flexible", "Restless"],
+        "strengths": ["Improves systems", "Tech-savvy", "Fresh approaches"],
+        "challenges": ["Dislikes routine", "Unsteady habits", "Clashes with rules"]
+      },
+      "7": {
+        "meaning": "You may want partnerships that leave room for freedom and individuality. Relationships with unusual or independent people can teach you a lot.",
+        "keywords": ["Independent", "Open", "Unconventional"],
+        "strengths": ["Respects freedom", "Exciting partner", "Accepts differences"],
+        "challenges": [
+          "Sudden changes in relationships",
+          "Fear of being tied down",
+          "Keeps a distance"
+        ]
+      },
+      "8": {
+        "meaning": "You may face sudden turning points that change how you see yourself and others. Over time, these shifts can free you from old fears and bring fresh insight.",
+        "keywords": ["Insightful", "Changeable", "Fearless"],
+        "strengths": ["Breakthroughs", "Adapts after change", "Bold curiosity"],
+        "challenges": ["Unsettled by change", "Detached from deep feelings", "Restless"]
+      },
+      "9": {
+        "meaning": "You may be drawn to new ideas, unusual beliefs or far-off places. Your mind tends to question old views and look for your own truth.",
+        "keywords": ["Free-thinking", "Curious", "Progressive"],
+        "strengths": ["Open mind", "Visionary", "Loves learning new things"],
+        "challenges": ["Rebels against tradition", "Restless", "Scattered beliefs"]
+      },
+      "10": {
+        "meaning": "Your path at work may take surprising turns, and you might want a career that lets you innovate. Being your own boss or working in new fields can suit you.",
+        "keywords": ["Innovative", "Independent", "Unconventional"],
+        "strengths": ["Fresh leadership", "Adapts to change", "Original career path"],
+        "challenges": ["Clashes with authority", "Frequent job changes", "Restless ambition"]
+      },
+      "11": {
+        "meaning": "You may find your people among free thinkers and groups that want to change the world. Friendships can come and go, but they often spark new ideas.",
+        "keywords": ["Progressive", "Social", "Visionary"],
+        "strengths": ["Builds communities", "Humanitarian", "Brings fresh ideas"],
+        "challenges": ["Changeable friendships", "Detached", "Rebellious"]
+      },
+      "12": {
+        "meaning": "Your most original ideas may come in quiet moments or from your intuition. Time alone can help you understand the surprising parts of yourself.",
+        "keywords": ["Intuitive", "Private", "Original"],
+        "strengths": ["Inner insight", "Quiet originality", "Open to the unknown"],
+        "challenges": ["Restless inner life", "Hidden rebellion", "Hard to explain your feelings"]
+      }
+    },
+    "Neptune": {
+      "1": {
+        "meaning": "You may come across as gentle, dreamy or hard to read, and people may see what they hope to see in you. Your sensitivity can be a quiet gift.",
+        "keywords": ["Gentle", "Dreamy", "Sensitive"],
+        "strengths": ["Compassion", "Artistic presence", "Intuition"],
+        "challenges": ["Unclear boundaries", "Absorbs others' moods", "Easily misread"]
+      },
+      "2": {
+        "meaning": "You may value meaning, beauty and kindness more than practical gains. Clear, practical habits can help your ideals feel safe and real.",
+        "keywords": ["Idealistic", "Generous", "Intuitive"],
+        "strengths": ["Values kindness", "Creative talents", "Generous heart"],
+        "challenges": ["Vague about practical matters", "Gives too freely", "Avoids details"]
+      },
+      "3": {
+        "meaning": "Your mind may be imaginative and poetic, and you may think in pictures or feelings. Writing, music or storytelling can be a natural way for you to share ideas.",
+        "keywords": ["Imaginative", "Poetic", "Intuitive"],
+        "strengths": ["Creative writing", "Sensitive listener", "Picks up on moods"],
+        "challenges": ["Easily distracted", "Vague communication", "Daydreams"]
+      },
+      "4": {
+        "meaning": "You may carry a dreamy or idealized picture of home and family. Creating a peaceful, gentle home can become your way to feel safe.",
+        "keywords": ["Sensitive", "Nostalgic", "Gentle"],
+        "strengths": ["Peaceful home", "Emotional understanding", "Caring"],
+        "challenges": ["Idealizes family", "Blurry boundaries at home", "Escapes into memories"]
+      },
+      "5": {
+        "meaning": "You may have a rich imagination and a romantic, artistic heart. Art, music, film or dance can be beautiful outlets for your dreams.",
+        "keywords": ["Romantic", "Artistic", "Imaginative"],
+        "strengths": ["Creative vision", "Tender love", "Inspires others"],
+        "challenges": ["Idealizes crushes", "Escapism", "Unrealistic romance"]
+      },
+      "6": {
+        "meaning": "You may want your daily work to feel meaningful and kind to others. Gentle routines and clear plans can help you turn good intentions into steady habits.",
+        "keywords": ["Compassionate", "Helpful", "Intuitive"],
+        "strengths": ["Caring at work", "Creative problem solving", "Service to others"],
+        "challenges": ["Hard to keep routines", "Takes on others' stress", "Unclear tasks"]
+      },
+      "7": {
+        "meaning": "You may hope for a soulmate kind of love and tend to see the best in your partners. Keeping your eyes open, as well as your heart, can help your relationships grow.",
+        "keywords": ["Romantic", "Devoted", "Idealistic"],
+        "strengths": ["Compassionate partner", "Forgiving", "Spiritual connection"],
+        "challenges": ["Idealizes partners", "Self-sacrifice", "Unclear boundaries"]
+      },
+      "8": {
+        "meaning": "You may feel deep, almost wordless connections with people, and you can sense what is left unsaid. Clear boundaries can help you share closeness without losing yourself.",
+        "keywords": ["Intuitive", "Deep", "Sensitive"],
+        "strengths": ["Empathy", "Emotional insight", "Soothing presence"],
+        "challenges": ["Blurry boundaries", "Absorbs others' pain", "Confused in deep bonds"]
+      },
+      "9": {
+        "meaning": "You may be drawn to spiritual ideas, faith or dreams of faraway places. Your beliefs tend to be compassionate and full of imagination.",
+        "keywords": ["Spiritual", "Idealistic", "Imaginative"],
+        "strengths": ["Inspiring faith", "Open heart", "Visionary"],
+        "challenges": ["Too trusting of new beliefs", "Escapes into ideals", "Unclear goals"]
+      },
+      "10": {
+        "meaning": "You may want a career that feels meaningful, creative or helpful to others. It can take time to find your path, but your vision can inspire people.",
+        "keywords": ["Visionary", "Creative", "Compassionate"],
+        "strengths": ["Inspiring public image", "Artistic work", "Helps others"],
+        "challenges": ["Unclear direction", "Idealizes a career", "Misread by others"]
+      },
+      "11": {
+        "meaning": "You may dream of a kinder world and find friends who share your ideals. Groups devoted to art, faith or helping others can feel like home.",
+        "keywords": ["Idealistic", "Compassionate", "Social"],
+        "strengths": ["Humanitarian", "Kind friend", "Shared dreams"],
+        "challenges": ["Idealizes friends", "Easily let down", "Unclear about goals"]
+      },
+      "12": {
+        "meaning": "You may have a deep inner world full of imagination and compassion. Quiet time, art or spiritual practice can help you feel whole and at peace.",
+        "keywords": ["Spiritual", "Compassionate", "Imaginative"],
+        "strengths": ["Deep empathy", "Creative inspiration", "Inner peace"],
+        "challenges": ["Escapism", "Needs firm limits", "Easily overwhelmed"]
+      }
+    },
+    "Pluto": {
+      "1": {
+        "meaning": "You may have a strong, intense presence, and people may sense your depth even when you are quiet. Over time you can reinvent yourself more than once.",
+        "keywords": ["Intense", "Magnetic", "Resilient"],
+        "strengths": ["Inner strength", "Determination", "Self-renewal"],
+        "challenges": ["Guarded", "Controlling at times", "Intimidating"]
+      },
+      "2": {
+        "meaning": "You may feel strongly about what you value, and your sense of worth can go through big changes. Learning to let go can make you even stronger.",
+        "keywords": ["Determined", "Resourceful", "Intense"],
+        "strengths": ["Resilient", "Builds from little", "Deep values"],
+        "challenges": ["Possessive", "Fear of loss", "All-or-nothing about security"]
+      },
+      "3": {
+        "meaning": "Your words can be powerful, and you may dig deep into any subject that interests you. Honest, focused conversations can change the way you and others think.",
+        "keywords": ["Probing", "Persuasive", "Focused"],
+        "strengths": ["Researcher", "Powerful speaker", "Sees hidden motives"],
+        "challenges": ["Obsessive thinking", "Sharp words", "Secretive"]
+      },
+      "4": {
+        "meaning": "Home and family may hold deep emotions for you, and your roots can shape you powerfully. Working through old family patterns can become a source of strength.",
+        "keywords": ["Deep", "Protective", "Private"],
+        "strengths": ["Emotional resilience", "Rebuilds home life", "Loyal"],
+        "challenges": ["Family tension", "Hidden feelings", "Control at home"]
+      },
+      "5": {
+        "meaning": "You may put great passion into love and creative projects, and you tend to give your whole heart. Creative work can be a powerful way for you to transform feelings.",
+        "keywords": ["Passionate", "Creative", "Intense"],
+        "strengths": ["Deep creativity", "Wholehearted love", "Courage"],
+        "challenges": ["All-or-nothing romance", "Control in love", "Jealousy"]
+      },
+      "6": {
+        "meaning": "You may bring intense focus to your daily work and can transform how things are done. Balancing effort with rest can keep your strength steady.",
+        "keywords": ["Focused", "Transformative", "Driven"],
+        "strengths": ["Fixes what is broken", "Dedicated", "Powerful work habits"],
+        "challenges": ["Workaholic", "Control at work", "Rigid routines"]
+      },
+      "7": {
+        "meaning": "Your close relationships may be intense and life-changing, and partners can deeply shape who you become. Equal give-and-take can help your bonds stay strong.",
+        "keywords": ["Intense", "Committed", "Transformative"],
+        "strengths": ["Deep loyalty", "Grows through partnership", "Honest bonds"],
+        "challenges": ["Power struggles", "Possessive", "Fear of betrayal"]
+      },
+      "8": {
+        "meaning": "You may be drawn to life's deepest questions and to bonds built on total trust. You tend to come through hard times changed and stronger.",
+        "keywords": ["Deep", "Intense", "Resilient"],
+        "strengths": ["Emotional depth", "Renewal", "Courage in hard times"],
+        "challenges": ["Secretive", "Trust issues", "Control in closeness"]
+      },
+      "9": {
+        "meaning": "You may search deeply for meaning, and your beliefs can change in big, life-shaping ways. Study, travel or faith can transform how you see the world.",
+        "keywords": ["Seeking", "Intense", "Philosophical"],
+        "strengths": ["Deep convictions", "Transformative learning", "Fearless questions"],
+        "challenges": ["Rigid beliefs", "Preachy", "All-or-nothing views"]
+      },
+      "10": {
+        "meaning": "You may feel a strong drive to make an impact through your work and to be in charge of your own path. Your career can go through big turning points that make you stronger.",
+        "keywords": ["Ambitious", "Powerful", "Determined"],
+        "strengths": ["Leadership", "Resilience", "Makes an impact"],
+        "challenges": ["Power struggles at work", "Workaholic", "Fear of failure"]
+      },
+      "11": {
+        "meaning": "You may want your friendships and groups to mean something deep, and you can help change a community from within. The right friends can transform your hopes for the future.",
+        "keywords": ["Intense", "Influential", "Visionary"],
+        "strengths": ["Leads change", "Loyal friend", "Powerful in groups"],
+        "challenges": ["Power struggles in groups", "Few close friends", "Controlling ideals"]
+      },
+      "12": {
+        "meaning": "You may have a powerful inner life, and some of your strength stays hidden even from you at first. Quiet reflection can help you understand deep feelings and let them go.",
+        "keywords": ["Private", "Deep", "Introspective"],
+        "strengths": ["Inner strength", "Self-insight", "Quiet resilience"],
+        "challenges": ["Hidden fears", "Secretive", "Self-sabotage"]
       }
     }
   }

@@ -194,6 +194,25 @@ describe('planetInHouse.json', () => {
     },
   );
 
+  it.each(houseSnippets.filter(([id]) => id.startsWith('Saturn.')))(
+    '%s is encouraging, not fatalistic, and points to growth',
+    (_id, e) => {
+      const text = [e.meaning, ...e.keywords, ...e.strengths, ...e.challenges].join(' ');
+      expect(text).not.toMatch(
+        /\b(never|doomed|curse[ds]?|karma|punish\w*|fate|fated|suffer\w*|misfortune|bad luck|hopeless)\b/i,
+      );
+      expect(e.meaning).toMatch(/\b(can|grow|learn|build|become)\b/i);
+    },
+  );
+
+  it.each(houseSnippets.filter(([id]) => /^(Pluto|Saturn|Uranus|Neptune)\.house(8|12)$/.test(id)))(
+    '%s keeps 8th/12th-house depth free of loss, crisis or illness wording',
+    (_id, e) => {
+      const text = [e.meaning, ...e.keywords, ...e.strengths, ...e.challenges].join(' ');
+      expect(text).not.toMatch(/\b(loss|grief|dying|hospital\w*|addict\w*|trauma\w*|psychic)\b/i);
+    },
+  );
+
   it('house snippets are unique and differ from all other static text', () => {
     const texts = [
       ...houseSnippets.map(([, e]) => e.meaning),
