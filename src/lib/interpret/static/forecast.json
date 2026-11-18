@@ -1,7 +1,7 @@
 {
   "_comment": "Forecast texts (transits). {b} is the natal point's theme from aspects.json. 'flowing' = trine/sextile, 'tense' = square/opposition. Describe themes and timing, never fixed events.",
   "version": 1,
-  "review": "draft",
+  "review": "approved",
   "bodies": {
     "Jupiter": {
       "conjunction": {

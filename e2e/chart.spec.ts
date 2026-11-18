@@ -59,6 +59,20 @@ test('free full reading opens from the chart, at the top, with no network calls'
   expect(external).toEqual([]);
 });
 
+test('forecast opens from the chart with themed periods and no network calls', async ({ page }) => {
+  const external: string[] = [];
+  page.on('request', (r) => {
+    if (!r.url().startsWith('http://localhost')) external.push(r.url());
+  });
+  await page.goto(`/chart#${CARRASCAL_HASH}`);
+  await page.getByRole('link', { name: 'See your next two years' }).click();
+  await expect(page.getByRole('heading', { name: 'Your next two years' })).toBeInViewport();
+  await expect(page.getByText('How to use this time:').first()).toBeVisible();
+  expect(await page.locator('main h2').count()).toBeGreaterThan(2);
+  expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBe(0);
+  expect(external).toEqual([]);
+});
+
 test('works offline after the first visit (service worker)', async ({ page, context }) => {
   await page.goto(`/chart#${CARRASCAL_HASH}`);
   await expect(page.getByRole('heading', { name: 'Your Big Three' })).toBeVisible();
