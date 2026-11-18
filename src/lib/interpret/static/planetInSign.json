@@ -5,7 +5,8 @@
     "Mercury": "approved",
     "Venus": "approved",
     "Mars": "approved",
-    "Jupiter": "approved"
+    "Jupiter": "approved",
+    "Saturn": "approved"
   },
   "planets": {
     "Mercury": {
@@ -318,6 +319,96 @@
         "keywords": ["Compassionate", "Spiritual", "Imaginative"],
         "strengths": ["Deep empathy", "Creative inspiration", "Forgiving"],
         "challenges": ["Escapism", "Weak boundaries", "Giving too much"]
+      }
+    },
+    "Saturn": {
+      "Aries": {
+        "meaning": "You may learn patience and self-control through times when rushing ahead doesn't work. Over time, you can grow into a steady, brave leader who thinks before acting.",
+        "keywords": ["Patience", "Self-mastery", "Courage"],
+        "strengths": [
+          "Learns from mistakes",
+          "Grows into steady leadership",
+          "Builds real confidence"
+        ],
+        "challenges": [
+          "Frustration with delays",
+          "Fear of being held back",
+          "Impatience with yourself"
+        ]
+      },
+      "Taurus": {
+        "meaning": "You may learn lessons about security, self-worth and what truly lasts. With steady effort, you can build a stable life and a strong sense of your own value.",
+        "keywords": ["Security", "Endurance", "Self-worth"],
+        "strengths": ["Patient builder", "Dependable", "Committed"],
+        "challenges": ["Worry about security", "Rigidity", "Fear of change"]
+      },
+      "Gemini": {
+        "meaning": "You may take learning and communication seriously, sometimes doubting your ideas at first. With practice, you can become a clear, careful thinker whose words carry weight.",
+        "keywords": ["Focus", "Study", "Clarity"],
+        "strengths": ["Careful thinker", "Disciplined learner", "Clear communicator"],
+        "challenges": ["Self-doubt about your ideas", "Overthinking", "Hesitating to speak up"]
+      },
+      "Cancer": {
+        "meaning": "You may learn about emotional strength, family and taking care of yourself. Over time, you can become a steady source of support while also letting others care for you.",
+        "keywords": ["Responsibility", "Emotional strength", "Family"],
+        "strengths": ["Dependable for loved ones", "Emotionally mature", "Protective"],
+        "challenges": [
+          "Guarding your feelings",
+          "Feeling overly responsible for family",
+          "Fear of being vulnerable"
+        ]
+      },
+      "Leo": {
+        "meaning": "You may learn to trust your own light, even when recognition comes slowly. With time, your confidence can grow from the inside out, making you a steady and generous leader.",
+        "keywords": ["Confidence", "Creativity", "Leadership"],
+        "strengths": ["Earned confidence", "Disciplined creativity", "Dependable leadership"],
+        "challenges": ["Fear of being judged", "Holding back self-expression", "Needing approval"]
+      },
+      "Virgo": {
+        "meaning": "You may set high standards for your work and for yourself. Learning that good enough is sometimes enough can turn your skill and discipline into real peace of mind.",
+        "keywords": ["Discipline", "Skill", "Service"],
+        "strengths": ["Thorough", "Responsible worker", "Masters skills over time"],
+        "challenges": ["Perfectionism", "Worry", "Being too hard on yourself"]
+      },
+      "Libra": {
+        "meaning": "You may take relationships and fairness very seriously. Over time, you can learn to build partnerships that are balanced, honest and made to last.",
+        "keywords": ["Commitment", "Fairness", "Balance"],
+        "strengths": ["Loyal partner", "Strong sense of justice", "Mature in relationships"],
+        "challenges": [
+          "Fear of being alone",
+          "Staying in unequal situations too long",
+          "Too much caution in love"
+        ]
+      },
+      "Scorpio": {
+        "meaning": "You may learn lessons about trust, control and letting go. With time, you can develop deep emotional strength and the courage to face big changes.",
+        "keywords": ["Resilience", "Trust", "Self-control"],
+        "strengths": ["Emotional endurance", "Strong willpower", "Calm in a crisis"],
+        "challenges": ["Difficulty trusting", "Need for control", "Keeping feelings locked away"]
+      },
+      "Sagittarius": {
+        "meaning": "You may take your beliefs and your search for meaning seriously. Over time, you can build a personal philosophy that is honest, practical and truly your own.",
+        "keywords": ["Wisdom", "Integrity", "Purpose"],
+        "strengths": ["Thoughtful beliefs", "Responsible teacher", "Grounded optimism"],
+        "challenges": ["Doubting your beliefs", "Rigid views", "Fear of the unknown"]
+      },
+      "Capricorn": {
+        "meaning": "You may naturally understand hard work, structure and long-term goals. You can build something truly lasting, and enjoying the climb, not just the top, helps your strength feel lighter.",
+        "keywords": ["Discipline", "Ambition", "Endurance"],
+        "strengths": ["Strong work ethic", "Responsible", "Patient planner"],
+        "challenges": ["Working too much", "Expecting the worst", "Being too serious"]
+      },
+      "Aquarius": {
+        "meaning": "You may learn how to balance being yourself with being part of a group. Over time, you can help build communities and ideas that make a real difference.",
+        "keywords": ["Responsibility", "Community", "Vision"],
+        "strengths": ["Principled", "Organized thinker", "Dependable friend"],
+        "challenges": ["Feeling like an outsider", "Rigid ideals", "Emotional distance"]
+      },
+      "Pisces": {
+        "meaning": "You may learn to give shape to your dreams and set healthy limits on your kindness. With time, your compassion and imagination can become a steady, grounded strength.",
+        "keywords": ["Compassion", "Boundaries", "Faith"],
+        "strengths": ["Disciplined creativity", "Quiet strength", "Mature compassion"],
+        "challenges": ["Feeling overwhelmed", "Avoiding hard tasks", "Self-doubt"]
       }
     }
   }

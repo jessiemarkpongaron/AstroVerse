@@ -105,6 +105,18 @@ describe('planetInSign.json', () => {
     },
   );
 
+  it.each(snippets.filter(([id]) => id.startsWith('Saturn.')))(
+    '%s is encouraging, not fatalistic (INTERPRETATION.md style)',
+    (_id, e) => {
+      const text = [e.meaning, ...e.keywords, ...e.strengths, ...e.challenges].join(' ');
+      expect(text).not.toMatch(
+        /\b(never|doomed|curse[ds]?|karma|punish\w*|fate|fated|suffer\w*|misfortune|bad luck|hopeless)\b/i,
+      );
+      // Every Saturn lesson points to growth.
+      expect(e.meaning).toMatch(/\b(can|grow|learn|build|become)\b/i);
+    },
+  );
+
   it('snippets are unique and differ from Big Three text', () => {
     const texts = [...snippets.map(([, e]) => e.meaning), ...all.map(([, e]) => e.meaning)];
     expect(new Set(texts).size).toBe(texts.length);
