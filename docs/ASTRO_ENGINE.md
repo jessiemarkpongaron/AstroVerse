@@ -88,6 +88,18 @@ Everything here lives in `src/lib/astro/`. Pure TypeScript, deterministic, fully
   0° Aquarius 2023–24, Saturn/Jupiter sign ingresses incl. retrograde re-entry, the 2020
   Jupiter–Saturn conjunction) to ±1 day; 24 months for one chart ≈ 0.2 s.
 
+## 7b. Synastry (synastry.ts)
+- Points: Sun, Moon, Mercury, Venus, Mars, Jupiter, Saturn, Ascendant of each person (outer
+  planets and the node left out — generational).
+- Aspects: the five major ones (same angles as §6). Orbs [with Sun/Moon, otherwise]:
+  conjunction/opposition 8/6, square/trine 6/5, sextile 4/3.
+- Bands: Saturn contacts → growth areas; trine/sextile → harmony; square/opposition →
+  challenges; conjunctions → harmony between gentle points (Sun, Moon, Mercury, Venus,
+  Jupiter, Rising) or Venus–Mars, otherwise growth. Key contacts (PRD F7): Venus–Mars,
+  Sun–Moon, Moon–Moon, Rising with Sun/Moon/Venus/Rising; they count double for the band
+  strength word (strong ≥ 6, some ≥ 3, else light). Never a percentage.
+- Unknown birth time: that person's Moon and Rising are left out.
+
 ## 8. Uncertainty (uncertainty.ts)
 - `sign-cusp`: any point within 1° of a sign boundary (Moon: the larger of 1° and the Moon's
   movement over the time-uncertainty window).

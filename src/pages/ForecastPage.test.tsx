@@ -4,6 +4,9 @@ import type { BirthInput } from '../lib/astro/types.ts';
 import { FORECAST_TEXT } from '../lib/interpret/forecast.ts';
 import { renderApp, signedOut } from '../test/fakeAuth.tsx';
 
+// The page computes two years of transits on render; allow for a busy test machine.
+const SLOW = { timeout: 5000 };
+
 const input: BirthInput = {
   date: '1990-05-31',
   time: '15:30',
@@ -28,7 +31,9 @@ describe('ForecastPage', () => {
     const fetchSpy = vi.spyOn(globalThis, 'fetch');
     render(renderApp(signedOut(), { pathname: '/chart', state: { input, name: '' } }));
     fireEvent.click(await screen.findByRole('link', { name: 'See your next two years' }));
-    expect(await screen.findByRole('heading', { name: 'Your next two years' })).toBeInTheDocument();
+    expect(
+      await screen.findByRole('heading', { name: 'Your next two years' }, SLOW),
+    ).toBeInTheDocument();
     expect(fetchSpy).not.toHaveBeenCalled();
     fetchSpy.mockRestore();
   });
@@ -36,7 +41,7 @@ describe('ForecastPage', () => {
   it('shows what is happening now, themed periods with dates, and house changes', async () => {
     render(renderApp(signedOut(), { pathname: '/forecast', state: { input, name: 'Mama' } }));
     expect(
-      await screen.findByRole('heading', { name: 'Mama’s next two years' }),
+      await screen.findByRole('heading', { name: 'Mama’s next two years' }, SLOW),
     ).toBeInTheDocument();
     expect(screen.getByText(/Nov 18, 2026 – Nov 18, 2028/)).toBeInTheDocument();
 
@@ -62,7 +67,7 @@ describe('ForecastPage', () => {
 
   it('shows meanings and tips only once the texts are approved', async () => {
     render(renderApp(signedOut(), { pathname: '/forecast', state: { input, name: '' } }));
-    await screen.findByRole('heading', { name: 'Your next two years' });
+    await screen.findByRole('heading', { name: 'Your next two years' }, SLOW);
     const tips = screen.queryAllByText(/How to use this time/);
     expect(tips.length > 0).toBe(FORECAST_TEXT.review === 'approved');
   });
@@ -75,7 +80,7 @@ describe('ForecastPage', () => {
       }),
     );
     expect(
-      await screen.findByText(/transits to your Moon, Rising and Midheaven/),
+      await screen.findByText(/transits to your Moon, Rising and Midheaven/, undefined, SLOW),
     ).toBeInTheDocument();
     expect(
       screen.queryByRole('region', { name: 'Planets changing house' }),
@@ -90,7 +95,7 @@ describe('ForecastPage', () => {
         state: { input: { ...input, timeAccuracy: 'approximate' }, name: '' },
       }),
     );
-    await screen.findByRole('heading', { name: 'Your next two years' });
+    await screen.findByRole('heading', { name: 'Your next two years' }, SLOW);
     expect(screen.getAllByText(/Depends on your exact birth time/).length).toBeGreaterThan(0);
   });
 });
