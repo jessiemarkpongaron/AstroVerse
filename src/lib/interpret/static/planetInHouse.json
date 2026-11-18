@@ -4,7 +4,10 @@
   "review": {
     "Sun": "approved",
     "Moon": "approved",
-    "Mercury": "approved"
+    "Mercury": "approved",
+    "Venus": "draft",
+    "Mars": "draft",
+    "Jupiter": "draft"
   },
   "planets": {
     "Sun": {
@@ -235,6 +238,232 @@
         "keywords": ["Intuitive", "Imaginative", "Quiet"],
         "strengths": ["Creative insight", "Sensitive listener", "Empathy"],
         "challenges": ["Hard to explain your thoughts", "Daydreams", "Self-doubt"]
+      }
+    },
+    "Venus": {
+      "1": {
+        "meaning": "You may come across as warm, charming and easy to like, and people often feel at ease around you. Caring about how you present yourself can be part of your style.",
+        "keywords": ["Charming", "Graceful", "Friendly"],
+        "strengths": ["Natural charm", "Puts others at ease", "Good taste"],
+        "challenges": ["Wants to be liked", "Avoids conflict", "Vanity at times"]
+      },
+      "2": {
+        "meaning": "You may love beautiful, lasting things and feel happiest when life is comfortable and secure. Your values are steady, and you tend to show love through care others can see and touch.",
+        "keywords": ["Sensual", "Loyal", "Steady"],
+        "strengths": ["Appreciates quality", "Faithful", "Creates comfort"],
+        "challenges": ["Possessive", "Overindulges", "Resists change"]
+      },
+      "3": {
+        "meaning": "You tend to show love through kind words, messages and good conversation. Friendly ties with siblings, classmates or neighbors may matter a lot to you.",
+        "keywords": ["Sweet-talking", "Sociable", "Curious"],
+        "strengths": ["Gracious speaker", "Easy to get along with", "Thoughtful notes"],
+        "challenges": ["Flirts lightly", "Avoids hard talks", "Fickle interest"]
+      },
+      "4": {
+        "meaning": "You may find love and comfort in home life, and a beautiful, peaceful home can mean a great deal to you. Family warmth often shapes how you love.",
+        "keywords": ["Homey", "Tender", "Devoted"],
+        "strengths": ["Warm host", "Loyal to family", "Creates harmony at home"],
+        "challenges": ["Clings to the familiar", "Shy in love at first", "Avoids family conflict"]
+      },
+      "5": {
+        "meaning": "You tend to love romance, creativity and fun, and you may fall for people who make you laugh. Art, play and celebration can bring out your warmest side.",
+        "keywords": ["Romantic", "Playful", "Creative"],
+        "strengths": ["Big-hearted in love", "Artistic flair", "Joyful company"],
+        "challenges": ["Loves the chase", "Needs attention", "Pleasure before duty"]
+      },
+      "6": {
+        "meaning": "You may show love by doing helpful things, and you can bring grace and kindness to everyday work. Pleasant routines and a friendly workplace can matter a lot to you.",
+        "keywords": ["Helpful", "Kind", "Practical"],
+        "strengths": ["Thoughtful helper", "Good coworker", "Makes work pleasant"],
+        "challenges": ["Gives too much", "Picky with partners", "Puts others' needs first"]
+      },
+      "7": {
+        "meaning": "Partnership may be central to your happiness, and you tend to value fairness, respect and balance with others. You may naturally attract people and bring them together.",
+        "keywords": ["Partner-focused", "Fair", "Diplomatic"],
+        "strengths": ["Devoted partner", "Peacemaker", "Social grace"],
+        "challenges": ["Leans on a partner", "Avoids conflict", "Idealizes others"]
+      },
+      "8": {
+        "meaning": "You tend to love deeply and intensely, wanting real closeness rather than something casual. Trust and emotional honesty can matter more to you than appearances.",
+        "keywords": ["Passionate", "Loyal", "Deep"],
+        "strengths": ["Devoted", "Emotionally brave", "Faithful"],
+        "challenges": ["Jealousy", "All-or-nothing love", "Slow to trust"]
+      },
+      "9": {
+        "meaning": "You may be drawn to people from different places or backgrounds, and love can feel like an adventure to you. Shared ideals and learning together can bring you close.",
+        "keywords": ["Adventurous", "Open-hearted", "Free"],
+        "strengths": ["Open to differences", "Inspiring partner", "Generous"],
+        "challenges": ["Restless in love", "Avoids commitment", "Overly idealistic"]
+      },
+      "10": {
+        "meaning": "Your charm and taste may help you in your work and public life, and people often see you as gracious. You may be drawn to partners who share your goals.",
+        "keywords": ["Gracious", "Polished", "Ambitious"],
+        "strengths": ["Diplomatic at work", "Good reputation", "Eye for style"],
+        "challenges": ["Image-conscious", "Mixes love and status", "Hides softer feelings"]
+      },
+      "11": {
+        "meaning": "Friendships may be one of your greatest joys, and love can grow out of shared interests or groups. You tend to value freedom and equality in relationships.",
+        "keywords": ["Friendly", "Open-minded", "Social"],
+        "strengths": ["Loyal friend", "Easygoing", "Inclusive"],
+        "challenges": ["Keeps love casual", "Detached at times", "Spread too thin"]
+      },
+      "12": {
+        "meaning": "You may love quietly and deeply, sometimes keeping your feelings private for a long time. Kindness, compassion and a bit of romance can come naturally to you.",
+        "keywords": ["Tender", "Compassionate", "Private"],
+        "strengths": ["Selfless love", "Gentle heart", "Imaginative romance"],
+        "challenges": ["Hidden feelings", "Idealizes partners", "Gives too much"]
+      }
+    },
+    "Mars": {
+      "1": {
+        "meaning": "You tend to act quickly and boldly, and people may sense your energy right away. Taking the lead can come naturally, though patience may take practice.",
+        "keywords": ["Bold", "Energetic", "Direct"],
+        "strengths": ["Brave", "Takes initiative", "Strong presence"],
+        "challenges": ["Impatient", "Quick temper", "Pushy"]
+      },
+      "2": {
+        "meaning": "You may put steady effort into building security and protecting what you value. Once you set a goal, you tend to keep going until it is done.",
+        "keywords": ["Determined", "Persistent", "Practical"],
+        "strengths": ["Hard worker", "Stamina", "Protective"],
+        "challenges": ["Stubborn", "Possessive", "Slow to start"]
+      },
+      "3": {
+        "meaning": "Your energy may show in quick thinking and lively, direct talk. You tend to enjoy debates, short trips and staying busy.",
+        "keywords": ["Sharp", "Outspoken", "Restless"],
+        "strengths": ["Quick wit", "Persuasive", "Energetic learner"],
+        "challenges": ["Argumentative", "Impatient speech", "Scattered energy"]
+      },
+      "4": {
+        "meaning": "Much of your drive may go into home and family, protecting and building a place of your own. You may feel strongly about where you come from.",
+        "keywords": ["Protective", "Driven", "Private"],
+        "strengths": ["Stands up for family", "Builds a home", "Inner strength"],
+        "challenges": ["Tension at home", "Moody anger", "Holds in frustration"]
+      },
+      "5": {
+        "meaning": "You tend to put passion into creativity, play and romance, and you may love a bit of friendly competition. Doing what you love can give you endless energy.",
+        "keywords": ["Passionate", "Playful", "Competitive"],
+        "strengths": ["Creative drive", "Enthusiastic", "Bold in love"],
+        "challenges": ["Takes big risks", "Needs to come first", "Dramatic"]
+      },
+      "6": {
+        "meaning": "You tend to be a hard, efficient worker who likes to get things done. Staying active and keeping a good daily rhythm can help you handle stress.",
+        "keywords": ["Hardworking", "Efficient", "Active"],
+        "strengths": ["Productive", "Practical problem solver", "Reliable"],
+        "challenges": ["Overworks", "Irritable when tired", "Critical of coworkers"]
+      },
+      "7": {
+        "meaning": "You may bring a lot of energy into partnerships, and you can be a strong ally or a strong opponent. Learning to share decisions can make your relationships stronger.",
+        "keywords": ["Assertive", "Partner-driven", "Direct"],
+        "strengths": ["Stands up for others", "Energizes partners", "Honest"],
+        "challenges": [
+          "Arguments with partners",
+          "Competitive in love",
+          "Impatient with compromise"
+        ]
+      },
+      "8": {
+        "meaning": "Your drive may run deep and quiet, showing up as determination when things get serious. You tend to be strong in a crisis and do not give up easily.",
+        "keywords": ["Intense", "Determined", "Resilient"],
+        "strengths": ["Strength under pressure", "Focus", "Courage"],
+        "challenges": ["Power struggles", "Holds grudges", "Hidden anger"]
+      },
+      "9": {
+        "meaning": "You tend to put energy into exploring, learning and standing up for what you believe. Travel, sports or big causes can fire you up.",
+        "keywords": ["Adventurous", "Bold", "Idealistic"],
+        "strengths": ["Courage of your beliefs", "Energetic learner", "Inspiring"],
+        "challenges": ["Preachy", "Restless", "Argues about beliefs"]
+      },
+      "10": {
+        "meaning": "You may be strongly driven to succeed and be seen for what you achieve. Hard work toward a clear goal can bring out your best.",
+        "keywords": ["Ambitious", "Driven", "Competitive"],
+        "strengths": ["Leadership", "Strong work ethic", "Goal-focused"],
+        "challenges": ["Workaholic", "Clashes with bosses", "Impatient for success"]
+      },
+      "11": {
+        "meaning": "Your energy may come alive in groups, teams and causes you care about. You tend to push for change and rally others around shared goals.",
+        "keywords": ["Active", "Team-minded", "Reform-driven"],
+        "strengths": ["Team leader", "Energizes groups", "Fights for causes"],
+        "challenges": ["Clashes in groups", "Rebellious", "Spread too thin"]
+      },
+      "12": {
+        "meaning": "Your drive may work quietly behind the scenes, and you might not always show when you are upset. Learning to name your anger calmly can help you use your energy well.",
+        "keywords": ["Quiet", "Inward", "Selfless"],
+        "strengths": ["Works well alone", "Helps others quietly", "Inner drive"],
+        "challenges": ["Bottled-up anger", "Self-doubt", "Unclear goals"]
+      }
+    },
+    "Jupiter": {
+      "1": {
+        "meaning": "You may come across as warm, hopeful and generous, and people often feel uplifted around you. Your growth tends to come from trusting yourself and trying new things.",
+        "keywords": ["Optimistic", "Generous", "Confident"],
+        "strengths": ["Positive outlook", "Encourages others", "Open"],
+        "challenges": ["Overconfident", "Overdoes things", "Promises too much"]
+      },
+      "2": {
+        "meaning": "You may grow by building on your talents and staying true to what you value. You tend to be generous, and you can learn that real security comes from within.",
+        "keywords": ["Generous", "Resourceful", "Hopeful"],
+        "strengths": ["Shares freely", "Confident in your skills", "Practical faith"],
+        "challenges": ["Overindulges", "Takes comfort for granted", "Careless with limits"]
+      },
+      "3": {
+        "meaning": "You tend to grow through learning, reading and talking with all kinds of people. A curious, open mind can open many doors for you.",
+        "keywords": ["Curious", "Talkative", "Open-minded"],
+        "strengths": ["Eager learner", "Good teacher", "Wide network"],
+        "challenges": ["Scattered interests", "Talks too much", "Skips details"]
+      },
+      "4": {
+        "meaning": "You may find growth and comfort through home and family, and you might enjoy a big, welcoming household. Your roots can give you the strength to reach far.",
+        "keywords": ["Welcoming", "Family-minded", "Warm"],
+        "strengths": ["Generous host", "Supportive family ties", "Emotional security"],
+        "challenges": ["Overly attached to home", "Overindulges at home", "Slow to leave the nest"]
+      },
+      "5": {
+        "meaning": "You tend to grow through creativity, play and sharing joy with others. Hobbies, art or time with young people can bring out your generous spirit.",
+        "keywords": ["Joyful", "Creative", "Generous"],
+        "strengths": ["Playful spirit", "Encourages talent", "Big-hearted"],
+        "challenges": ["Overindulgence", "Takes big risks", "Needs fun too much"]
+      },
+      "6": {
+        "meaning": "You may grow through meaningful daily work and helping others in practical ways. A positive attitude at work can make you someone people rely on.",
+        "keywords": ["Helpful", "Positive", "Dedicated"],
+        "strengths": ["Good coworker", "Improves systems", "Service-minded"],
+        "challenges": ["Takes on too much", "Overcommits", "Scattered routines"]
+      },
+      "7": {
+        "meaning": "You may grow a great deal through partnerships, and you tend to attract generous, supportive people. Working with others can open new paths for you.",
+        "keywords": ["Partner-minded", "Generous", "Fair"],
+        "strengths": ["Supportive partner", "Brings people together", "Sees the best in others"],
+        "challenges": ["Expects too much from partners", "Overidealizes", "Relies on others"]
+      },
+      "8": {
+        "meaning": "You may grow through deep bonds, honest sharing and facing life's big changes with courage. Trust and openness can bring you closer to others than you expect.",
+        "keywords": ["Deep", "Trusting", "Transformative"],
+        "strengths": ["Emotional courage", "Strong bonds", "Renews after change"],
+        "challenges": ["Overdoes intensity", "Shares too much too soon", "Ignores limits"]
+      },
+      "9": {
+        "meaning": "You tend to grow through travel, study and exploring big questions about life. Teaching, faith or other cultures may become a strong part of your journey.",
+        "keywords": ["Adventurous", "Philosophical", "Optimistic"],
+        "strengths": ["Wise outlook", "Inspires others", "Lifelong learner"],
+        "challenges": ["Preachy", "Overconfident in beliefs", "Restless"]
+      },
+      "10": {
+        "meaning": "You may grow through your work and public life, and others may see you as a natural leader or mentor. Staying true to your values can help your reputation grow.",
+        "keywords": ["Ambitious", "Respected", "Hopeful"],
+        "strengths": ["Leadership", "Good reputation", "Mentors others"],
+        "challenges": ["Overcommits at work", "Overconfident", "Defines self by status"]
+      },
+      "11": {
+        "meaning": "You tend to grow through friendships, communities and shared hopes for the future. Generous friends and group efforts can open new doors for you.",
+        "keywords": ["Social", "Hopeful", "Idealistic"],
+        "strengths": ["Wide circle of friends", "Team spirit", "Big vision"],
+        "challenges": ["Spread too thin", "Overpromises to groups", "Idealistic about people"]
+      },
+      "12": {
+        "meaning": "You may grow through quiet reflection, compassion and helping others without needing credit. Time alone, faith or creative dreaming can renew your hope.",
+        "keywords": ["Compassionate", "Spiritual", "Reflective"],
+        "strengths": ["Kind heart", "Inner calm", "Quiet generosity"],
+        "challenges": ["Escapism", "Too selfless", "Hard to set limits"]
       }
     }
   }

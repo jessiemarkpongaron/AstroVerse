@@ -179,6 +179,21 @@ describe('planetInHouse.json', () => {
     },
   );
 
+  it.each(houseSnippets.filter(([id]) => id.startsWith('Jupiter.')))(
+    '%s avoids luck/money language (PRD §5)',
+    (_id, e) => {
+      const text = [e.meaning, ...e.keywords, ...e.strengths, ...e.challenges].join(' ');
+      expect(text).not.toMatch(/\b(luck|lucky|money|wealth|fortune|rich|win(ning)?s?)\b/i);
+    },
+  );
+
+  it.each(houseSnippets.filter(([id]) => /^(Venus|Mars)\./.test(id)))(
+    '%s never presents jealousy or control as romantic',
+    (_id, e) => {
+      expect(e.meaning).not.toMatch(/\b(jealous\w*|possessive|control\w*)\b/i);
+    },
+  );
+
   it('house snippets are unique and differ from all other static text', () => {
     const texts = [
       ...houseSnippets.map(([, e]) => e.meaning),
