@@ -29,6 +29,10 @@ Business model: free core chart → paid premium reports (PayMongo: GCash/Maya/c
 - Validation: date 1900–2100, time 00:00–23:59, place required
 - **Acceptance:** entering "May 31 1990, 3:30 PM, Carrascal, Surigao del Sur" produces a chart
   with Sun Gemini, Moon Virgo, Rising Scorpio.
+- **⚠ Open question (found in M2):** the IANA tz database (2026a) says the Philippines was on
+  DST (UTC+9) from 1990-05-21 to 07-28. Converting through tzdb (CLAUDE.md rule 3) gives
+  06:30 UTC → Sun Gemini, Moon Virgo, **Rising Libra ~22°**. Rising Scorpio requires UTC+8.
+  Decide: trust tzdb and update this example, or let users override the UTC offset.
 
 ### F2. Big Three card (Phase 1)
 - Sun, Moon, Rising with sign glyph, degree, and a 2–3 sentence meaning each

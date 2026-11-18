@@ -26,6 +26,8 @@ astroverse/
 │  ├─ lib/
 │  │  ├─ astro/
 │  │  │  ├─ types.ts           shared types (Body, SignIndex, ChartPoint, Aspect, Chart…)
+│  │  │  ├─ zodiac.ts          normalizeDeg, angleDiff, signOf, sign names
+│  │  │  ├─ format.ts          display formatting (15°12' Taurus)
 │  │  │  ├─ time.ts            local birth time + IANA zone → UTC (luxon)
 │  │  │  ├─ positions.ts       planets, Moon, Sun, mean/true node (astronomy-engine)
 │  │  │  ├─ angles.ts          sidereal time, Ascendant, Midheaven
@@ -35,7 +37,8 @@ astroverse/
 │  │  │  ├─ synastry.ts        cross-chart aspects (Phase 3)
 │  │  │  ├─ uncertainty.ts     cusp + birth-time sensitivity flags
 │  │  │  ├─ chart.ts           buildChart(input) → Chart  (single entry point)
-│  │  │  └─ __tests__/         fixtures + tests
+│  │  │  ├─ *.test.ts          unit tests, next to each module
+│  │  │  └─ __tests__/         fixtures.json (generated) + fixture helpers
 │  │  ├─ interpret/
 │  │  │  ├─ static/            JSON text: signs, houses, planets-in-signs, aspects
 │  │  │  └─ buildPayload.ts    compact chart summary sent to the AI function
@@ -58,6 +61,7 @@ astroverse/
 │     ├─ generate-reading/
 │     ├─ create-checkout/
 │     └─ paymongo-webhook/
+├─ scripts/gen-fixtures.ts     dev-only Swiss Ephemeris (sweph, AGPL) fixture generator; never bundled
 ├─ public/ (icons, manifest.webmanifest, fonts)
 ├─ .env.example
 └─ package.json
@@ -70,7 +74,8 @@ export type Body = 'Sun'|'Moon'|'Mercury'|'Venus'|'Mars'|'Jupiter'|'Saturn'
   |'Uranus'|'Neptune'|'Pluto'|'NorthNode';
 export type Angle = 'Ascendant'|'Midheaven';
 export type PointName = Body | Angle;
-export type HouseSystem = 'placidus'|'whole-sign';
+export type HouseSystemChoice = 'placidus'|'whole-sign';      // what the user can pick
+export type HouseSystem = HouseSystemChoice | 'porphyry';      // porphyry = auto fallback >66°
 export type TimeAccuracy = 'exact'|'approximate'|'unknown';
 
 export interface BirthInput {
@@ -97,8 +102,9 @@ export interface Aspect {
 }
 
 export interface UncertaintyFlag {
-  point: PointName;
-  kind: 'sign-cusp'|'house-cusp'|'time-unknown';
+  point: PointName | null; // null = chart-wide (e.g. DST ambiguity)
+  kind: 'sign-cusp'|'house-cusp'|'time-unknown'
+      |'dst-ambiguous'|'house-system-fallback'|'moon-sign-change';
   message: string;         // human-readable, e.g. "Rising may be Libra if born before ~3:00 PM"
 }
 

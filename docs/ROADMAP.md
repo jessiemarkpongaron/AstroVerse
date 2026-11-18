@@ -6,17 +6,17 @@ its acceptance items are checked.
 ## Phase 1 — Free chart (MVP)
 
 ### M1. Project setup
-- [ ] Vite + React + TS (strict) + Tailwind + React Router + ESLint + Prettier + Vitest
-- [ ] Scripts: dev, build, typecheck, lint, test
-- [ ] `.env.example`, `README.md` with setup steps
-- [ ] Base layout: header, footer with disclaimer, dark/light theme
+- [x] Vite + React + TS (strict) + Tailwind + React Router + ESLint + Prettier + Vitest
+- [x] Scripts: dev, build, typecheck, lint, test
+- [x] `.env.example`, `README.md` with setup steps
+- [x] Base layout: header, footer with disclaimer, dark/light theme
 
 ### M2. Astro engine — positions & angles
-- [ ] `types.ts`, `time.ts` (luxon), `positions.ts` (astronomy-engine), `angles.ts`
-- [ ] Mean North Node, speeds, retrograde
-- [ ] Fixtures file with ≥ 6 reference charts (see ASTRO_ENGINE §9) — **ask me to
+- [x] `types.ts`, `time.ts` (luxon), `positions.ts` (astronomy-engine), `angles.ts`
+- [x] Mean North Node, speeds, retrograde
+- [x] Fixtures file with ≥ 6 reference charts (see ASTRO_ENGINE §9) — **ask me to
       supply/confirm reference values if you can't fetch them**
-- [ ] Tests pass within tolerances
+- [x] Tests pass within tolerances
 
 ### M3. Astro engine — houses, aspects, uncertainty
 - [ ] Whole Sign + Placidus (+ Porphyry fallback), house assignment
