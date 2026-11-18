@@ -1,9 +1,13 @@
 import { SIGN_NAMES } from '../astro/zodiac.ts';
 import {
   BIG_THREE_TEXT,
+  HOUSE_KEYS,
+  HOUSE_PLANETS,
+  PLANET_IN_HOUSE_TEXT,
   PLANET_IN_SIGN_TEXT,
   SNIPPET_PLANETS,
   bigThreeEntry,
+  planetInHouseEntry,
   planetInSignEntry,
   type StaticEntry,
 } from './staticText.ts';
@@ -133,5 +137,65 @@ describe('planetInSign.json', () => {
     expect(planetInSignEntry('Mercury', 1)?.keywords).toContain('Steady');
     const missing = SNIPPET_PLANETS.find((p) => !PLANET_IN_SIGN_TEXT.planets[p]);
     if (missing) expect(planetInSignEntry(missing, 0)).toBeNull();
+  });
+});
+
+const housePlanets = HOUSE_PLANETS.filter((p) => PLANET_IN_HOUSE_TEXT.planets[p]);
+const houseSnippets: [string, StaticEntry][] = housePlanets.flatMap((p) =>
+  HOUSE_KEYS.map((h): [string, StaticEntry] => [
+    `${p}.house${h}`,
+    PLANET_IN_HOUSE_TEXT.planets[p]?.[h] as StaticEntry,
+  ]),
+);
+
+describe('planetInHouse.json', () => {
+  it('every written planet has all 12 houses and a review status', () => {
+    expect(housePlanets.length).toBeGreaterThan(0);
+    for (const p of housePlanets) {
+      expect(Object.keys(PLANET_IN_HOUSE_TEXT.planets[p] ?? {}).sort()).toEqual(
+        [...HOUSE_KEYS].sort(),
+      );
+      expect(['draft', 'approved']).toContain(PLANET_IN_HOUSE_TEXT.review[p]);
+    }
+  });
+
+  it.each(houseSnippets)('%s follows the style and guardrails', (_id, e) => {
+    checkEntry(e, 1, 2);
+  });
+
+  it.each(houseSnippets.filter(([id]) => /\.house(2|8)$/.test(id)))(
+    '%s talks about values and shared bonds, not money (PRD §5)',
+    (_id, e) => {
+      const text = [e.meaning, ...e.keywords, ...e.strengths, ...e.challenges].join(' ');
+      expect(text).not.toMatch(/\b(luck|lucky|money|wealth|fortune|rich|inherit\w*|debts?)\b/i);
+    },
+  );
+
+  it.each(houseSnippets.filter(([id]) => /\.house(5|6)$/.test(id)))(
+    '%s avoids health and pregnancy claims',
+    (_id, e) => {
+      const text = [e.meaning, ...e.keywords, ...e.strengths, ...e.challenges].join(' ');
+      expect(text).not.toMatch(/\b(health|sick\w*|pregnan\w*|babies|fertil\w*)\b/i);
+    },
+  );
+
+  it('house snippets are unique and differ from all other static text', () => {
+    const texts = [
+      ...houseSnippets.map(([, e]) => e.meaning),
+      ...snippets.map(([, e]) => e.meaning),
+      ...all.map(([, e]) => e.meaning),
+    ];
+    expect(new Set(texts).size).toBe(texts.length);
+  });
+
+  it('planetInHouseEntry hides drafts unless asked', () => {
+    const draft = housePlanets.find((p) => PLANET_IN_HOUSE_TEXT.review[p] === 'draft');
+    if (draft) {
+      expect(planetInHouseEntry(draft, 1)).toBeNull();
+      expect(planetInHouseEntry(draft, 1, { includeDrafts: true })?.meaning).toBeTruthy();
+    }
+    const approved = housePlanets.find((p) => PLANET_IN_HOUSE_TEXT.review[p] === 'approved');
+    if (approved) expect(planetInHouseEntry(approved, 12)?.meaning).toBeTruthy();
+    expect(planetInHouseEntry('Pluto', 13, { includeDrafts: true })).toBeNull();
   });
 });

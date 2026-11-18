@@ -1,0 +1,241 @@
+{
+  "_comment": "Planet-in-house snippets (docs/INTERPRETATION.md §1). 1–2 sentences, second person. Keys are house numbers 1–12. Only 'approved' planets are shown in the app.",
+  "version": 1,
+  "review": {
+    "Sun": "draft",
+    "Moon": "draft",
+    "Mercury": "draft"
+  },
+  "planets": {
+    "Sun": {
+      "1": {
+        "meaning": "You tend to shine most when you are simply being yourself, and people often notice you before you say a word. Your growth comes from leading your own life on your own terms.",
+        "keywords": ["Visible", "Self-directed", "Bold"],
+        "strengths": ["Natural presence", "Takes initiative", "Honest about who you are"],
+        "challenges": ["Can seem self-focused", "Takes things personally", "Impatient with waiting"]
+      },
+      "2": {
+        "meaning": "You may feel most like yourself when you are building something steady and lasting with your own skills and values. Knowing what you are worth, not just what you have, helps you feel secure.",
+        "keywords": ["Grounded", "Resourceful", "Steady"],
+        "strengths": ["Practical skills", "Loyal to your values", "Patient builder"],
+        "challenges": ["Holding on too tightly", "Measuring yourself by things", "Slow to change"]
+      },
+      "3": {
+        "meaning": "You tend to come alive through talking, learning and staying curious about everything around you. Writing, teaching or simply sharing ideas can be where you shine.",
+        "keywords": ["Curious", "Talkative", "Quick"],
+        "strengths": ["Clear communicator", "Learns fast", "Connects people"],
+        "challenges": ["Scattered focus", "Restless", "Talks over others"]
+      },
+      "4": {
+        "meaning": "Home, family and your roots may sit at the center of who you are, even if you show it quietly. You tend to shine brightest when you feel you belong somewhere.",
+        "keywords": ["Rooted", "Private", "Caring"],
+        "strengths": ["Protective", "Creates warm spaces", "Loyal to family"],
+        "challenges": ["Hard to open up", "Moody when unsettled", "Clings to the past"]
+      },
+      "5": {
+        "meaning": "You tend to shine when you are creating, playing or sharing what you love with others. Joy is not a side project for you; it is part of how you grow.",
+        "keywords": ["Creative", "Playful", "Expressive"],
+        "strengths": ["Warm heart", "Fun to be around", "Generous with praise"],
+        "challenges": ["Needs applause", "Dramatic at times", "Bored by routine"]
+      },
+      "6": {
+        "meaning": "You may feel most like yourself when you are being useful, improving things and keeping your days in good order. Your real strength often shows in small daily habits.",
+        "keywords": ["Helpful", "Diligent", "Practical"],
+        "strengths": ["Reliable worker", "Eye for detail", "Solves problems"],
+        "challenges": ["Overworks", "Self-critical", "Worries about small things"]
+      },
+      "7": {
+        "meaning": "You tend to discover who you are through close partnerships, whether in love, friendship or work. You may shine brightest as part of a strong pair.",
+        "keywords": ["Partner-minded", "Fair", "Diplomatic"],
+        "strengths": ["Good listener", "Brings people together", "Sees both sides"],
+        "challenges": ["Loses self in others", "Avoids conflict", "Needs approval"]
+      },
+      "8": {
+        "meaning": "You may be drawn to what lies beneath the surface, in people and in life, and you are not afraid of deep conversations. Times of big change often reveal your real strength.",
+        "keywords": ["Intense", "Private", "Resilient"],
+        "strengths": ["Emotional depth", "Loyal once you trust", "Rebuilds after setbacks"],
+        "challenges": ["Slow to trust", "Controlling when afraid", "Keeps secrets too long"]
+      },
+      "9": {
+        "meaning": "You tend to shine when you are exploring, through travel, study or big questions about meaning. Sharing what you have learned can make you a natural guide for others.",
+        "keywords": ["Adventurous", "Open-minded", "Curious"],
+        "strengths": ["Big-picture thinker", "Inspires others", "Loves learning"],
+        "challenges": ["Restless", "Preachy at times", "Misses details"]
+      },
+      "10": {
+        "meaning": "You may feel most like yourself when you are working toward a goal that others can see. Your reputation and achievements matter to you, and you are willing to work for both.",
+        "keywords": ["Ambitious", "Responsible", "Driven"],
+        "strengths": ["Leadership", "Strong work ethic", "Sets clear goals"],
+        "challenges": ["Defines self by work", "Hard on yourself", "Neglects rest"]
+      },
+      "11": {
+        "meaning": "You tend to shine in friendships, groups and causes that look toward the future. Sharing a vision with like-minded people can bring out your best.",
+        "keywords": ["Friendly", "Forward-looking", "Idealistic"],
+        "strengths": ["Team player", "Builds communities", "Open to new ideas"],
+        "challenges": [
+          "Detached at times",
+          "Spread across too many groups",
+          "Rebels for its own sake"
+        ]
+      },
+      "12": {
+        "meaning": "You may shine most in quiet ways, through reflection, imagination or helping others behind the scenes. Time alone can be how you recharge and find out who you are.",
+        "keywords": ["Reflective", "Compassionate", "Imaginative"],
+        "strengths": ["Deep empathy", "Rich inner life", "Selfless help"],
+        "challenges": ["Hides your light", "Escapes into daydreams", "Hard to set limits"]
+      }
+    },
+    "Moon": {
+      "1": {
+        "meaning": "Your feelings tend to show on your face, and people often sense your mood right away. You may need to feel free to be yourself in order to feel safe.",
+        "keywords": ["Open", "Sensitive", "Spontaneous"],
+        "strengths": ["Honest feelings", "Warm presence", "Responds quickly to others"],
+        "challenges": ["Mood shows easily", "Takes things personally", "Reacts fast"]
+      },
+      "2": {
+        "meaning": "You may feel calm when life is steady and your basic needs are taken care of. Comfort, good food and familiar things can soothe you more than you expect.",
+        "keywords": ["Comfort-seeking", "Steady", "Sensual"],
+        "strengths": ["Calm under pressure", "Loyal", "Creates comfort"],
+        "challenges": ["Resists change", "Leans on comfort habits", "Possessive"]
+      },
+      "3": {
+        "meaning": "You tend to process feelings by talking or writing them out, and a good conversation can lift your mood quickly. Staying mentally busy may help you feel at ease.",
+        "keywords": ["Chatty", "Curious", "Changeable"],
+        "strengths": ["Talks things through", "Light touch", "Keeps in touch"],
+        "challenges": ["Overthinks feelings", "Restless", "Moods shift quickly"]
+      },
+      "4": {
+        "meaning": "Home and family can be your emotional anchor, and you may need a private, cozy space to truly relax. Caring for the people closest to you often feels natural.",
+        "keywords": ["Homey", "Nurturing", "Private"],
+        "strengths": ["Deep caring", "Loyal to family", "Makes others feel at home"],
+        "challenges": ["Withdraws when hurt", "Holds on to the past", "Overprotective"]
+      },
+      "5": {
+        "meaning": "You may need fun, play and creative outlets to feel emotionally full. Being appreciated for who you are can mean a lot to you.",
+        "keywords": ["Playful", "Warm", "Expressive"],
+        "strengths": ["Big heart", "Cheers others up", "Creative"],
+        "challenges": ["Needs attention", "Dramatic feelings", "Gets bored easily"]
+      },
+      "6": {
+        "meaning": "You tend to feel calmer when your days have a clear routine and you are being helpful. Looking after small details can be how you handle stress.",
+        "keywords": ["Orderly", "Helpful", "Conscientious"],
+        "strengths": ["Dependable", "Practical care", "Good habits"],
+        "challenges": ["Worries a lot", "Self-critical", "Feels useful only when busy"]
+      },
+      "7": {
+        "meaning": "You may feel most at peace when you have a close partner or friend to share life with. Harmony in your relationships can deeply affect your mood.",
+        "keywords": ["Relational", "Gentle", "Fair-minded"],
+        "strengths": ["Caring partner", "Peacemaker", "Understands others"],
+        "challenges": ["Dislikes being alone", "Puts others first too often", "Avoids conflict"]
+      },
+      "8": {
+        "meaning": "Your feelings can run very deep, and you may share them only with people you fully trust. You tend to need emotional honesty more than small talk.",
+        "keywords": ["Deep", "Intense", "Private"],
+        "strengths": ["Loyal", "Emotionally brave", "Sees what others hide"],
+        "challenges": ["Slow to trust", "Holds grudges", "All-or-nothing feelings"]
+      },
+      "9": {
+        "meaning": "You may need room to explore, learn and see the big picture to feel emotionally free. New places and new ideas can lift your spirits.",
+        "keywords": ["Free-spirited", "Hopeful", "Curious"],
+        "strengths": ["Optimistic", "Open to others", "Philosophical"],
+        "challenges": ["Restless", "Avoids heavy feelings", "Overpromises"]
+      },
+      "10": {
+        "meaning": "You may feel secure when you are respected and making progress toward your goals. Your public role or work can be closely tied to how you feel inside.",
+        "keywords": ["Ambitious", "Responsible", "Composed"],
+        "strengths": ["Steady in public", "Caring leader", "Dependable"],
+        "challenges": ["Hides feelings at work", "Ties mood to success", "Hard to rest"]
+      },
+      "11": {
+        "meaning": "Friends and community can feel like family to you, and being part of a group helps you feel at home. Sharing hopes for the future may lift your mood.",
+        "keywords": ["Social", "Friendly", "Idealistic"],
+        "strengths": ["Loyal friend", "Inclusive", "Supportive"],
+        "challenges": ["Keeps feelings at a distance", "Depends on group approval", "Spread thin"]
+      },
+      "12": {
+        "meaning": "You may need regular quiet time to sort out your feelings, which often run deeper than you show. Rest, music or time near water can help you recharge.",
+        "keywords": ["Sensitive", "Intuitive", "Private"],
+        "strengths": ["Deep empathy", "Imaginative", "Gentle"],
+        "challenges": ["Hides feelings", "Absorbs others' moods", "Needs clearer limits"]
+      }
+    },
+    "Mercury": {
+      "1": {
+        "meaning": "You tend to think out loud and speak your mind quickly, so people usually know where you stand. Your words can be a big part of how others see you.",
+        "keywords": ["Outspoken", "Quick", "Witty"],
+        "strengths": ["Clear speaker", "Fast thinker", "Curious"],
+        "challenges": ["Interrupts", "Speaks before thinking", "Restless"]
+      },
+      "2": {
+        "meaning": "You tend to think in practical terms, focusing on what is useful and worth your time. Over the years, your ideas and skills can become real resources.",
+        "keywords": ["Practical", "Careful", "Grounded"],
+        "strengths": ["Sensible plans", "Patient learner", "Values good ideas"],
+        "challenges": ["Slow to change opinions", "Overly cautious", "Fixed views"]
+      },
+      "3": {
+        "meaning": "Your mind tends to be busy and curious, and you may enjoy reading, writing and chatting with everyone around you. Learning new things can come easily to you.",
+        "keywords": ["Curious", "Communicative", "Versatile"],
+        "strengths": ["Quick learner", "Good writer", "Easy to talk to"],
+        "challenges": ["Scattered", "Gossips", "Nervous energy"]
+      },
+      "4": {
+        "meaning": "You may think best at home and often turn your thoughts toward family, memories and the past. Talks with loved ones can shape your views more than you realize.",
+        "keywords": ["Reflective", "Private", "Thoughtful"],
+        "strengths": ["Good memory", "Thinks about others", "Emotional understanding"],
+        "challenges": [
+          "Dwells on the past",
+          "Opinions shaped by family",
+          "Keeps thoughts to yourself"
+        ]
+      },
+      "5": {
+        "meaning": "You tend to think in creative, playful ways, and you may enjoy games, stories and making people laugh. Expressing ideas with flair can come naturally to you.",
+        "keywords": ["Creative", "Playful", "Expressive"],
+        "strengths": ["Storyteller", "Fun ideas", "Persuasive"],
+        "challenges": ["Shows off at times", "Bored by dull tasks", "Exaggerates"]
+      },
+      "6": {
+        "meaning": "You tend to have a sharp, organized mind that enjoys solving everyday problems. Lists, plans and clear methods may help you think at your best.",
+        "keywords": ["Analytical", "Organized", "Precise"],
+        "strengths": ["Problem solver", "Eye for detail", "Efficient"],
+        "challenges": ["Overanalyzes", "Worries", "Picky"]
+      },
+      "7": {
+        "meaning": "You may think best in conversation, and you often weigh both sides before deciding. Talking things through with a partner can sharpen your ideas.",
+        "keywords": ["Diplomatic", "Fair", "Sociable"],
+        "strengths": ["Negotiator", "Good listener", "Balanced views"],
+        "challenges": ["Indecisive", "Seeks approval for ideas", "Avoids disagreement"]
+      },
+      "8": {
+        "meaning": "Your mind tends to dig deep, and you may be drawn to mysteries, research and what others leave unsaid. You often notice the real reasons behind people's words.",
+        "keywords": ["Probing", "Intense", "Perceptive"],
+        "strengths": ["Researcher", "Keeps confidences", "Sees through masks"],
+        "challenges": ["Suspicious", "Obsessive thinking", "Secretive"]
+      },
+      "9": {
+        "meaning": "You tend to think in big ideas and may love learning about other cultures, beliefs and places. Teaching, travel or study can stretch your mind.",
+        "keywords": ["Broad-minded", "Curious", "Philosophical"],
+        "strengths": ["Big-picture thinker", "Inspiring teacher", "Open to other views"],
+        "challenges": ["Skips details", "Preachy", "Overconfident in opinions"]
+      },
+      "10": {
+        "meaning": "Your words and ideas may play a big role in your work and public life. You tend to think in a focused, goal-driven way and plan for the long run.",
+        "keywords": ["Strategic", "Focused", "Professional"],
+        "strengths": ["Clear planner", "Good presenter", "Responsible speaker"],
+        "challenges": ["All work talk", "Rigid thinking", "Worries about reputation"]
+      },
+      "11": {
+        "meaning": "You tend to think about the future and enjoy sharing ideas with friends and groups. Fresh, unusual ideas may come to you often.",
+        "keywords": ["Inventive", "Social", "Future-minded"],
+        "strengths": ["Networker", "Original ideas", "Open-minded"],
+        "challenges": ["Detached", "Contrarian", "Scattered among groups"]
+      },
+      "12": {
+        "meaning": "Your mind may work in quiet, intuitive ways, and some of your best ideas can come during alone time or even in dreams. You might express yourself best through writing, art or music.",
+        "keywords": ["Intuitive", "Imaginative", "Quiet"],
+        "strengths": ["Creative insight", "Sensitive listener", "Empathy"],
+        "challenges": ["Hard to explain your thoughts", "Daydreams", "Self-doubt"]
+      }
+    }
+  }
+}

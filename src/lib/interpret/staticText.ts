@@ -1,6 +1,7 @@
 import type { Body, SignIndex } from '../astro/types.ts';
 import { SIGN_NAMES, type SignName } from '../astro/zodiac.ts';
 import bigThreeJson from './static/bigThree.json';
+import planetInHouseJson from './static/planetInHouse.json';
 import planetInSignJson from './static/planetInSign.json';
 
 /** One static interpretation entry (docs/INTERPRETATION.md §1). */
@@ -61,4 +62,47 @@ export const PLANET_IN_SIGN_TEXT = planetInSignJson as unknown as PlanetInSignTe
 /** Planet-in-sign entry, or null while that planet's batch hasn't been written yet. */
 export function planetInSignEntry(planet: SnippetPlanet, sign: SignIndex): StaticEntry | null {
   return PLANET_IN_SIGN_TEXT.planets[planet]?.[SIGN_NAMES[sign]] ?? null;
+}
+
+/** Planets that get planet-in-house snippets (all ten; the node and angles don't). */
+export type HousePlanet = SnippetPlanet | 'Sun' | 'Moon';
+
+export const HOUSE_PLANETS: readonly HousePlanet[] = ['Sun', 'Moon', ...SNIPPET_PLANETS];
+
+export type ReviewStatus = 'draft' | 'approved';
+type HouseKey = '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '10' | '11' | '12';
+export const HOUSE_KEYS: readonly HouseKey[] = [
+  '1',
+  '2',
+  '3',
+  '4',
+  '5',
+  '6',
+  '7',
+  '8',
+  '9',
+  '10',
+  '11',
+  '12',
+];
+
+type PlanetInHouseText = {
+  version: number;
+  review: Partial<Record<HousePlanet, ReviewStatus>>;
+  planets: Partial<Record<HousePlanet, Record<HouseKey, StaticEntry>>>;
+};
+
+export const PLANET_IN_HOUSE_TEXT = planetInHouseJson as unknown as PlanetInHouseText;
+
+/**
+ * Planet-in-house entry (house 1–12). Only owner-approved batches are returned, unless
+ * `includeDrafts` is set (tests and review tooling).
+ */
+export function planetInHouseEntry(
+  planet: HousePlanet,
+  house: number,
+  opts: { includeDrafts?: boolean } = {},
+): StaticEntry | null {
+  if (!opts.includeDrafts && PLANET_IN_HOUSE_TEXT.review[planet] !== 'approved') return null;
+  return PLANET_IN_HOUSE_TEXT.planets[planet]?.[String(house) as HouseKey] ?? null;
 }
