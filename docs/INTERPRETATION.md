@@ -16,6 +16,15 @@ Readings come from two layers:
 - Have Claude Code draft them in batches of one planet at a time; review before committing.
 - **Status (2026-11-18):** `bigThree.json` (36) and `planetInSign.json` Mercury–Pluto (96) are
   written and owner-approved; each planet's review status is stored in the file.
+  `planetInHouse.json`: Sun, Moon, Mercury drafted (awaiting review). Only `approved` planets
+  appear in the app (`planetInHouseEntry`).
+- **Free full reading** (`src/lib/interpret/staticReading.ts`, page `/reading`): the same 8
+  themes as the AI reading, each built from the approved entries for the chart's placements
+  (Big Three, planet-in-sign, planet-in-house). Sections without approved text are omitted, so
+  the reading grows as batches are approved. Still to write: planet-in-house for Venus–Pluto,
+  Midheaven by sign (career), North Node by sign/house, aspects.
+- Extra guardrail tests: 2nd/8th-house texts avoid money/luck/inheritance wording; 5th/6th-house
+  texts avoid health and pregnancy wording.
 - `planetInSign.json` snippets are **1–2 sentences**. Uranus/Neptune/Pluto stay in a sign for
   years, so their snippets are framed around **your generation** plus one personal line.
 - Guardrail tests (`src/lib/interpret/staticText.test.ts`) enforce: sentence counts, second

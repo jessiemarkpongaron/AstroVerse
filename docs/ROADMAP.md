@@ -69,8 +69,14 @@ its acceptance items are checked.
 - [x] Reading page with sections, loading skeleton, error state; links from My charts and
       after saving a chart
 - [x] Local end-to-end (`npm run test:db`) with a mock Claude API
-- [ ] Hosted: run migration `20261118120000_reading_generations.sql`, set `ANTHROPIC_API_KEY`
-      secret, deploy the function, first real reading reviewed by the owner
+- [x] **Free full reading** from static text at `/reading` (owner decision 2026-11-18: no API
+      cost). Links from the chart page, My charts and after saving. AI reading hidden behind
+      `VITE_AI_READINGS` until API credits exist (then premium).
+- [ ] Static text batches for the free reading (review each): planet-in-house Sun/Moon/Mercury
+      (drafted) → Venus/Mars/Jupiter → Saturn/Uranus/Neptune/Pluto → Midheaven by sign →
+      North Node → aspects
+- [ ] Later, with API credits: run migration `20261118120000_reading_generations.sql`, set
+      `ANTHROPIC_API_KEY`, deploy the function, set `VITE_AI_READINGS=true`, review first reading
 
 ### M9. Forecast & career
 - [ ] `transits.ts` scanner + tests (known transit windows)

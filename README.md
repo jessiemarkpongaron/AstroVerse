@@ -81,6 +81,9 @@ Hosted project setup (once):
 
 ### AI readings (generate-reading Edge Function)
 
+Off by default: the free full reading (static text, `/reading`) works without any of this.
+The AI reading appears only when the Cloudflare build variable `VITE_AI_READINGS=true` is set.
+
 1. Get an API key at console.anthropic.com and add it in Supabase → Edge Functions → Secrets as
    `ANTHROPIC_API_KEY` (never in `.env.local`, Cloudflare, or any `VITE_*` variable).
 2. Apply new migrations (`npx supabase db push`) — M8 adds the `reading_generations` rate-limit

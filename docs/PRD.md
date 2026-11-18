@@ -72,8 +72,10 @@ Business model: free core chart → paid premium reports (PayMongo: GCash/Maya/c
 - Save multiple charts ("Me", "Family", etc.); delete chart deletes all derived readings
 
 ### F9. Premium & payments (Phase 3)
-- Free: Big Three, full chart table + wheel, short reading
-- Premium (one-time per chart, e.g. ₱149–₱299): full natal reading, 2-year forecast, career, compatibility
+- Free: Big Three, full chart table + wheel, short reading, **full reading from static text**
+  (owner decision 2026-11-18: no API cost; themed sections assembled from approved texts)
+- Premium (one-time per chart, e.g. ₱149–₱299): AI-written natal reading, 2-year forecast,
+  career, compatibility
 - PayMongo checkout via Edge Function; webhook marks the purchase; receipts by email
 
 ### F10. Shareable card (Phase 3)
