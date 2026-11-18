@@ -151,6 +151,13 @@ export function ChartPage() {
         >
           See your next two years
         </Link>
+        <Link
+          to="/career"
+          state={{ input: chart.input, name, savedChartId } satisfies ChartLocationState}
+          className="flex min-h-11 w-full items-center justify-center rounded-lg border border-gold px-4 py-2 font-semibold text-gold-dark sm:w-auto dark:text-gold"
+        >
+          Your career reading
+        </Link>
         <p className="text-xs text-slate-600 dark:text-slate-400">
           For entertainment and self-reflection. Not professional advice.
         </p>

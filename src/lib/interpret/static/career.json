@@ -1,0 +1,85 @@
+{
+  "_comment": "Career reading (PRD F6): work style by dominant element and career paths per element. Paths are ideas to explore, never instructions or promises.",
+  "version": 1,
+  "review": "draft",
+  "workStyle": {
+    "fire": "Your chart leans toward fire, so you may work best with energy, freedom and a goal to chase.",
+    "earth": "Your chart leans toward earth, so you may work best with clear steps, steady routines and practical results.",
+    "air": "Your chart leans toward air, so you may work best with ideas, conversation and variety.",
+    "water": "Your chart leans toward water, so you may work best where feelings, care and meaning matter."
+  },
+  "paths": {
+    "fire": [
+      {
+        "title": "Entrepreneurship and leadership",
+        "why": "Your fiery energy may suit roles where you take charge, start projects or run your own business."
+      },
+      {
+        "title": "Sales, marketing and promotion",
+        "why": "You may be good at inspiring people and getting them excited about an idea."
+      },
+      {
+        "title": "Sports, fitness and coaching",
+        "why": "Active, hands-on work can suit your drive and love of a challenge."
+      },
+      {
+        "title": "Performing and creative arts",
+        "why": "Roles with an audience can let your confidence and warmth shine."
+      }
+    ],
+    "earth": [
+      {
+        "title": "Building, engineering and trades",
+        "why": "You may enjoy practical work where you can see and touch what you made."
+      },
+      {
+        "title": "Business, accounting and administration",
+        "why": "Your patience and eye for order can suit roles that keep things running smoothly."
+      },
+      {
+        "title": "Food, farming and nature",
+        "why": "Work close to the land, plants or food can feel grounding and real to you."
+      },
+      {
+        "title": "Crafts, design and quality work",
+        "why": "You may have a gift for making things beautiful, useful and built to last."
+      }
+    ],
+    "air": [
+      {
+        "title": "Communication, media and writing",
+        "why": "Your way with words and ideas may suit work that informs or connects people."
+      },
+      {
+        "title": "Teaching and training",
+        "why": "You may enjoy explaining things and helping others learn."
+      },
+      {
+        "title": "Technology and research",
+        "why": "Curious, logical work with new ideas and systems can keep you engaged."
+      },
+      {
+        "title": "Law, negotiation and client work",
+        "why": "Your sense of fairness and gift for conversation can help in roles that bring people to agreement."
+      }
+    ],
+    "water": [
+      {
+        "title": "Caring and helping professions",
+        "why": "You may feel fulfilled in work that looks after people, such as nursing, care or counseling."
+      },
+      {
+        "title": "Social work and community service",
+        "why": "Your empathy can make a real difference in roles that support families and communities."
+      },
+      {
+        "title": "Arts, music and heartfelt creative work",
+        "why": "Creative work that expresses feelings can be deeply satisfying for you."
+      },
+      {
+        "title": "Hospitality and welcoming spaces",
+        "why": "Making people feel welcome and comfortable, in hotels, restaurants or homes, may come naturally to you."
+      }
+    ]
+  }
+}

@@ -121,6 +121,9 @@ export function FullReadingPage() {
         <Link to="/forecast" state={back} className="text-gold-dark underline dark:text-gold">
           Your next two years
         </Link>
+        <Link to="/career" state={back} className="text-gold-dark underline dark:text-gold">
+          Career reading
+        </Link>
       </nav>
     </div>
   );
