@@ -1,4 +1,12 @@
-import { aspectTone, formatDegMin, formatOrb, signGlyph, splitLongitude } from './display.ts';
+import {
+  aspectTone,
+  formatDay,
+  formatDegMin,
+  formatOrb,
+  formatWindow,
+  signGlyph,
+  splitLongitude,
+} from './display.ts';
 
 describe('display helpers', () => {
   it('splits and formats longitudes with carry into the next sign', () => {
@@ -21,5 +29,24 @@ describe('display helpers', () => {
     expect(aspectTone('trine')).toBe('flowing');
     expect(aspectTone('square')).toBe('challenging');
     expect(aspectTone('conjunction')).toBe('blending');
+  });
+});
+
+describe('forecast dates', () => {
+  it('formats UTC days without shifting them', () => {
+    expect(formatDay('2027-02-25')).toBe('Feb 25, 2027');
+    expect(formatDay('2028-01-01')).toBe('Jan 1, 2028');
+  });
+
+  it('formats windows, including ones that run past either end of the scan', () => {
+    const w = {
+      start: '2027-02-06',
+      end: '2027-03-14',
+      startsBeforeScan: false,
+      endsAfterScan: false,
+    };
+    expect(formatWindow(w)).toBe('Feb 6, 2027 – Mar 14, 2027');
+    expect(formatWindow({ ...w, startsBeforeScan: true })).toBe('Now – Mar 14, 2027');
+    expect(formatWindow({ ...w, endsAfterScan: true })).toBe('Feb 6, 2027 – beyond this forecast');
   });
 });

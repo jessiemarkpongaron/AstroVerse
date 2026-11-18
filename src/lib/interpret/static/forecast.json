@@ -1,0 +1,99 @@
+{
+  "_comment": "Forecast texts (transits). {b} is the natal point's theme from aspects.json. 'flowing' = trine/sextile, 'tense' = square/opposition. Describe themes and timing, never fixed events.",
+  "version": 1,
+  "review": "draft",
+  "bodies": {
+    "Jupiter": {
+      "conjunction": {
+        "meaning": "Jupiter is visiting {b}, which can bring a hopeful, expansive mood to this part of your life. Doors may open more easily than usual.",
+        "howToUseIt": "Say yes to chances to learn and grow, while keeping your plans realistic."
+      },
+      "flowing": {
+        "meaning": "Jupiter is supporting {b}, so this can be an encouraging time to build confidence and reach out.",
+        "howToUseIt": "Use the extra optimism to start something you have been putting off."
+      },
+      "tense": {
+        "meaning": "Jupiter is stretching {b}, which can bring big ideas and a pull to do more than usual.",
+        "howToUseIt": "Aim high, but watch for overdoing it or promising too much."
+      }
+    },
+    "Saturn": {
+      "conjunction": {
+        "meaning": "Saturn is sitting on {b}, which can feel like a time of tests and new responsibilities. It can also be when you build something solid and lasting.",
+        "howToUseIt": "Focus on one or two goals, keep steady habits and be patient with yourself."
+      },
+      "flowing": {
+        "meaning": "Saturn is steadying {b}, which can make this a good time for patient work and practical progress.",
+        "howToUseIt": "Make plans, commit to them and let small steps add up."
+      },
+      "tense": {
+        "meaning": "Saturn is testing {b}, so things may feel slower or heavier for a while. Steady effort now can make you stronger.",
+        "howToUseIt": "Rest when you need to, ask for help and keep going one step at a time."
+      }
+    },
+    "Uranus": {
+      "conjunction": {
+        "meaning": "Uranus is waking up {b}, which can bring surprises, restlessness and a strong wish for change.",
+        "howToUseIt": "Stay open to new ideas, but make big changes one step at a time."
+      },
+      "flowing": {
+        "meaning": "Uranus is refreshing {b}, so new ideas and helpful changes may come more easily.",
+        "howToUseIt": "Try something new or experiment with a different way of doing things."
+      },
+      "tense": {
+        "meaning": "Uranus is shaking up {b}, which can bring sudden changes or a push to break old patterns.",
+        "howToUseIt": "Keep some flexibility in your plans and give yourself room to adjust."
+      }
+    },
+    "Neptune": {
+      "conjunction": {
+        "meaning": "Neptune is softening {b}, which can bring dreamy, sensitive or inspired feelings. Things may feel less clear than usual.",
+        "howToUseIt": "Make time for art, rest and reflection, and double-check important details."
+      },
+      "flowing": {
+        "meaning": "Neptune is inspiring {b}, so creativity, kindness and intuition may flow more easily.",
+        "howToUseIt": "Follow gentle hunches and give time to creative or caring projects."
+      },
+      "tense": {
+        "meaning": "Neptune is blurring {b}, so you may feel unsure or easily drained for a while.",
+        "howToUseIt": "Keep clear boundaries, rest well and wait for clarity before big decisions."
+      }
+    },
+    "Pluto": {
+      "conjunction": {
+        "meaning": "Pluto is deepening {b}, which can bring intense feelings and a slow, powerful change in this part of your life.",
+        "howToUseIt": "Let go of what no longer fits, and trust that real change takes time."
+      },
+      "flowing": {
+        "meaning": "Pluto is empowering {b}, so this can be a good time for deep, lasting improvements.",
+        "howToUseIt": "Dig into what matters most to you and put your energy there."
+      },
+      "tense": {
+        "meaning": "Pluto is pushing {b} to transform, which can bring pressure or power struggles for a while.",
+        "howToUseIt": "Notice where you hold on too tightly, and choose honest, steady change."
+      }
+    }
+  },
+  "houseTopics": {
+    "1": "you and how you show up",
+    "2": "your values and sense of security",
+    "3": "learning and everyday communication",
+    "4": "home and family",
+    "5": "creativity, romance and fun",
+    "6": "daily routines and work",
+    "7": "partnerships",
+    "8": "deep bonds and shared trust",
+    "9": "travel, study and beliefs",
+    "10": "career and public life",
+    "11": "friends, groups and hopes",
+    "12": "rest and your inner life"
+  },
+  "ingress": {
+    "Jupiter": "Jupiter moves into your {n} house ({topic}), bringing a focus on growth there over the coming months.",
+    "Saturn": "Saturn moves into your {n} house ({topic}), asking for structure and steady effort there over the next few years.",
+    "Uranus": "Uranus moves into your {n} house ({topic}), bringing fresh starts and change there for years to come.",
+    "Neptune": "Neptune moves into your {n} house ({topic}), bringing more sensitivity and imagination there for years to come.",
+    "Pluto": "Pluto moves into your {n} house ({topic}), starting a long, deep transformation there."
+  },
+  "ingressBack": "{body} moves back into your {n} house ({topic}) for a while as it turns retrograde."
+}

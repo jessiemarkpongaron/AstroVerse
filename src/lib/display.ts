@@ -105,3 +105,27 @@ export function formatOrb(orb: number): string {
   const total = Math.round(orb * 60);
   return `${Math.floor(total / 60)}°${String(total % 60).padStart(2, '0')}′`;
 }
+
+const DAY_FORMAT = new Intl.DateTimeFormat('en-US', {
+  month: 'short',
+  day: 'numeric',
+  year: 'numeric',
+  timeZone: 'UTC',
+});
+
+/** 'YYYY-MM-DD' (UTC day) → 'Feb 25, 2027'. */
+export function formatDay(day: string): string {
+  return DAY_FORMAT.format(new Date(`${day}T00:00:00Z`));
+}
+
+/** Window dates for the forecast: 'Now – Mar 14, 2027', 'Feb 6, 2027 – beyond the forecast'. */
+export function formatWindow(w: {
+  start: string;
+  end: string;
+  startsBeforeScan: boolean;
+  endsAfterScan: boolean;
+}): string {
+  const from = w.startsBeforeScan ? 'Now' : formatDay(w.start);
+  const to = w.endsAfterScan ? 'beyond this forecast' : formatDay(w.end);
+  return `${from} – ${to}`;
+}

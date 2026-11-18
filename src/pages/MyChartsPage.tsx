@@ -145,6 +145,20 @@ export function MyChartsPage() {
                   >
                     Full reading
                   </Link>
+                  <Link
+                    to="/forecast"
+                    state={
+                      {
+                        input: rowToBirthInput(c),
+                        name: c.is_self ? '' : c.label,
+                        savedChartId: c.id,
+                      } satisfies ChartLocationState
+                    }
+                    aria-label={`Forecast for ${c.label}`}
+                    className="flex min-h-11 items-center rounded-lg border border-gold px-4 font-medium text-gold-dark dark:text-gold"
+                  >
+                    Forecast
+                  </Link>
                   <button
                     type="button"
                     onClick={() => setConfirming(c.id)}

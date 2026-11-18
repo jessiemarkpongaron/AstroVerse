@@ -118,6 +118,9 @@ export function FullReadingPage() {
         <Link to="/chart" state={back} className="text-gold-dark underline dark:text-gold">
           Back to the chart
         </Link>
+        <Link to="/forecast" state={back} className="text-gold-dark underline dark:text-gold">
+          Your next two years
+        </Link>
       </nav>
     </div>
   );
