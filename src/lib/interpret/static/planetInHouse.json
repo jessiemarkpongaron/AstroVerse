@@ -5,9 +5,9 @@
     "Sun": "approved",
     "Moon": "approved",
     "Mercury": "approved",
-    "Venus": "draft",
-    "Mars": "draft",
-    "Jupiter": "draft"
+    "Venus": "approved",
+    "Mars": "approved",
+    "Jupiter": "approved"
   },
   "planets": {
     "Sun": {
