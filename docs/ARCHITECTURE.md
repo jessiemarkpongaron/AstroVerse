@@ -172,5 +172,14 @@ PAYMONGO_WEBHOOK_SECRET=
 
 ## 7. Deployment
 - Cloudflare Pages: build `npm run build`, output `dist`, SPA fallback to `index.html`
+  (automatic: no `404.html`). Node from `.nvmrc`. Headers/CSP in `public/_headers`, verified
+  after each build by `scripts/check-csp.mjs`; e2e tests apply the same CSP.
+- Service worker: `sw/sw.js` template → `dist/sw.js` via `scripts/vite-sw-plugin.ts`
+  (precache = public shell + hashed assets, version = hash of that list). Navigations are
+  network-first with cached shell fallback; same-origin assets cache-first; cross-origin
+  (Open-Meteo, analytics) untouched.
+- Share links: birth data lives in the URL fragment; ChartPage moves it into router state and
+  clears the fragment after reading.
+- Analytics: Cloudflare Web Analytics, enabled in the dashboard (auto-injected, cookie-free).
 - Supabase: `supabase db push`, `supabase functions deploy <name>`
 - PWA: manifest + service worker caching the app shell (charts work offline once loaded)

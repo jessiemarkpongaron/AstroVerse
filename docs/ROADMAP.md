@@ -40,8 +40,9 @@ its acceptance items are checked.
       (2026-11-18, mobile profile: home 100/100, chart 97/100; chart page lazy-loaded)
 
 ### M6. Deploy Phase 1
-- [ ] Cloudflare Pages deploy, SPA fallback, PWA manifest + service worker
-- [ ] Basic analytics (Cloudflare Web Analytics)
+- [ ] Cloudflare Pages deploy (owner connects repo in dashboard)
+- [x] SPA fallback, PWA manifest + service worker, `_headers` (CSP, caching), e2e tests
+- [ ] Basic analytics (Cloudflare Web Analytics — enable in dashboard; see README)
 
 ## Phase 2 — Accounts, AI readings, forecast
 

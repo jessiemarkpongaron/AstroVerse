@@ -1,5 +1,5 @@
-import { useMemo, useState, type ReactNode } from 'react';
-import { Link, useLocation } from 'react-router';
+import { useEffect, useMemo, useState, type ReactNode } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { AspectsList } from '../components/AspectsList/AspectsList.tsx';
 import {
   BigThreeCard,
@@ -26,7 +26,19 @@ const HOUSE_OPTIONS = [
 
 function useBirthInput(): { input: BirthInput | null; name: string } {
   const location = useLocation();
+  const navigate = useNavigate();
   const fromHash = location.hash ? decodeBirthHash(location.hash) : null;
+
+  // Privacy: once a share link is opened, move the birth data from the address bar into
+  // router state (kept across reloads by the browser), so it doesn't linger in the URL.
+  useEffect(() => {
+    if (!fromHash) return;
+    const state: ChartLocationState = { input: fromHash, name: '' };
+    navigate({ pathname: location.pathname, hash: '' }, { replace: true, state });
+    // fromHash is derived from location.hash; re-run only when the hash changes.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location.hash]);
+
   if (fromHash) return { input: fromHash, name: '' };
   const state = location.state as ChartLocationState | null;
   return { input: state?.input ?? null, name: state?.name ?? '' };

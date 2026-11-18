@@ -15,7 +15,9 @@
     "format": "prettier --write .",
     "test": "vitest run",
     "test:watch": "vitest",
-    "gen:fixtures": "node scripts/gen-fixtures.ts"
+    "gen:fixtures": "node scripts/gen-fixtures.ts",
+    "postbuild": "node scripts/check-csp.mjs",
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "astronomy-engine": "2.1.19",

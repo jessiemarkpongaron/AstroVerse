@@ -2,6 +2,7 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router';
 import { App } from './App.tsx';
+import { registerServiceWorker } from './lib/registerServiceWorker.ts';
 import './index.css';
 
 const rootEl = document.getElementById('root');
@@ -14,3 +15,5 @@ createRoot(rootEl).render(
     </BrowserRouter>
   </StrictMode>,
 );
+
+registerServiceWorker();

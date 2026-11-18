@@ -1,16 +1,22 @@
 // @vitest-environment jsdom
 import { fireEvent, render, screen, within } from '@testing-library/react';
-import { MemoryRouter } from 'react-router';
+import { MemoryRouter, useLocation } from 'react-router';
 import { App } from '../App.tsx';
 import { encodeBirthHash } from '../lib/shareLink.ts';
 import { CARRASCAL_RESPONSE, mockFetchJson } from '../test/openMeteoFixtures.ts';
 
 afterEach(() => vi.unstubAllGlobals());
 
+function LocationProbe() {
+  const loc = useLocation();
+  return <output data-testid="location">{loc.pathname + loc.search + loc.hash}</output>;
+}
+
 function renderAt(entry: string | { pathname: string; hash?: string }) {
   return render(
     <MemoryRouter initialEntries={[entry]}>
       <App />
+      <LocationProbe />
     </MemoryRouter>,
   );
 }
@@ -112,6 +118,8 @@ describe('Chart page from a share link', () => {
     renderAt({ pathname: '/chart', hash: `#${hash}` });
     expect(await screen.findByRole('heading', { name: 'Your Big Three' })).toBeInTheDocument();
     expect(screen.getAllByText('Scorpio').length).toBeGreaterThan(0);
+    // Birth data is moved out of the URL once the page has read it.
+    expect(await screen.findByTestId('location')).toHaveTextContent(/^\/chart$/);
   });
 
   it('asks for birth details when there are none', async () => {
