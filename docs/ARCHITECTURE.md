@@ -48,7 +48,10 @@ astroverse/
 │  │  ├─ chartState.ts         router state type for form → /chart
 │  │  ├─ birthForm.ts          form validation → BirthInput
 │  │  ├─ shareLink.ts          encode/decode birth data in the URL fragment
-│  │  └─ supabase.ts
+│  │  ├─ supabase.ts           browser client (publishable key; null if env missing)
+│  │  ├─ charts.ts             save/list/delete charts, row ↔ BirthInput mapping
+│  │  ├─ database.types.ts     generated: npm run gen:types
+│  │  └─ pendingChart.ts       chart to save after sign-in (this device, ≤1 h)
 │  ├─ components/
 │  │  ├─ BirthForm/            form + place autocomplete
 │  │  ├─ BigThreeCard/
@@ -147,7 +150,17 @@ purchases  (id uuid pk, user_id uuid, chart_id uuid, product text,
             amount_centavos int, status text, paymongo_ref text, created_at timestamptz)
 ```
 
-- RLS enabled on all tables: `user_id = auth.uid()` (readings via join to charts).
+- Implemented in `supabase/migrations/20261118000000_profiles_charts_readings.sql` (M7).
+- RLS enabled on all tables: `user_id = auth.uid()` (readings via join to charts). `anon` has no
+  table privileges at all; `authenticated` may read/update only `display_name`/`locale` on its
+  profile, CRUD its own charts, and **read/delete** (never write) its readings — readings are
+  written only by Edge Functions with the service role.
+- Constraints: consent required for others' charts (`is_self or consent_confirmed`), birth time
+  present iff accuracy ≠ unknown, dates 1900–2100, lat/lon ranges, label 1–60 chars, at most one
+  `is_self` chart per user, readings unique per (chart, kind, input_hash), `on delete cascade`
+  from charts to readings. Profiles are created by a `security definer` trigger on sign-up.
+- Tests: `supabase/tests/database/rls.test.sql` (pgTAP, 31 checks) and
+  `src/lib/charts.integration.test.ts` (app data layer with two real users); `npm run test:db`.
 - `purchases` rows are inserted/updated only by the webhook function (service role).
 
 ## 5. Edge Function: generate-reading

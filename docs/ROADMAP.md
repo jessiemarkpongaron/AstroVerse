@@ -50,8 +50,10 @@ its acceptance items are checked.
 ## Phase 2 — Accounts, AI readings, forecast
 
 ### M7. Supabase
-- [ ] Migrations for profiles, charts, readings (+ RLS policies + tests for RLS)
-- [ ] Auth: magic link + Google; "Save chart"; "My charts" page; delete chart
+- [x] Migrations for profiles, charts, readings (+ RLS policies + tests for RLS) — local stack
+- [ ] Apply migration to the hosted project (`supabase db push`)
+- [x] Auth UI: magic link + Google; "Save chart" (consent for others); "My charts"; delete chart
+- [ ] Hosted config: Cloudflare `VITE_SUPABASE_*` env, Auth URLs, Google OAuth client, SMTP
 
 ### M8. AI natal reading
 - [ ] Static interpretation JSON (draft in batches, I review)

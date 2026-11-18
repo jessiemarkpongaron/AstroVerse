@@ -1,10 +1,10 @@
 # Cloudflare Pages headers (https://developers.cloudflare.com/pages/configuration/headers/)
 # The script-src hash allows the inline theme script in index.html; `npm run build` runs
 # scripts/check-csp.mjs, which fails if that script changes and this hash goes stale.
-# Third parties: Open-Meteo (place search), Cloudflare Web Analytics (beacon).
+# Third parties: Supabase (auth + data), Open-Meteo (place search), Cloudflare Web Analytics.
 
 /*
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'sha256-5/+X//xLVmKvS2CZ5Rj1Gsl/Ck0J+vy4neB3skyGpdM=' https://static.cloudflareinsights.com; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://geocoding-api.open-meteo.com https://cloudflareinsights.com; manifest-src 'self'; worker-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; object-src 'none'; upgrade-insecure-requests
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'sha256-5/+X//xLVmKvS2CZ5Rj1Gsl/Ck0J+vy4neB3skyGpdM=' https://static.cloudflareinsights.com; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://gvnaqtxohqrblmxmyofs.supabase.co https://geocoding-api.open-meteo.com https://cloudflareinsights.com; manifest-src 'self'; worker-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; object-src 'none'; upgrade-insecure-requests
   X-Content-Type-Options: nosniff
   X-Frame-Options: DENY
   Referrer-Policy: strict-origin-when-cross-origin

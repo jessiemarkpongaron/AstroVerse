@@ -8,6 +8,7 @@ import {
 } from '../components/BigThreeCard/BigThreeCard.tsx';
 import { ChartWheel } from '../components/ChartWheel/ChartWheel.tsx';
 import { PlacementsTable } from '../components/PlacementsTable/PlacementsTable.tsx';
+import { SaveChartPanel } from '../components/SaveChart/SaveChartPanel.tsx';
 import { ShortReading } from '../components/ShortReading/ShortReading.tsx';
 import { SegmentedControl } from '../components/ui/SegmentedControl.tsx';
 import { UncertaintyNotes } from '../components/ui/UncertaintyNotes.tsx';
@@ -24,7 +25,12 @@ const HOUSE_OPTIONS = [
   { value: 'whole-sign', label: 'Whole Sign' },
 ] as const satisfies readonly { value: HouseSystemChoice; label: string }[];
 
-function useBirthInput(): { input: BirthInput | null; name: string } {
+function useBirthInput(): {
+  input: BirthInput | null;
+  name: string;
+  savedChartId?: string | undefined;
+  openSave?: boolean | undefined;
+} {
   const location = useLocation();
   const navigate = useNavigate();
   const fromHash = location.hash ? decodeBirthHash(location.hash) : null;
@@ -41,7 +47,12 @@ function useBirthInput(): { input: BirthInput | null; name: string } {
 
   if (fromHash) return { input: fromHash, name: '' };
   const state = location.state as ChartLocationState | null;
-  return { input: state?.input ?? null, name: state?.name ?? '' };
+  return {
+    input: state?.input ?? null,
+    name: state?.name ?? '',
+    savedChartId: state?.savedChartId,
+    openSave: state?.openSave,
+  };
 }
 
 function Section({
@@ -65,7 +76,7 @@ function Section({
 }
 
 export function ChartPage() {
-  const { input, name } = useBirthInput();
+  const { input, name, savedChartId, openSave } = useBirthInput();
   const [houseSystem, setHouseSystem] = useState<HouseSystemChoice>('placidus');
   const inputKey = input ? JSON.stringify(input) : '';
   const result = useMemo((): { chart: Chart } | { error: string } | null => {
@@ -142,6 +153,14 @@ export function ChartPage() {
       </header>
 
       <BigThreeCard chart={chart} meanings={meanings} />
+
+      <SaveChartPanel
+        key={inputKey}
+        input={chart.input}
+        name={name}
+        alreadySavedId={savedChartId}
+        startOpen={openSave}
+      />
 
       <UncertaintyNotes flags={chart.flags.filter((f) => !isBigThreeCardFlag(f))} />
 

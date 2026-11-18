@@ -46,6 +46,35 @@ server-side secrets go in Supabase function secrets, never in `VITE_*` vars.
   `src/lib/astro/__tests__/fixtures.json`.
 - Component tests opt into jsdom with `// @vitest-environment jsdom` at the top of the file.
 
+## Accounts (Supabase)
+
+Local development uses the Supabase CLI (Docker required):
+
+```bash
+npx supabase start -x studio,imgproxy,edge-runtime,logflare,vector,realtime,storage-api,mailpit,postgres-meta,supavisor
+npm run test:db      # pgTAP RLS tests + app integration test against the local stack
+npm run gen:types    # regenerate src/lib/database.types.ts after schema changes
+npx supabase stop
+```
+
+To point the dev server at the local stack, put its `API_URL` and `ANON_KEY` (from
+`npx supabase status`) in `.env.local` as `VITE_SUPABASE_URL` / `VITE_SUPABASE_ANON_KEY`.
+Local Google sign-in needs `SUPABASE_AUTH_EXTERNAL_GOOGLE_CLIENT_ID` / `_SECRET` in
+`supabase/.env` (git-ignored) and `enabled = true` under `[auth.external.google]`.
+
+Hosted project setup (once):
+
+1. `npx supabase login`, `npx supabase link --project-ref <ref>`, `npx supabase db push`.
+2. Supabase → Authentication → URL Configuration: Site URL = the live domain; Redirect URLs =
+   `https://<live domain>/auth/callback` and `http://localhost:5173/auth/callback`.
+3. Google: Google Cloud Console → OAuth client (Web). Authorized redirect URI =
+   `https://<ref>.supabase.co/auth/v1/callback`. Paste the client ID/secret into Supabase →
+   Authentication → Providers → Google.
+4. Email: Supabase's built-in email sender is heavily rate-limited; configure custom SMTP
+   (Authentication → Emails → SMTP) before launch.
+5. Cloudflare build env: `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY` (publishable key), then
+   redeploy. The CSP in `public/_headers` already allows the project's `*.supabase.co` origin.
+
 ## Deploy (Cloudflare)
 
 Live: **https://astroverse.digitalverseph.com** (custom domain on the `digitalverseph.com` Cloudflare
