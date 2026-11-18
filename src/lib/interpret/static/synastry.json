@@ -1,7 +1,7 @@
 {
   "_comment": "Compatibility (synastry) texts. {A} = your point's theme (capitalized), {b} = their point's theme, both from aspects.json (\"your\" becomes \"their\" for the other person). Tendencies, never a verdict.",
   "version": 1,
-  "review": "draft",
+  "review": "approved",
   "templates": {
     "conjunction": "{A} and {b} meet in the same place, so this part of your connection can feel strong and familiar.",
     "sextile": "{A} and {b} support each other in a friendly way. A little effort can make this easy to build on.",

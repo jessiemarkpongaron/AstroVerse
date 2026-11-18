@@ -52,6 +52,12 @@ Readings come from two layers:
   dominant element and 4 paths per element (3 from the strongest, 2 from the next); the rest
   reuses approved texts (Midheaven, 10th/6th/2nd-house planets, Mars/Saturn, strengths) plus
   career-themed forecast periods. Tests block promises, "should/must" and money words.
+- **Compatibility** (`synastry.json`, `src/lib/interpret/synastry.ts`, page `/compatibility`):
+  one template per aspect type filled with "your" theme + "their" theme, three band
+  descriptions, an intro ("tendencies, not a verdict") and a closing respect note. Strength is a
+  word (Strong/Some/Light), never a percentage. Tests block soulmate/destined/meant to be,
+  perfect match/incompatible, jealousy, control, possessiveness, cheating, break-up, divorce,
+  fate, guarantees, "never" and "%".
 
 ## 2. AI payload (buildPayload.ts)
 Send only what the model needs — never names, emails or exact birth data. The schema

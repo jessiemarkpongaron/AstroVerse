@@ -89,6 +89,42 @@ test('career reading opens from the chart with paths and timing', async ({ page 
   expect(external).toEqual([]);
 });
 
+test.describe('compatibility', () => {
+  test.use({ serviceWorkers: 'block' }); // route() must see the place search
+
+  test('needs permission, then compares on the device with three bands', async ({ page }) => {
+    const external: string[] = [];
+    page.on('request', (r) => {
+      const u = r.url();
+      if (!u.startsWith('http://localhost') && !u.includes('geocoding-api.open-meteo.com'))
+        external.push(u);
+    });
+    await mockPlaceSearch(page);
+    await page.goto(`/chart#${CARRASCAL_HASH}`);
+    await page.getByRole('link', { name: 'Check compatibility' }).click();
+    await expect(page.getByRole('heading', { name: 'Compatibility' })).toBeInViewport();
+
+    await page.getByLabel('Their name').fill('Ana');
+    await page.getByLabel('Birth date').fill('1992-11-08');
+    await page.getByLabel('Birth time').fill('08:15');
+    await page.getByRole('combobox', { name: 'Birth place' }).fill('Carrascal');
+    await page.getByRole('option', { name: 'Carrascal, Surigao del Sur, Philippines' }).click();
+    const compare = page.getByRole('button', { name: 'Compare charts' });
+    await expect(compare).toBeDisabled();
+    await page.getByLabel('I have this person’s permission').check();
+    await compare.click();
+
+    await expect(page.getByRole('heading', { name: 'You & Ana' })).toBeVisible();
+    for (const band of ['Harmony', 'Growth areas', 'Challenges']) {
+      await expect(page.getByRole('heading', { name: new RegExp(`^${band} · `) })).toBeVisible();
+    }
+    await expect(page.getByText('respect, trust and free choice')).toBeVisible();
+    await expect(page.getByText(/%/)).toHaveCount(0);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBe(0);
+    expect(external).toEqual([]);
+  });
+});
+
 test('works offline after the first visit (service worker)', async ({ page, context }) => {
   await page.goto(`/chart#${CARRASCAL_HASH}`);
   await expect(page.getByRole('heading', { name: 'Your Big Three' })).toBeVisible();

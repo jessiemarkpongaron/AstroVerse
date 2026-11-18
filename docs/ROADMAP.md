@@ -90,8 +90,14 @@ its acceptance items are checked.
 
 ## Phase 3 — Monetize & grow
 
-### M10. Compatibility
-- [ ] `synastry.ts`, two-chart UI, consent checkbox, AI synastry reading
+### M10. Compatibility — done (2026-11-18), free and static
+- [x] `synastry.ts` + tests: cross-aspects (Sun–Saturn + Rising), tighter orbs, key contacts
+      (Venus–Mars, Sun–Moon, Moon–Moon, Rising links); Moon/Rising left out without a birth time
+- [x] Page `/compatibility`: compare with a saved chart, or enter details behind a permission
+      checkbox; runs on the device, nothing sent or saved
+- [x] Harmony / Growth areas / Challenges with Strong/Some/Light (never a %), up to 5 contacts
+      each (`synastry.json`, approved), respect note and disclaimer
+- [ ] Later, with API credits: AI synastry reading (premium)
 
 ### M11. Payments (PayMongo)
 - [ ] `create-checkout` + `paymongo-webhook` functions (signature verification)
