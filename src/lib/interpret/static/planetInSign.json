@@ -1,0 +1,91 @@
+{
+  "_comment": "Original AstroVerse text. Planet-in-sign snippets (Mercury–Pluto), one planet per review batch. Tone and guardrails: docs/INTERPRETATION.md.",
+  "version": 1,
+  "review": {
+    "Mercury": "approved"
+  },
+  "planets": {
+    "Mercury": {
+      "Aries": {
+        "meaning": "You tend to think fast and say what you mean. Quick decisions come easily, and slowing down to listen can make your ideas land even better.",
+        "keywords": ["Quick", "Direct", "Decisive"],
+        "strengths": ["Thinks on your feet", "Speaks up", "Gets to the point"],
+        "challenges": ["Interrupting", "Hasty decisions", "Arguing to win"]
+      },
+      "Taurus": {
+        "meaning": "You tend to think things through slowly and carefully, and once you decide, you stick to it. People may trust your words because you rarely say things you don't mean.",
+        "keywords": ["Steady", "Practical", "Thoughtful"],
+        "strengths": ["Common sense", "Patient learner", "Calm speaker"],
+        "challenges": ["Slow to change your mind", "Stubborn in debates", "Resisting new methods"]
+      },
+      "Gemini": {
+        "meaning": "Your mind is quick, playful and always collecting new information. You may enjoy talking, texting and learning about many topics at once.",
+        "keywords": ["Witty", "Curious", "Versatile"],
+        "strengths": ["Fast learner", "Great with words", "Sees many angles"],
+        "challenges": ["Scattered focus", "Talking more than listening", "Nervous overthinking"]
+      },
+      "Cancer": {
+        "meaning": "You tend to think with your heart, remembering how things felt as much as what was said. You may be a gentle listener who picks up on moods no one mentions.",
+        "keywords": ["Intuitive", "Caring", "Reflective"],
+        "strengths": ["Good memory", "Empathetic listener", "Reads between the lines"],
+        "challenges": [
+          "Taking words personally",
+          "Letting moods steer your thinking",
+          "Holding on to old hurts"
+        ]
+      },
+      "Leo": {
+        "meaning": "You tend to speak with warmth, confidence and a touch of drama. You may be a natural storyteller who can inspire and entertain a room.",
+        "keywords": ["Expressive", "Confident", "Creative"],
+        "strengths": ["Persuasive", "Encouraging", "Memorable speaker"],
+        "challenges": ["Fixed opinions", "Disliking criticism", "Dominating conversations"]
+      },
+      "Virgo": {
+        "meaning": "Your mind is sharp, organized and good with details. You may enjoy analyzing problems and finding practical ways to make things better.",
+        "keywords": ["Analytical", "Precise", "Practical"],
+        "strengths": ["Clear thinker", "Good at planning", "Careful with facts"],
+        "challenges": ["Overanalyzing", "Worrying", "Being overly critical"]
+      },
+      "Libra": {
+        "meaning": "You tend to think in terms of fairness, weighing every side before you speak. You may know how to say hard things kindly.",
+        "keywords": ["Diplomatic", "Fair", "Gracious"],
+        "strengths": ["Good at settling disagreements", "Polite and tactful", "Sees both sides"],
+        "challenges": ["Indecision", "Avoiding hard truths", "Agreeing just to keep the peace"]
+      },
+      "Scorpio": {
+        "meaning": "Your mind is deep, focused and good at finding what's hidden. You may prefer meaningful conversations to small talk and keep some thoughts to yourself.",
+        "keywords": ["Perceptive", "Focused", "Private"],
+        "strengths": ["Sharp insight", "Good researcher", "Keeps confidences"],
+        "challenges": ["Suspicious thinking", "Cutting words when hurt", "Holding back information"]
+      },
+      "Sagittarius": {
+        "meaning": "You tend to think big and love ideas about life, faith, travel and the future. You may speak honestly and with humor, though small details can slip past you.",
+        "keywords": ["Open", "Honest", "Big-picture"],
+        "strengths": ["Inspiring ideas", "Eager to learn", "Funny and frank"],
+        "challenges": ["Bluntness", "Skipping details", "Preaching"]
+      },
+      "Capricorn": {
+        "meaning": "Your mind is practical, serious and focused on what works. You may think in plans and steps, and people often take your words seriously.",
+        "keywords": ["Practical", "Structured", "Serious"],
+        "strengths": ["Organized thinking", "Realistic", "Good at long-term planning"],
+        "challenges": ["Expecting the worst", "Rigid thinking", "Seeming too serious"]
+      },
+      "Aquarius": {
+        "meaning": "You tend to think in original ways and enjoy new ideas, technology and big questions about people and society. You may spot solutions others miss.",
+        "keywords": ["Inventive", "Logical", "Independent"],
+        "strengths": ["Original ideas", "Objective", "Open-minded"],
+        "challenges": [
+          "Stubborn about your views",
+          "Seeming detached",
+          "Arguing for the sake of it"
+        ]
+      },
+      "Pisces": {
+        "meaning": "Your mind is imaginative and intuitive, often thinking in pictures, feelings and stories. You may understand people without needing many words.",
+        "keywords": ["Imaginative", "Intuitive", "Poetic"],
+        "strengths": ["Creative thinking", "Understanding", "Artistic expression"],
+        "challenges": ["Daydreaming", "Vague communication", "Forgetting details"]
+      }
+    }
+  }
+}

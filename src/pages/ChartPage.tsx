@@ -8,6 +8,7 @@ import {
 } from '../components/BigThreeCard/BigThreeCard.tsx';
 import { ChartWheel } from '../components/ChartWheel/ChartWheel.tsx';
 import { PlacementsTable } from '../components/PlacementsTable/PlacementsTable.tsx';
+import { ShortReading } from '../components/ShortReading/ShortReading.tsx';
 import { SegmentedControl } from '../components/ui/SegmentedControl.tsx';
 import { UncertaintyNotes } from '../components/ui/UncertaintyNotes.tsx';
 import { buildChart } from '../lib/astro/chart.ts';
@@ -131,6 +132,13 @@ export function ChartPage() {
       <BigThreeCard chart={chart} meanings={meanings} />
 
       <UncertaintyNotes flags={chart.flags.filter((f) => !isBigThreeCardFlag(f))} />
+
+      <Section title="Your short reading">
+        <ShortReading chart={chart} />
+        <p className="text-xs text-slate-600 dark:text-slate-400">
+          For entertainment and self-reflection. Not professional advice.
+        </p>
+      </Section>
 
       <Section
         title="Your chart wheel"

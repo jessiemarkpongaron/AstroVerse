@@ -1,5 +1,12 @@
 import { SIGN_NAMES } from '../astro/zodiac.ts';
-import { BIG_THREE_TEXT, bigThreeEntry, type StaticEntry } from './staticText.ts';
+import {
+  BIG_THREE_TEXT,
+  PLANET_IN_SIGN_TEXT,
+  SNIPPET_PLANETS,
+  bigThreeEntry,
+  planetInSignEntry,
+  type StaticEntry,
+} from './staticText.ts';
 
 /**
  * Guardrails from docs/INTERPRETATION.md and PRD §5, enforced on every static entry.
@@ -29,6 +36,19 @@ function sentences(text: string): string[] {
   return text.split(/(?<=[.!?])\s+/).filter((s) => s.trim().length > 0);
 }
 
+function checkEntry(e: StaticEntry, minSentences: number, maxSentences: number) {
+  const n = sentences(e.meaning).length;
+  expect(n).toBeGreaterThanOrEqual(minSentences);
+  expect(n).toBeLessThanOrEqual(maxSentences);
+  expect(e.meaning).toMatch(/\byou(r)?\b/i); // second person
+  expect(e.keywords.length).toBeGreaterThanOrEqual(3);
+  expect(e.keywords.length).toBeLessThanOrEqual(5);
+  expect(e.strengths.length).toBeGreaterThanOrEqual(2);
+  expect(e.challenges.length).toBeGreaterThanOrEqual(2);
+  const text = [e.meaning, ...e.keywords, ...e.strengths, ...e.challenges].join(' ');
+  for (const re of BANNED) expect(text).not.toMatch(re);
+}
+
 const groups = ['sun', 'moon', 'rising'] as const;
 const all: [string, StaticEntry][] = groups.flatMap((g) =>
   SIGN_NAMES.map((s) => [`${g}.${s}`, BIG_THREE_TEXT[g][s]] as [string, StaticEntry]),
@@ -41,16 +61,7 @@ describe('bigThree.json', () => {
   });
 
   it.each(all)('%s follows the style and guardrails', (_id, e) => {
-    const n = sentences(e.meaning).length;
-    expect(n).toBeGreaterThanOrEqual(2);
-    expect(n).toBeLessThanOrEqual(3);
-    expect(e.meaning).toMatch(/\byou(r)?\b/i); // second person
-    expect(e.keywords.length).toBeGreaterThanOrEqual(3);
-    expect(e.keywords.length).toBeLessThanOrEqual(5);
-    expect(e.strengths.length).toBeGreaterThanOrEqual(2);
-    expect(e.challenges.length).toBeGreaterThanOrEqual(2);
-    const text = [e.meaning, ...e.keywords, ...e.strengths, ...e.challenges].join(' ');
-    for (const re of BANNED) expect(text).not.toMatch(re);
+    checkEntry(e, 2, 3);
   });
 
   it('meanings are unique (no copy-paste between entries)', () => {
@@ -60,5 +71,40 @@ describe('bigThree.json', () => {
 
   it('bigThreeEntry looks up by sign index', () => {
     expect(bigThreeEntry('sun', 2).keywords).toContain('Curiosity');
+  });
+});
+
+const written = SNIPPET_PLANETS.filter((p) => PLANET_IN_SIGN_TEXT.planets[p]);
+const snippets: [string, StaticEntry][] = written.flatMap((p) =>
+  SIGN_NAMES.map((s): [string, StaticEntry] => [
+    `${p}.${s}`,
+    PLANET_IN_SIGN_TEXT.planets[p]?.[s] as StaticEntry,
+  ]),
+);
+
+describe('planetInSign.json', () => {
+  it('every written planet has all 12 signs and a review status', () => {
+    expect(written.length).toBeGreaterThan(0);
+    for (const p of written) {
+      expect(Object.keys(PLANET_IN_SIGN_TEXT.planets[p] ?? {}).sort()).toEqual(
+        [...SIGN_NAMES].sort(),
+      );
+      expect(['draft', 'approved']).toContain(PLANET_IN_SIGN_TEXT.review[p]);
+    }
+  });
+
+  it.each(snippets)('%s follows the style and guardrails', (_id, e) => {
+    checkEntry(e, 1, 2);
+  });
+
+  it('snippets are unique and differ from Big Three text', () => {
+    const texts = [...snippets.map(([, e]) => e.meaning), ...all.map(([, e]) => e.meaning)];
+    expect(new Set(texts).size).toBe(texts.length);
+  });
+
+  it('planetInSignEntry returns null for planets not written yet', () => {
+    expect(planetInSignEntry('Mercury', 1)?.keywords).toContain('Steady');
+    const missing = SNIPPET_PLANETS.find((p) => !PLANET_IN_SIGN_TEXT.planets[p]);
+    if (missing) expect(planetInSignEntry(missing, 0)).toBeNull();
   });
 });
