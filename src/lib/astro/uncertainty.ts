@@ -2,10 +2,14 @@ import { formatLongitude } from './format.ts';
 import type { PointName, TimeAccuracy, UncertaintyFlag } from './types.ts';
 import { SIGN_NAMES, degreeInSign, signOf } from './zodiac.ts';
 
-/** Positions (and houses, when the time is known) at one instant. */
+/**
+ * Positions (and houses) at one instant. Lazy: implementations compute (and cache) only the
+ * points asked for, so a bisection on one point's sign doesn't recompute the whole chart.
+ */
 export interface Snapshot {
-  longitudes: Partial<Record<PointName, number>>;
-  houses: Partial<Record<PointName, number>> | null;
+  points: readonly PointName[];
+  longitude(p: PointName): number | undefined;
+  house(p: PointName): number | undefined;
 }
 export type SnapshotFn = (utcMs: number) => Snapshot;
 
@@ -55,10 +59,10 @@ export function findSwitch<T>(f: (ms: number) => T, lo: number, hi: number): num
 }
 
 const signNameAt = (snap: Snapshot, p: PointName) => {
-  const lon = snap.longitudes[p];
+  const lon = snap.longitude(p);
   return lon === undefined ? undefined : SIGN_NAMES[signOf(lon)];
 };
-const houseAt = (snap: Snapshot, p: PointName) => snap.houses?.[p];
+const houseAt = (snap: Snapshot, p: PointName) => snap.house(p);
 
 /**
  * Flag any point within 1° of a sign boundary. The Moon uses the larger of 1° and its
@@ -113,7 +117,7 @@ export function approximateTimeFlags(
     { ms: centerMs + windowMinutes * MS_PER_MIN, word: 'after' as const },
   ].map((s) => ({ ...s, snap: snapshotAt(s.ms) }));
 
-  const points = Object.keys(center.longitudes) as PointName[];
+  const points = center.points;
   for (const p of points) {
     // Sign changes.
     for (const side of sides) {

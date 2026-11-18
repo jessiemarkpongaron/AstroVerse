@@ -100,7 +100,7 @@ describe('Birth form → chart (PRD F1 acceptance)', () => {
 });
 
 describe('Chart page from a share link', () => {
-  it('renders from the URL fragment without the person’s name', () => {
+  it('renders from the URL fragment without the person’s name', async () => {
     const hash = encodeBirthHash({
       date: '1990-05-31',
       time: '15:30',
@@ -108,12 +108,14 @@ describe('Chart page from a share link', () => {
       place: { name: 'Carrascal', lat: 9.37028, lon: 125.94917, tz: 'Asia/Manila' },
     });
     renderAt({ pathname: '/chart', hash: `#${hash}` });
-    expect(screen.getByRole('heading', { name: 'Your Big Three' })).toBeInTheDocument();
-    expect(screen.getByText(/Scorpio/)).toBeInTheDocument();
+    expect(await screen.findByRole('heading', { name: 'Your Big Three' })).toBeInTheDocument();
+    expect(screen.getAllByText('Scorpio').length).toBeGreaterThan(0);
   });
 
-  it('asks for birth details when there are none', () => {
+  it('asks for birth details when there are none', async () => {
     renderAt('/chart');
-    expect(screen.getByRole('heading', { name: 'No birth details yet' })).toBeInTheDocument();
+    expect(
+      await screen.findByRole('heading', { name: 'No birth details yet' }),
+    ).toBeInTheDocument();
   });
 });

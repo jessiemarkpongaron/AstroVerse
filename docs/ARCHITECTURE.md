@@ -43,17 +43,21 @@ astroverse/
 │  │  │  ├─ static/            JSON text: signs, houses, planets-in-signs, aspects
 │  │  │  └─ buildPayload.ts    compact chart summary sent to the AI function
 │  │  ├─ geo.ts                Open-Meteo geocoding client (PH-first ranking, "name, hint" queries)
+│  │  ├─ display.ts            glyphs (text presentation, no emoji), labels, deg°min′ formatting
+│  │  ├─ flags.ts              which uncertainty flags belong on Big Three cards
+│  │  ├─ chartState.ts         router state type for form → /chart
 │  │  ├─ birthForm.ts          form validation → BirthInput
 │  │  ├─ shareLink.ts          encode/decode birth data in the URL fragment
 │  │  └─ supabase.ts
 │  ├─ components/
 │  │  ├─ BirthForm/            form + place autocomplete
 │  │  ├─ BigThreeCard/
-│  │  ├─ ChartWheel/           SVG wheel
+│  │  ├─ ChartWheel/           SVG wheel + wheelGeometry.ts (rotation, label spreading via PAVA)
+│  │  ├─ AspectsList/
 │  │  ├─ PlacementsTable/
 │  │  ├─ ReadingView/
 │  │  ├─ TransitTimeline/
-│  │  └─ ui/                   buttons, cards, modal, etc.
+│  │  └─ ui/                   SegmentedControl, UncertaintyNotes, …
 │  ├─ pages/                   Home, Chart, Reading, Forecast, Compatibility, Account, Pricing
 │  ├─ hooks/
 │  └─ main.tsx

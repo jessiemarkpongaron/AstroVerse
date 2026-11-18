@@ -1,7 +1,7 @@
 import { useLocation, useNavigate } from 'react-router';
 import { BirthForm } from '../components/BirthForm/BirthForm.tsx';
 import type { BirthInput } from '../lib/astro/types.ts';
-import type { ChartLocationState } from './ChartPage.tsx';
+import type { ChartLocationState } from '../lib/chartState.ts';
 
 export function HomePage() {
   const navigate = useNavigate();

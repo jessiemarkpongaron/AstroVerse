@@ -1,22 +1,22 @@
-import { useMemo, useState } from 'react';
+import { useMemo, useState, type ReactNode } from 'react';
 import { Link, useLocation } from 'react-router';
+import { AspectsList } from '../components/AspectsList/AspectsList.tsx';
+import { BigThreeCard } from '../components/BigThreeCard/BigThreeCard.tsx';
+import { ChartWheel } from '../components/ChartWheel/ChartWheel.tsx';
+import { PlacementsTable } from '../components/PlacementsTable/PlacementsTable.tsx';
+import { SegmentedControl } from '../components/ui/SegmentedControl.tsx';
+import { UncertaintyNotes } from '../components/ui/UncertaintyNotes.tsx';
 import { buildChart } from '../lib/astro/chart.ts';
-import { formatLongitude } from '../lib/astro/format.ts';
 import { BirthInputError } from '../lib/astro/time.ts';
-import type { BirthInput, Chart, PointName } from '../lib/astro/types.ts';
+import type { BirthInput, Chart, HouseSystemChoice } from '../lib/astro/types.ts';
+import type { ChartLocationState } from '../lib/chartState.ts';
+import { isBigThreeCardFlag } from '../lib/flags.ts';
 import { buildShareUrl, decodeBirthHash } from '../lib/shareLink.ts';
 
-/** Router state passed from the form. Birth data stays in memory, not in the URL. */
-export interface ChartLocationState {
-  input: BirthInput;
-  name: string;
-}
-
-const BIG_THREE: { point: PointName; label: string }[] = [
-  { point: 'Sun', label: 'Sun' },
-  { point: 'Moon', label: 'Moon' },
-  { point: 'Ascendant', label: 'Rising' },
-];
+const HOUSE_OPTIONS = [
+  { value: 'placidus', label: 'Placidus' },
+  { value: 'whole-sign', label: 'Whole Sign' },
+] as const satisfies readonly { value: HouseSystemChoice; label: string }[];
 
 function useBirthInput(): { input: BirthInput | null; name: string } {
   const location = useLocation();
@@ -26,17 +26,41 @@ function useBirthInput(): { input: BirthInput | null; name: string } {
   return { input: state?.input ?? null, name: state?.name ?? '' };
 }
 
+function Section({
+  title,
+  children,
+  action,
+}: {
+  title: string;
+  children: ReactNode;
+  action?: ReactNode;
+}) {
+  return (
+    <section className="space-y-3">
+      <div className="flex flex-wrap items-center justify-between gap-2">
+        <h2 className="text-lg font-semibold">{title}</h2>
+        {action}
+      </div>
+      {children}
+    </section>
+  );
+}
+
 export function ChartPage() {
   const { input, name } = useBirthInput();
+  const [houseSystem, setHouseSystem] = useState<HouseSystemChoice>('placidus');
+  const inputKey = input ? JSON.stringify(input) : '';
   const result = useMemo((): { chart: Chart } | { error: string } | null => {
     if (!input) return null;
     try {
-      return { chart: buildChart(input) };
+      return { chart: buildChart(input, { houseSystem }) };
     } catch (e) {
       if (e instanceof BirthInputError) return { error: e.message };
       throw e;
     }
-  }, [input]);
+    // inputKey captures input by value (router state objects can change identity).
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [inputKey, houseSystem]);
   const [copied, setCopied] = useState<'idle' | 'copied' | 'failed'>('idle');
 
   if (!result) {
@@ -62,6 +86,7 @@ export function ChartPage() {
   }
 
   const { chart } = result;
+  const timeKnown = chart.houses !== null;
   const shareUrl = buildShareUrl(window.location.origin, chart.input);
 
   async function copyLink() {
@@ -73,45 +98,54 @@ export function ChartPage() {
     }
   }
 
+  const fellBack = chart.houses?.system === 'porphyry';
+
   return (
-    <section className="space-y-6">
-      <div>
+    <div className="space-y-8">
+      <header>
         <h1 className="text-2xl font-bold tracking-tight">
           {name ? `${name}'s Big Three` : 'Your Big Three'}
         </h1>
         <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">
           {chart.input.date}
-          {chart.input.time ? ` · ${chart.input.time}` : ' · time unknown'} ·{' '}
+          {chart.input.time ? ` · ${chart.input.time}` : ' · time unknown'}
+          {chart.input.timeAccuracy === 'approximate' ? ' (approx.)' : ''} ·{' '}
           {chart.input.place.name}
         </p>
-      </div>
+      </header>
 
-      <ul className="grid gap-3 sm:grid-cols-3">
-        {BIG_THREE.map(({ point, label }) => {
-          const p = chart.points.find((x) => x.name === point);
-          return (
-            <li key={point} className="rounded-xl border border-slate-200 p-4 dark:border-dusk">
-              <p className="text-sm text-slate-600 dark:text-slate-400">{label}</p>
-              {p ? (
-                <p className="text-lg font-semibold">{formatLongitude(p.longitude)}</p>
-              ) : (
-                <p className="text-sm">Add your birth time to see your Rising sign.</p>
-              )}
-            </li>
-          );
-        })}
-      </ul>
+      <BigThreeCard chart={chart} />
 
-      {chart.flags.length > 0 && (
-        <div className="rounded-xl bg-amber-50 p-4 text-sm text-amber-950 dark:bg-amber-950/40 dark:text-amber-100">
-          <h2 className="mb-2 font-semibold">Good to know</h2>
-          <ul className="list-disc space-y-1 pl-5">
-            {chart.flags.map((f, i) => (
-              <li key={i}>{f.message}</li>
-            ))}
-          </ul>
-        </div>
-      )}
+      <UncertaintyNotes flags={chart.flags.filter((f) => !isBigThreeCardFlag(f))} />
+
+      <Section
+        title="Your chart wheel"
+        action={
+          timeKnown ? (
+            <SegmentedControl
+              label="House system"
+              options={HOUSE_OPTIONS}
+              value={houseSystem}
+              onChange={setHouseSystem}
+            />
+          ) : null
+        }
+      >
+        <ChartWheel chart={chart} />
+        {fellBack && houseSystem === 'placidus' && (
+          <p className="text-xs text-slate-600 dark:text-slate-400">
+            Showing Porphyry houses (see note above).
+          </p>
+        )}
+      </Section>
+
+      <Section title="Placements">
+        <PlacementsTable points={chart.points} showHouses={timeKnown} />
+      </Section>
+
+      <Section title="Aspects">
+        <AspectsList aspects={chart.aspects} />
+      </Section>
 
       <div className="flex flex-col gap-3 sm:flex-row">
         <button
@@ -138,6 +172,6 @@ export function ChartPage() {
           </>
         )}
       </p>
-    </section>
+    </div>
   );
 }

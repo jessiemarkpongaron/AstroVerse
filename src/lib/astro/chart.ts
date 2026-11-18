@@ -44,23 +44,37 @@ function validatePlace(input: BirthInput) {
   }
 }
 
-/** Lightweight recompute (no speeds) used by the uncertainty scans. */
+/**
+ * Lazy recompute (no speeds) used by the uncertainty scans: each snapshot computes a point's
+ * longitude, the cusps and a point's house only on first request.
+ */
 function makeSnapshotFn(input: BirthInput, system: HouseSystemChoice) {
   const { lat, lon } = input.place;
+  const points: readonly PointName[] = [...BODIES, 'Ascendant', 'Midheaven'];
   return (utcMs: number): Snapshot => {
     const time = MakeTime(new Date(utcMs));
-    const longitudes: Partial<Record<PointName, number>> = {};
-    for (const b of BODIES) longitudes[b] = bodyLongitude(b, time);
-    const ramc = ramcAt(time, lon);
-    const obliquity = obliquityAt(time);
-    longitudes.Ascendant = ascendantFromRamc(ramc, obliquity, lat);
-    longitudes.Midheaven = midheavenFromRamc(ramc, obliquity);
-    const { cusps } = computeHouses({ ramc, obliquity, latitude: lat }, system);
-    const houses: Partial<Record<PointName, number>> = {};
-    for (const [name, l] of Object.entries(longitudes) as [PointName, number][]) {
-      houses[name] = houseOf(l, cusps);
-    }
-    return { longitudes, houses };
+    let frame: { ramc: number; obliquity: number } | null = null;
+    let cusps: number[] | null = null;
+    const lons = new Map<PointName, number>();
+    const getFrame = () => (frame ??= { ramc: ramcAt(time, lon), obliquity: obliquityAt(time) });
+    const longitude = (p: PointName): number => {
+      let v = lons.get(p);
+      if (v === undefined) {
+        if (p === 'Ascendant') v = ascendantFromRamc(getFrame().ramc, getFrame().obliquity, lat);
+        else if (p === 'Midheaven') v = midheavenFromRamc(getFrame().ramc, getFrame().obliquity);
+        else v = bodyLongitude(p, time);
+        lons.set(p, v);
+      }
+      return v;
+    };
+    return {
+      points,
+      longitude,
+      house: (p) => {
+        cusps ??= computeHouses({ ...getFrame(), latitude: lat }, system).cusps;
+        return houseOf(longitude(p), cusps);
+      },
+    };
   };
 }
 
