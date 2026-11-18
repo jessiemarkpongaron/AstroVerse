@@ -25,9 +25,10 @@ its acceptance items are checked.
 - [x] `buildChart(input)` single entry point + tests
 
 ### M4. Birth form + geocoding
-- [ ] Open-Meteo geocoding autocomplete (debounced, PH results ranked first)
-- [ ] Time accuracy selector, validation, URL state (`/chart?d=…&t=…&p=…`) for shareable links
-- [ ] Acceptance: Carrascal example from PRD F1 works
+- [x] Open-Meteo geocoding autocomplete (debounced, PH results ranked first)
+- [x] Time accuracy selector, validation, shareable links with birth data in the URL
+      fragment only (`/chart#d=…&t=…&a=…&p=…&lat=…&lon=…&tz=…`; never the person's name)
+- [x] Acceptance: Carrascal example from PRD F1 works
 
 ### M5. Chart UI
 - [ ] Big Three card with cusp warnings

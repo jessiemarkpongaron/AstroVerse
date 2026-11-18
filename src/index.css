@@ -19,3 +19,9 @@ html {
 body {
   @apply bg-white text-ink antialiased dark:bg-night dark:text-slate-100;
 }
+
+@layer components {
+  .field {
+    @apply block min-h-11 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-base text-ink focus:border-gold-dark focus:outline-2 focus:outline-gold/50 aria-invalid:border-red-600 dark:border-dusk dark:bg-ink dark:text-slate-100 dark:[color-scheme:dark];
+  }
+}

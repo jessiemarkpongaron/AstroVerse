@@ -42,7 +42,9 @@ astroverse/
 │  │  ├─ interpret/
 │  │  │  ├─ static/            JSON text: signs, houses, planets-in-signs, aspects
 │  │  │  └─ buildPayload.ts    compact chart summary sent to the AI function
-│  │  ├─ geo.ts                Open-Meteo geocoding client
+│  │  ├─ geo.ts                Open-Meteo geocoding client (PH-first ranking, "name, hint" queries)
+│  │  ├─ birthForm.ts          form validation → BirthInput
+│  │  ├─ shareLink.ts          encode/decode birth data in the URL fragment
 │  │  └─ supabase.ts
 │  ├─ components/
 │  │  ├─ BirthForm/            form + place autocomplete
