@@ -51,7 +51,9 @@ its acceptance items are checked.
 
 ### M7. Supabase
 - [x] Migrations for profiles, charts, readings (+ RLS policies + tests for RLS) — local stack
-- [ ] Apply migration to the hosted project (`supabase db push`)
+- [x] Migration applied to the hosted project via SQL Editor (2026-11-18); verified anon gets
+      `42501 permission denied` on all three tables. When the CLI is linked, run
+      `npx supabase migration repair --status applied 20261118000000` before the next `db push`.
 - [x] Auth UI: magic link + Google; "Save chart" (consent for others); "My charts"; delete chart
 - [ ] Hosted config: Cloudflare `VITE_SUPABASE_*` env, Auth URLs, Google OAuth client, SMTP
 
