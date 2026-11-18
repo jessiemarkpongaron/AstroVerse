@@ -61,7 +61,8 @@ astroverse/
 │  │  ├─ ReadingView/
 │  │  ├─ TransitTimeline/
 │  │  └─ ui/                   SegmentedControl, UncertaintyNotes, …
-│  ├─ pages/                   Home, Chart, Reading, Forecast, Compatibility, Account, Pricing
+│  ├─ pages/                   Home, Chart, FullReading (/reading), Forecast, Career, MyCharts,
+│  │                           Login, Reading (AI, behind VITE_AI_READINGS); later Compatibility, Pricing
 │  ├─ hooks/
 │  └─ main.tsx
 ├─ supabase/

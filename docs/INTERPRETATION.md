@@ -41,6 +41,18 @@ Readings come from two layers:
   Jupiter: no luck/money/fortune/win wording; Saturn: no fatalistic wording and must point to
   growth; outer planets: must mention "generation".
 
+- **Forecast** (`forecast.json`, `src/lib/interpret/forecast.ts`, page `/forecast`): one
+  meaning + "how to use this time" per transiting planet × tone (conjunction / flowing =
+  trine·sextile / tense = square·opposition), filled with the natal point's theme from
+  `aspects.json`; 12 house topics and ingress lines. Periods are grouped into six themes by
+  `transitTheme` (natal point first, then transiting planet). Shown: transits that go exact or
+  come within 1°. Tests block event words (accidents, disasters, death), fate/karma, month
+  names and Jupiter luck/money wording.
+- **Career** (`career.json`, `src/lib/interpret/career.ts`, page `/career`): work style per
+  dominant element and 4 paths per element (3 from the strongest, 2 from the next); the rest
+  reuses approved texts (Midheaven, 10th/6th/2nd-house planets, Mars/Saturn, strengths) plus
+  career-themed forecast periods. Tests block promises, "should/must" and money words.
+
 ## 2. AI payload (buildPayload.ts)
 Send only what the model needs — never names, emails or exact birth data. The schema
 (`supabase/functions/_shared/reading.ts`) is strict: unknown keys are rejected and every string

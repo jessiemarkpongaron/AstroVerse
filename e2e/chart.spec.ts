@@ -73,6 +73,22 @@ test('forecast opens from the chart with themed periods and no network calls', a
   expect(external).toEqual([]);
 });
 
+test('career reading opens from the chart with paths and timing', async ({ page }) => {
+  const external: string[] = [];
+  page.on('request', (r) => {
+    if (!r.url().startsWith('http://localhost')) external.push(r.url());
+  });
+  await page.goto(`/chart#${CARRASCAL_HASH}`);
+  await page.getByRole('link', { name: 'Your career reading' }).click();
+  await expect(page.getByRole('heading', { name: 'Your career reading' })).toBeInViewport();
+  await expect(page.getByRole('region', { name: 'Your career direction' })).toContainText(
+    'Midheaven in Leo',
+  );
+  await expect(page.getByRole('region', { name: 'Paths that may suit you' })).toBeVisible();
+  expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBe(0);
+  expect(external).toEqual([]);
+});
+
 test('works offline after the first visit (service worker)', async ({ page, context }) => {
   await page.goto(`/chart#${CARRASCAL_HASH}`);
   await expect(page.getByRole('heading', { name: 'Your Big Three' })).toBeVisible();

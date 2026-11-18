@@ -78,10 +78,15 @@ its acceptance items are checked.
 - [ ] Later, with API credits: run migration `20261118120000_reading_generations.sql`, set
       `ANTHROPIC_API_KEY`, deploy the function, set `VITE_AI_READINGS=true`, review first reading
 
-### M9. Forecast & career
-- [ ] `transits.ts` scanner + tests (known transit windows)
-- [ ] Transit timeline UI grouped by theme
-- [ ] AI forecast + career readings
+### M9. Forecast & career — done (2026-11-18), free and static
+- [x] `transits.ts` scanner + tests (Swiss Ephemeris reference dates: Pluto at 0° Aquarius,
+      Saturn/Jupiter ingresses incl. retrograde, 2020 great conjunction; ±1 day)
+- [x] Forecast page `/forecast`: "Happening now", periods grouped by 6 themes with dates, exact
+      hits and "how to use this time", planets changing house (`forecast.json`, approved)
+- [x] Career page `/career` (PRD F6): Midheaven + 10th/6th/2nd-house planets, work style by
+      element, Mars/Saturn, strengths, 5 paths, timing from career-themed transits
+      (`career.json`, approved). House rulers left out for now (owner decision).
+- [ ] Later, with API credits: AI forecast + career readings (premium)
 
 ## Phase 3 — Monetize & grow
 
