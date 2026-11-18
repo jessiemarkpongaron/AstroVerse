@@ -22,6 +22,7 @@ describe('composeStaticReading', () => {
       'work',
       'emotions',
       'growth',
+      'career',
       'lessons',
     ]);
     expect(section('personality')?.items.map((i) => i.placement)).toEqual(
