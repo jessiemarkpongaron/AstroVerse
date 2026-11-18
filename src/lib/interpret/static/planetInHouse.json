@@ -2,9 +2,9 @@
   "_comment": "Planet-in-house snippets (docs/INTERPRETATION.md §1). 1–2 sentences, second person. Keys are house numbers 1–12. Only 'approved' planets are shown in the app.",
   "version": 1,
   "review": {
-    "Sun": "draft",
-    "Moon": "draft",
-    "Mercury": "draft"
+    "Sun": "approved",
+    "Moon": "approved",
+    "Mercury": "approved"
   },
   "planets": {
     "Sun": {
