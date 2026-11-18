@@ -55,7 +55,10 @@ its acceptance items are checked.
       `42501 permission denied` on all three tables. When the CLI is linked, run
       `npx supabase migration repair --status applied 20261118000000` before the next `db push`.
 - [x] Auth UI: magic link + Google; "Save chart" (consent for others); "My charts"; delete chart
-- [ ] Hosted config: Cloudflare `VITE_SUPABASE_*` env, Auth URLs, Google OAuth client, SMTP
+- [x] Hosted config: Cloudflare build variables `VITE_SUPABASE_*` (verified in live bundle; only the
+      publishable key ships), Supabase Auth URLs
+- [ ] Owner end-to-end test on the live site: magic-link sign-in, save, My charts, delete
+- [ ] Google OAuth client (optional) · custom SMTP (before real users)
 
 ### M8. AI natal reading
 - [ ] Static interpretation JSON (draft in batches, I review)
