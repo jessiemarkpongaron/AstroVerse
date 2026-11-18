@@ -41,6 +41,11 @@ describe('buildChart — PRD F1 acceptance (Carrascal, May 31 1990, 3:30 PM)', (
     );
   });
 
+  it('gives the Mars flag a structured detail (near Pisces, the sign it just left)', () => {
+    const f = chart.flags.find((x) => x.point === 'Mars');
+    expect(f?.detail).toEqual({ type: 'near-sign-edge', sign: 11 });
+  });
+
   it('computes aspects with valid orbs', () => {
     expect(chart.aspects.length).toBeGreaterThan(0);
     for (const a of chart.aspects) expect(a.orb).toBeLessThanOrEqual(10);
@@ -68,8 +73,25 @@ describe('buildChart — approximate time', () => {
     expect(at('15:02')).toBe('Scorpio');
   });
 
+  it('gives the Rising flag a structured detail (Libra before 15:02)', () => {
+    const f = chart.flags.find((x) => x.point === 'Ascendant' && x.kind === 'sign-cusp');
+    expect(f?.detail).toEqual({ type: 'sign-if-born', alt: 6, side: 'before', localTime: '15:02' });
+  });
+
   it('flags house changes within ±30 minutes', () => {
     expect(chart.flags.some((f) => f.kind === 'house-cusp')).toBe(true);
+  });
+
+  it('every point-specific flag has a structured detail; chart-wide ones do not', () => {
+    for (const f of chart.flags) {
+      if (f.point === null) expect(f.detail).toBeUndefined();
+      else expect(f.detail).toBeDefined();
+    }
+    const house = chart.flags.find((f) => f.kind === 'house-cusp');
+    expect(house?.detail).toMatchObject({ type: 'house-if-born' });
+    expect(house?.message).toContain(
+      house?.detail?.type === 'house-if-born' ? house.detail.side : '?',
+    );
   });
 
   it('exact time does not produce ±30-min house flags', () => {
@@ -122,6 +144,12 @@ describe('buildChart — unknown time', () => {
     const hhmm = `${String(h).padStart(2, '0')}:${m?.[2]}`;
     // The Moon has the "after" sign at the reported minute.
     expect(moonSign(changing as string, hhmm)).toBe(moonSign(changing as string, '23:59'));
+    expect(flag?.detail).toEqual({
+      type: 'moon-sign-change',
+      from: moonSign(changing as string, '00:00'),
+      to: moonSign(changing as string, '23:59'),
+      localTime: hhmm,
+    });
 
     const s = buildChart({ date: steady as string, time: null, timeAccuracy: 'unknown', place });
     expect(s.flags.some((f) => f.kind === 'moon-sign-change')).toBe(false);

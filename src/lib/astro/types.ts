@@ -70,11 +70,26 @@ export type UncertaintyKind =
   | 'house-system-fallback' // Placidus undefined at this latitude → Porphyry
   | 'moon-sign-change'; // Moon changes sign during the (unknown-time) birth day
 
+/**
+ * Machine-readable facts behind a flag (used for the AI payload, which never carries free
+ * text). `localTime` is the birthplace clock time, 24-hour 'HH:mm'.
+ */
+export type FlagDetail =
+  /** Within 1° of a sign boundary; `sign` is the neighbouring sign it is close to. */
+  | { type: 'near-sign-edge'; sign: SignIndex }
+  /** Approximate time: the point would be in `alt` if born before/after `localTime`. */
+  | { type: 'sign-if-born'; alt: SignIndex; side: 'before' | 'after'; localTime: string }
+  | { type: 'house-if-born'; alt: number; side: 'before' | 'after'; localTime: string }
+  /** Unknown time: the Moon changed sign at `localTime` on the birth day. */
+  | { type: 'moon-sign-change'; from: SignIndex; to: SignIndex; localTime: string };
+
 export interface UncertaintyFlag {
   /** The point affected, or null for chart-wide flags (e.g. DST ambiguity). */
   point: PointName | null;
   kind: UncertaintyKind;
   message: string; // human-readable
+  /** Structured facts for point-specific flags; absent for chart-wide ones. */
+  detail?: FlagDetail;
 }
 
 export interface Chart {

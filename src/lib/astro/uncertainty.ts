@@ -1,5 +1,5 @@
 import { formatLongitude } from './format.ts';
-import type { PointName, TimeAccuracy, UncertaintyFlag } from './types.ts';
+import type { PointName, SignIndex, TimeAccuracy, UncertaintyFlag } from './types.ts';
 import { SIGN_NAMES, degreeInSign, signOf } from './zodiac.ts';
 
 /**
@@ -40,6 +40,12 @@ export function formatLocalClock(utcMs: number, offsetMinutes: number): string {
   return `${h % 12 === 0 ? 12 : h % 12}:${String(m).padStart(2, '0')} ${h < 12 ? 'AM' : 'PM'}`;
 }
 
+/** Local clock time as 24-hour 'HH:mm' (for structured flag details). */
+export function localHHmm(utcMs: number, offsetMinutes: number): string {
+  const d = new Date(utcMs + offsetMinutes * MS_PER_MIN);
+  return `${String(d.getUTCHours()).padStart(2, '0')}:${String(d.getUTCMinutes()).padStart(2, '0')}`;
+}
+
 /**
  * Bisection to the nearest minute: `lo` and `hi` give different values of `f`; returns the
  * first whole-minute instant (ms) that has `f(hi)`'s value, assuming one switch in between.
@@ -58,9 +64,9 @@ export function findSwitch<T>(f: (ms: number) => T, lo: number, hi: number): num
   return b;
 }
 
-const signNameAt = (snap: Snapshot, p: PointName) => {
+const signIndexAt = (snap: Snapshot, p: PointName): SignIndex | undefined => {
   const lon = snap.longitude(p);
-  return lon === undefined ? undefined : SIGN_NAMES[signOf(lon)];
+  return lon === undefined ? undefined : signOf(lon);
 };
 const houseAt = (snap: Snapshot, p: PointName) => snap.house(p);
 
@@ -82,18 +88,20 @@ export function signCuspFlags(
     const d = degreeInSign(lon);
     const sign = signOf(lon);
     if (d < threshold) {
-      const prev = SIGN_NAMES[(sign + 11) % 12];
+      const prev = ((sign + 11) % 12) as SignIndex;
       flags.push({
         point: name,
         kind: 'sign-cusp',
-        message: `${label(name)} is at ${formatLongitude(lon)}, just past the edge of ${prev}.`,
+        message: `${label(name)} is at ${formatLongitude(lon)}, just past the edge of ${SIGN_NAMES[prev]}.`,
+        detail: { type: 'near-sign-edge', sign: prev },
       });
     } else if (30 - d < threshold) {
-      const next = SIGN_NAMES[(sign + 1) % 12];
+      const next = ((sign + 1) % 12) as SignIndex;
       flags.push({
         point: name,
         kind: 'sign-cusp',
-        message: `${label(name)} is at ${formatLongitude(lon)}, very close to ${next}.`,
+        message: `${label(name)} is at ${formatLongitude(lon)}, very close to ${SIGN_NAMES[next]}.`,
+        detail: { type: 'near-sign-edge', sign: next },
       });
     }
   }
@@ -121,10 +129,12 @@ export function approximateTimeFlags(
   for (const p of points) {
     // Sign changes.
     for (const side of sides) {
-      const now = signNameAt(center, p);
-      const alt = signNameAt(side.snap, p);
-      if (!now || !alt || now === alt) continue;
-      const f = (ms: number) => signNameAt(snapshotAt(ms), p);
+      const nowIdx = signIndexAt(center, p);
+      const altIdx = signIndexAt(side.snap, p);
+      if (nowIdx === undefined || altIdx === undefined || nowIdx === altIdx) continue;
+      const now = SIGN_NAMES[nowIdx];
+      const alt = SIGN_NAMES[altIdx];
+      const f = (ms: number) => signIndexAt(snapshotAt(ms), p);
       const sw =
         side.word === 'before'
           ? findSwitch(f, side.ms, centerMs)
@@ -138,6 +148,12 @@ export function approximateTimeFlags(
         point: p,
         kind: 'sign-cusp',
         message: `${subject} if you were born ${side.word} about ${when}.`,
+        detail: {
+          type: 'sign-if-born',
+          alt: altIdx,
+          side: side.word,
+          localTime: localHHmm(sw, offsetMinutes),
+        },
       });
     }
     // House changes (not meaningful for the ASC itself, which defines house 1).
@@ -155,6 +171,12 @@ export function approximateTimeFlags(
         point: p,
         kind: 'house-cusp',
         message: `Your ${label(p)} is in your ${ordinal(now)} house, but would be in the ${ordinal(alt)} if you were born ${side.word} about ${formatLocalClock(sw, offsetMinutes)}.`,
+        detail: {
+          type: 'house-if-born',
+          alt,
+          side: side.word,
+          localTime: localHHmm(sw, offsetMinutes),
+        },
       });
     }
   }
@@ -187,6 +209,12 @@ export function unknownTimeFlags(
       point: 'Moon',
       kind: 'moon-sign-change',
       message: `The Moon moved from ${a} into ${b} at about ${formatLocalClock(sw, offsetMinutes)} on your birth day. Your Moon is ${a} if you were born before then, ${b} if after.`,
+      detail: {
+        type: 'moon-sign-change',
+        from: start,
+        to: end,
+        localTime: localHHmm(sw, offsetMinutes),
+      },
     });
   }
   return flags;

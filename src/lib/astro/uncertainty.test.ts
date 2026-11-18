@@ -1,4 +1,4 @@
-import { findSwitch, formatLocalClock, ordinal, signCuspFlags } from './uncertainty.ts';
+import { findSwitch, formatLocalClock, localHHmm, ordinal, signCuspFlags } from './uncertainty.ts';
 
 describe('helpers', () => {
   it('ordinal', () => {
@@ -9,6 +9,12 @@ describe('helpers', () => {
     expect(formatLocalClock(Date.UTC(1990, 4, 31, 7, 2), 480)).toBe('3:02 PM');
     expect(formatLocalClock(Date.UTC(1990, 4, 31, 16, 0), 480)).toBe('12:00 AM');
     expect(formatLocalClock(Date.UTC(1990, 4, 31, 4, 5), 480)).toBe('12:05 PM');
+  });
+
+  it('localHHmm gives 24-hour birthplace time', () => {
+    expect(localHHmm(Date.UTC(1990, 4, 31, 7, 2), 480)).toBe('15:02');
+    expect(localHHmm(Date.UTC(1990, 4, 31, 16, 0), 480)).toBe('00:00');
+    expect(localHHmm(Date.UTC(1990, 4, 31, 0, 5), -300)).toBe('19:05');
   });
 
   it('findSwitch bisects to the first minute with the new value', () => {
