@@ -36,7 +36,7 @@ astroverse/
 │  │  │  ├─ transits.ts        2-year transit scanner
 │  │  │  ├─ synastry.ts        cross-chart aspects (Phase 3)
 │  │  │  ├─ uncertainty.ts     cusp + birth-time sensitivity flags
-│  │  │  ├─ chart.ts           buildChart(input) → Chart  (single entry point)
+│  │  │  ├─ chart.ts           buildChart(input, {houseSystem, observedDst}) → Chart (single entry point)
 │  │  │  ├─ *.test.ts          unit tests, next to each module
 │  │  │  └─ __tests__/         fixtures.json (generated) + fixture helpers
 │  │  ├─ interpret/

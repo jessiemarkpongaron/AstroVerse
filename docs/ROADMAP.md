@@ -19,10 +19,10 @@ its acceptance items are checked.
 - [x] Tests pass within tolerances
 
 ### M3. Astro engine — houses, aspects, uncertainty
-- [ ] Whole Sign + Placidus (+ Porphyry fallback), house assignment
-- [ ] Aspects with orbs/applying
-- [ ] Uncertainty flags incl. bisection for switch times
-- [ ] `buildChart(input)` single entry point + tests
+- [x] Whole Sign + Placidus (+ Porphyry fallback), house assignment
+- [x] Aspects with orbs/applying
+- [x] Uncertainty flags incl. bisection for switch times
+- [x] `buildChart(input)` single entry point + tests
 
 ### M4. Birth form + geocoding
 - [ ] Open-Meteo geocoding autocomplete (debounced, PH results ranked first)

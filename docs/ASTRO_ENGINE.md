@@ -53,6 +53,10 @@ Everything here lives in `src/lib/astro/`. Pure TypeScript, deterministic, fully
   11, 12, 2, 3 (converge to < 1e-7°); 10 = MC, 1 = ASC, 4/5/6/7/8/9 = opposites.
   Write it from a referenced algorithm (e.g., Meeus-style / Swiss Ephemeris documentation
   description), cite the source in a code comment, and test it against fixtures.
+  Implemented in `houses.ts` (Holden, *The Elements of House Division*; Swiss Ephemeris docs):
+  AD = asin(tan φ tan δ), DSA = 90°+AD, NSA = 90°−AD; cusp 11/12 RA = RAMC + DSA/3, 2·DSA/3;
+  cusp 2/3 RA = RAMC + 180° − 2·NSA/3, NSA/3; λ = atan2(sin RA, cos RA cos ε); iterate on δ(λ).
+  Porphyry starting guesses. Matches Swiss Ephemeris to < 0.2″ on all fixtures.
 - **Fallback:** if |latitude| > 66° Placidus is undefined for some times → use Porphyry
   and add a flag.
 - House of a point: the cusp it falls after (handle 0°/360° wrap).
@@ -65,8 +69,9 @@ Everything here lives in `src/lib/astro/`. Pure TypeScript, deterministic, fully
 | Trine | 120° | 8° | 6° |
 | Square | 90° | 8° | 6° |
 | Sextile | 60° | 6° | 4° |
-- Angles (ASC/MC) use the "others" orbs. Skip Node–Node, ASC–MC.
-- `applying` = orb is shrinking (use speeds).
+- Angles (ASC/MC) use the "others" orbs. Skip ASC–MC (only one node, so no Node–Node pair).
+- `applying` = orb is shrinking over the next hour, using body speeds; ASC/MC count as
+  fixed (speed 0) for this purpose.
 
 ## 7. Transits (transits.ts)
 - Transiting bodies: Jupiter, Saturn, Uranus, Neptune, Pluto.
@@ -78,11 +83,15 @@ Everything here lives in `src/lib/astro/`. Pure TypeScript, deterministic, fully
 - Also output **ingresses**: when each slow planet enters a new natal house (Whole Sign or Placidus).
 
 ## 8. Uncertainty (uncertainty.ts)
-- `sign-cusp`: any point within 1° of a sign boundary (Moon: within the Moon's
+- `sign-cusp`: any point within 1° of a sign boundary (Moon: the larger of 1° and the Moon's
   movement over the time-uncertainty window).
+- `unknown` time: one chart-wide `time-unknown` flag; Moon checked at local 00:00 and 23:59 —
+  if its sign differs, a `moon-sign-change` flag gives both signs and the switch time;
+  other bodies get the 1° `sign-cusp` check at noon.
 - For `approximate` time: recompute the chart at −30 and +30 minutes; if ASC sign, MC sign
   or any point's house changes, add a flag naming both possibilities and the switch time
-  (find it by bisection to the nearest minute).
+  (find it by bisection to the nearest minute). Implemented for every point's sign and house
+  (`sign-cusp` / `house-cusp` flags); points flagged this way skip the plain 1° check.
   Example message: "Your Rising is Scorpio, but would be Libra if you were born before about 3:02 PM."
 
 ## 9. Validation
