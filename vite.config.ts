@@ -11,7 +11,7 @@ export default defineConfig({
     environment: 'node',
     // Engine tests run in plain Node; component tests opt into jsdom via a file-level comment.
     setupFiles: ['./src/test/setup.ts'],
-    include: ['src/**/*.test.{ts,tsx}', 'scripts/**/*.test.ts'],
+    include: ['src/**/*.test.{ts,tsx}', 'scripts/**/*.test.ts', 'supabase/functions/**/*.test.ts'],
     exclude: ['e2e/**', 'node_modules/**'],
   },
 });

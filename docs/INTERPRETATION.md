@@ -25,7 +25,12 @@ Readings come from two layers:
   growth; outer planets: must mention "generation".
 
 ## 2. AI payload (buildPayload.ts)
-Send only what the model needs — never names, emails or exact birth data:
+Send only what the model needs — never names, emails or exact birth data. The schema
+(`supabase/functions/_shared/reading.ts`) is strict: unknown keys are rejected and every string
+is an enum value or an `HH:mm` time, so nothing a user types can reach the prompt. Uncertainty
+flags are sent as **structured** objects built from `UncertaintyFlag.detail`, not as text, e.g.
+`{"type":"sign-if-born","point":"Ascendant","altSign":"Libra","ifBorn":"before","localTime":"15:02"}`.
+The example below is the original sketch; see the schema for the exact shape:
 ```json
 {
   "kind": "natal",
@@ -68,8 +73,13 @@ Output: JSON matching the schema given in the user message. No markdown outside 
 ```
 
 ## 4. Output schemas
-- **natal:** `{ summary, sections: [{ id, title, body, keyPlacements: string[] }] }`
-  with ids: personality, mind, love, work, emotions, growth, career, lessons.
+- **natal:** `{ summary, sections: [{ id, body, keyPlacements: string[] }] }`
+  with ids: personality, mind, love, work, emotions, growth, career, lessons — each exactly once.
+  Titles are fixed in the UI (`SECTION_TITLES`), not written by the model. Bodies are plain
+  text, paragraphs separated by a blank line. Implemented in `prompt.ts` / `claude.ts`
+  (`PROMPT_VERSION = natal-v1`). Besides zod, output is checked against `GUARDRAIL_PATTERNS`
+  (death, illness, pregnancy, lotto/lucky numbers, gambling, crypto, guarantees, diagnoses,
+  "destined/doomed", "scientifically proven"); a hit counts as invalid output.
 - **forecast:** `{ overview, periods: [{ title, start, end, transits: string[], theme,
   body, howToUseIt }] }` — themes: career, relationships, transformation, home, growth, rest.
 - **career:** `{ summary, strengths[], workStyle, paths: [{ title, why }], timing }`
