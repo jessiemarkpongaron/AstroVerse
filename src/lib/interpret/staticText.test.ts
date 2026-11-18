@@ -117,6 +117,13 @@ describe('planetInSign.json', () => {
     },
   );
 
+  it.each(snippets.filter(([id]) => /^(Uranus|Neptune|Pluto)\./.test(id)))(
+    '%s is framed generationally (outer planets stay in a sign for years)',
+    (_id, e) => {
+      expect(e.meaning).toMatch(/\bgeneration\b/i);
+    },
+  );
+
   it('snippets are unique and differ from Big Three text', () => {
     const texts = [...snippets.map(([, e]) => e.meaning), ...all.map(([, e]) => e.meaning)];
     expect(new Set(texts).size).toBe(texts.length);

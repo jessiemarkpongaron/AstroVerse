@@ -6,7 +6,10 @@
     "Venus": "approved",
     "Mars": "approved",
     "Jupiter": "approved",
-    "Saturn": "approved"
+    "Saturn": "approved",
+    "Uranus": "approved",
+    "Neptune": "approved",
+    "Pluto": "approved"
   },
   "planets": {
     "Mercury": {
@@ -409,6 +412,232 @@
         "keywords": ["Compassion", "Boundaries", "Faith"],
         "strengths": ["Disciplined creativity", "Quiet strength", "Mature compassion"],
         "challenges": ["Feeling overwhelmed", "Avoiding hard tasks", "Self-doubt"]
+      }
+    },
+    "Uranus": {
+      "Aries": {
+        "meaning": "You were born into a generation eager to break new ground and act boldly. You may feel a personal urge to be independent and try things no one has tried before.",
+        "keywords": ["Pioneering", "Independent", "Bold"],
+        "strengths": ["Loves fresh starts", "Courage to try new things", "Self-reliant"],
+        "challenges": ["Impulsiveness", "Restlessness", "Resisting guidance"]
+      },
+      "Taurus": {
+        "meaning": "Your generation may change how people think about value, work and the natural world. You may find new, practical ways to make life more stable and sustainable.",
+        "keywords": ["Practical change", "Sustainability", "Resourcefulness"],
+        "strengths": ["Inventive with everyday things", "Grounded new ideas", "Care for nature"],
+        "challenges": ["Resisting sudden change", "Stubbornness", "Unsettled sense of security"]
+      },
+      "Gemini": {
+        "meaning": "Your generation may change the way people talk, learn and share information. You may be quick to pick up new ideas and new tools for connecting with others.",
+        "keywords": ["Inventive", "Communicative", "Curious"],
+        "strengths": ["Quick to adapt", "Original thinker", "Connects people and ideas"],
+        "challenges": ["Scattered attention", "Nervous energy", "Information overload"]
+      },
+      "Cancer": {
+        "meaning": "Your generation may bring new ideas about home, family and belonging. You may value emotional freedom and create a family life that fits who you really are.",
+        "keywords": ["Belonging", "Freedom", "Change"],
+        "strengths": ["Open-minded about family", "Emotionally honest", "Builds a chosen family"],
+        "challenges": [
+          "Restless at home",
+          "Mixed feelings about tradition",
+          "Moodiness during change"
+        ]
+      },
+      "Leo": {
+        "meaning": "Your generation may change how people express themselves and celebrate being different. You may feel a strong urge to create something that is uniquely yours.",
+        "keywords": ["Creative", "Self-expressive", "Unique"],
+        "strengths": ["Bold creativity", "Confident individuality", "Inspires others to shine"],
+        "challenges": ["Need for attention", "Rebellious pride", "Restless creativity"]
+      },
+      "Virgo": {
+        "meaning": "Your generation may bring new ideas to daily routines and the way people work. You may enjoy finding smarter, more efficient ways to get things done.",
+        "keywords": ["Efficient", "Inventive", "Practical"],
+        "strengths": ["Improves systems", "Practical inventor", "Problem-solver"],
+        "challenges": ["Nervous restlessness", "Perfectionism", "Overcomplicating things"]
+      },
+      "Libra": {
+        "meaning": "Your generation may change ideas about relationships, fairness and partnership. You may value equality and freedom in your connections with others.",
+        "keywords": ["Equality", "Partnership", "Fairness"],
+        "strengths": ["Fair-minded", "Open to new kinds of relationships", "Socially aware"],
+        "challenges": ["Restless in commitments", "Indecision", "Unsettled partnerships"]
+      },
+      "Scorpio": {
+        "meaning": "Your generation may bring big changes to how people handle power, trust and deep emotions. You may have a strong instinct for uncovering hidden truths.",
+        "keywords": ["Transformative", "Intense", "Perceptive"],
+        "strengths": ["Fearless honesty", "Deep insight", "Strength in change"],
+        "challenges": ["Sudden intensity", "Distrust", "Difficulty letting go"]
+      },
+      "Sagittarius": {
+        "meaning": "Your generation may bring fresh ideas about travel, learning, faith and freedom. You may be drawn to questioning old beliefs and exploring the wider world.",
+        "keywords": ["Adventurous", "Open-minded", "Free"],
+        "strengths": ["Global outlook", "Love of learning", "Optimistic about change"],
+        "challenges": ["Restlessness", "Overconfidence", "Impatience with rules"]
+      },
+      "Capricorn": {
+        "meaning": "Your generation may reshape institutions, careers and the way society is built. You may find practical ways to modernize old systems.",
+        "keywords": ["Reforming", "Practical", "Ambitious"],
+        "strengths": ["Grounded change", "Strategic thinking", "Respect for what works"],
+        "challenges": ["Tension between old and new", "Stubbornness", "Pressure to succeed"]
+      },
+      "Aquarius": {
+        "meaning": "Your generation may push for progress, technology and a fairer world for everyone. You may feel at home with new ideas and with people who think differently.",
+        "keywords": ["Progressive", "Humanitarian", "Original"],
+        "strengths": ["Visionary", "Team-minded", "Accepting of differences"],
+        "challenges": ["Detachment", "Rebelling for its own sake", "Unpredictability"]
+      },
+      "Pisces": {
+        "meaning": "Your generation may bring new ideas to art, spirituality and compassion. You may be open to imaginative, unusual ways of understanding life.",
+        "keywords": ["Imaginative", "Spiritual", "Intuitive"],
+        "strengths": ["Creative vision", "Compassionate ideals", "Open to the unseen"],
+        "challenges": ["Confusion during change", "Escapism", "Unclear boundaries"]
+      }
+    },
+    "Neptune": {
+      "Aries": {
+        "meaning": "Your generation may dream of new beginnings and bold ideals. You may feel inspired to act on your beliefs with courage.",
+        "keywords": ["Inspired", "Idealistic", "Bold"],
+        "strengths": ["Courageous ideals", "Inspired action", "Spiritual energy"],
+        "challenges": ["Impulsive idealism", "Restlessness", "Unclear goals"]
+      },
+      "Taurus": {
+        "meaning": "Your generation may idealize beauty, nature and a simple, peaceful life. You may find inspiration in art, music and the natural world.",
+        "keywords": ["Peaceful", "Artistic", "Grounded"],
+        "strengths": ["Appreciation of beauty", "Calm spirit", "Love of nature"],
+        "challenges": ["Overindulgence", "Avoiding hard realities", "Comfort-seeking"]
+      },
+      "Gemini": {
+        "meaning": "Your generation may dream through words, stories and new ways to communicate. You may have a gift for imaginative ideas and storytelling.",
+        "keywords": ["Imaginative", "Expressive", "Curious"],
+        "strengths": ["Creative writing", "Inspired ideas", "Open mind"],
+        "challenges": ["Scattered dreams", "Confusion", "Misunderstandings"]
+      },
+      "Cancer": {
+        "meaning": "Your generation may hold deep ideals about home, family and belonging. You may feel a strong, tender longing for emotional safety and connection.",
+        "keywords": ["Tender", "Devoted", "Nostalgic"],
+        "strengths": ["Compassion for family", "Emotional depth", "Caring heart"],
+        "challenges": ["Nostalgia", "Idealizing the past", "Sensitivity"]
+      },
+      "Leo": {
+        "meaning": "Your generation may dream through creativity, romance and self-expression. You may feel drawn to the arts, performance and stories that celebrate the heart.",
+        "keywords": ["Creative", "Romantic", "Expressive"],
+        "strengths": ["Artistic spirit", "Warm idealism", "Generous heart"],
+        "challenges": ["Unrealistic dreams", "Need for applause", "Drama"]
+      },
+      "Virgo": {
+        "meaning": "Your generation may find meaning through service, work and practical care for others. You may dream of making everyday life better and more useful.",
+        "keywords": ["Service", "Practical", "Caring"],
+        "strengths": ["Helpful idealism", "Dedication", "Notices what people need"],
+        "challenges": ["Worry", "Self-sacrifice", "Perfectionism"]
+      },
+      "Libra": {
+        "meaning": "Your generation may hold ideals of peace, harmony and love. You may dream of fair, beautiful relationships and a kinder world.",
+        "keywords": ["Peaceful", "Romantic", "Harmonious"],
+        "strengths": ["Peacemaking", "Appreciation of beauty", "Idealism about love"],
+        "challenges": ["Idealizing partners", "Avoiding conflict", "Indecision"]
+      },
+      "Scorpio": {
+        "meaning": "Your generation may be drawn to life's mysteries and deep emotional truths. You may feel a strong pull toward understanding what lies beneath the surface.",
+        "keywords": ["Mystical", "Intense", "Deep"],
+        "strengths": ["Emotional depth", "Intuition", "Courage to explore hidden things"],
+        "challenges": ["Secrecy", "Intensity", "Confusion around trust"]
+      },
+      "Sagittarius": {
+        "meaning": "Your generation may dream of freedom, faith and understanding the wider world. You may be inspired by travel, philosophy and different cultures.",
+        "keywords": ["Spiritual", "Adventurous", "Open"],
+        "strengths": ["Big ideals", "Openness to cultures", "Hopeful spirit"],
+        "challenges": ["Overidealism", "Restlessness", "Vague beliefs"]
+      },
+      "Capricorn": {
+        "meaning": "Your generation may hold ideals about structure, responsibility and building a better society. You may want your dreams to become real and useful.",
+        "keywords": ["Practical", "Responsible", "Grounded"],
+        "strengths": ["Realistic idealism", "Commitment", "Sense of duty"],
+        "challenges": ["Disillusionment", "Cynicism", "Pressure to be practical"]
+      },
+      "Aquarius": {
+        "meaning": "Your generation may dream of a connected, fair and forward-looking world. You may be inspired by technology, community and shared human ideals.",
+        "keywords": ["Visionary", "Humanitarian", "Connected"],
+        "strengths": ["Big-picture compassion", "Community spirit", "Inventive ideals"],
+        "challenges": ["Detachment", "Unrealistic plans", "Feeling apart"]
+      },
+      "Pisces": {
+        "meaning": "Your generation may be deeply sensitive, imaginative and drawn to compassion and spirituality. You may feel art, music and faith very strongly.",
+        "keywords": ["Compassionate", "Imaginative", "Spiritual"],
+        "strengths": ["Deep empathy", "Creativity", "Spiritual openness"],
+        "challenges": ["Escapism", "Weak boundaries", "Feeling overwhelmed"]
+      }
+    },
+    "Pluto": {
+      "Aries": {
+        "meaning": "Your generation may transform the world through bold action and fresh starts. You may have a powerful drive to stand on your own and begin again when needed.",
+        "keywords": ["Powerful", "Pioneering", "Determined"],
+        "strengths": ["Courage to start over", "Strong will", "Independence"],
+        "challenges": ["Power struggles", "Impulsiveness", "Impatience"]
+      },
+      "Taurus": {
+        "meaning": "Your generation may transform ideas about value, resources and what truly lasts. You may have deep staying power and a strong will to build security.",
+        "keywords": ["Enduring", "Determined", "Grounded"],
+        "strengths": ["Persistence", "Resourcefulness", "Strong values"],
+        "challenges": ["Possessiveness", "Resisting change", "Stubbornness"]
+      },
+      "Gemini": {
+        "meaning": "Your generation may transform how people communicate, learn and share ideas. You may have a powerful, curious mind that wants to understand everything.",
+        "keywords": ["Inquisitive", "Communicative", "Powerful"],
+        "strengths": ["Sharp mind", "Persuasive", "Transforms ideas"],
+        "challenges": ["Restless thinking", "Mental overload", "Sharp words when stressed"]
+      },
+      "Cancer": {
+        "meaning": "Your generation may transform ideas about home, family and belonging. You may feel very deeply about protecting the people you love.",
+        "keywords": ["Protective", "Emotional", "Rooted"],
+        "strengths": ["Deep loyalty", "Emotional strength", "Protective care"],
+        "challenges": ["Clinging to the past", "Overprotectiveness", "Emotional intensity"]
+      },
+      "Leo": {
+        "meaning": "Your generation may transform how people express themselves, lead and create. You may have a strong drive to make your mark on the world.",
+        "keywords": ["Creative", "Confident", "Influential"],
+        "strengths": ["Powerful self-expression", "Leadership", "Creative drive"],
+        "challenges": ["Pride", "Need for control", "Seeking the spotlight"]
+      },
+      "Virgo": {
+        "meaning": "Your generation may transform work, daily routines and the ways people care for one another. You may have a strong drive to improve things and make them work better.",
+        "keywords": ["Improving", "Diligent", "Analytical"],
+        "strengths": ["Practical reform", "Dedication", "Attention to detail"],
+        "challenges": ["Perfectionism", "Worry", "Being overly critical"]
+      },
+      "Libra": {
+        "meaning": "Your generation may transform ideas about relationships, fairness and equality. You may care deeply about justice and balance between people.",
+        "keywords": ["Fair", "Relational", "Balanced"],
+        "strengths": ["Sense of justice", "Commitment to equality", "Diplomacy"],
+        "challenges": ["Power struggles in relationships", "Indecision", "Depending on others"]
+      },
+      "Scorpio": {
+        "meaning": "Your generation may face and transform deep issues around power, trust and change. You may have intense emotional strength and a talent for starting over.",
+        "keywords": ["Intense", "Resilient", "Transformative"],
+        "strengths": ["Emotional depth", "Courage in change", "Strong will"],
+        "challenges": ["Need for control", "Secrecy", "Distrust"]
+      },
+      "Sagittarius": {
+        "meaning": "Your generation may transform beliefs, education and the way people see the world. You may have a strong drive to find truth and meaning for yourself.",
+        "keywords": ["Truth-seeking", "Global", "Open"],
+        "strengths": ["Big vision", "Openness to cultures", "Passion for learning"],
+        "challenges": ["Extreme beliefs", "Restlessness", "Bluntness"]
+      },
+      "Capricorn": {
+        "meaning": "Your generation may transform institutions, work and the structures society depends on. You may have a strong drive to build something solid and lasting.",
+        "keywords": ["Ambitious", "Strategic", "Resilient"],
+        "strengths": ["Determination", "Responsibility", "Long-term thinking"],
+        "challenges": ["Pressure to achieve", "Need for control", "Distrust of authority"]
+      },
+      "Aquarius": {
+        "meaning": "Your generation may transform technology, communities and ideas about freedom. You may feel a strong drive to be part of positive change for everyone.",
+        "keywords": ["Innovative", "Community-minded", "Independent"],
+        "strengths": ["Visionary thinking", "Teamwork for change", "Open-mindedness"],
+        "challenges": ["Rebelliousness", "Detachment", "Rigid ideals"]
+      },
+      "Pisces": {
+        "meaning": "Your generation may transform art, spirituality and the way people show compassion. You may have deep intuition and a strong sense of connection to others.",
+        "keywords": ["Intuitive", "Compassionate", "Spiritual"],
+        "strengths": ["Deep empathy", "Creative power", "Comforting presence"],
+        "challenges": ["Escapism", "Feeling overwhelmed", "Unclear boundaries"]
       }
     }
   }

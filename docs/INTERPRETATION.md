@@ -14,6 +14,15 @@ Readings come from two layers:
 - Every entry has `strengths`, `challenges`, `keywords` (3–5) so the UI can show chips.
 - Write original text. Do not copy from books or websites.
 - Have Claude Code draft them in batches of one planet at a time; review before committing.
+- **Status (2026-11-18):** `bigThree.json` (36) and `planetInSign.json` Mercury–Pluto (96) are
+  written and owner-approved; each planet's review status is stored in the file.
+- `planetInSign.json` snippets are **1–2 sentences**. Uranus/Neptune/Pluto stay in a sign for
+  years, so their snippets are framed around **your generation** plus one personal line.
+- Guardrail tests (`src/lib/interpret/staticText.test.ts`) enforce: sentence counts, second
+  person, 3–5 keywords, ≥2 strengths/challenges, no duplicate text, banned topics (death,
+  illness, pregnancy, lotto/lucky numbers, gambling, investing, guarantees, diagnoses);
+  Jupiter: no luck/money/fortune/win wording; Saturn: no fatalistic wording and must point to
+  growth; outer planets: must mention "generation".
 
 ## 2. AI payload (buildPayload.ts)
 Send only what the model needs — never names, emails or exact birth data:

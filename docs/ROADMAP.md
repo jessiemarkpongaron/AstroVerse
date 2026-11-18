@@ -35,7 +35,7 @@ its acceptance items are checked.
 - [x] Placements table (sign, deg°min', house, ℞) + aspects list
 - [x] SVG chart wheel (signs ring, house lines, planet glyphs with collision spacing, aspect lines)
 - [x] House system toggle
-- [ ] Static short reading (Big Three + planet-in-sign snippets)
+- [x] Static short reading (Big Three + planet-in-sign snippets)
 - [x] Mobile check at 360px; Lighthouse ≥ 90 performance/accessibility
       (2026-11-18, mobile profile: home 100/100, chart 97/100; chart page lazy-loaded)
 

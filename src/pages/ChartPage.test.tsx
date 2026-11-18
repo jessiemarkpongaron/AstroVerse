@@ -67,6 +67,9 @@ describe('ChartPage', () => {
     expect(
       within(section).getByRole('heading', { name: /Saturn in Capricorn/ }),
     ).toBeInTheDocument();
+    for (const name of [/Uranus in Capricorn/, /Neptune in Capricorn/, /Pluto in Scorpio/]) {
+      expect(within(section).getByRole('heading', { name })).toBeInTheDocument();
+    }
   });
 
   it('renders the wheel with a text summary', async () => {
