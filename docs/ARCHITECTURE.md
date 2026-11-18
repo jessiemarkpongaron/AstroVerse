@@ -171,8 +171,8 @@ PAYMONGO_WEBHOOK_SECRET=
 ```
 
 ## 7. Deployment
-- Cloudflare Pages: build `npm run build`, output `dist`, SPA fallback to `index.html`
-  (automatic: no `404.html`). Node from `.nvmrc`. Headers/CSP in `public/_headers`, verified
+- Cloudflare (Workers with static assets, Git-connected; classic Pages works the same): build
+  `npm run build`, output `dist`, SPA fallback to `index.html` (verified live for `/chart`). Node from `.nvmrc`. Headers/CSP in `public/_headers`, verified
   after each build by `scripts/check-csp.mjs`; e2e tests apply the same CSP.
 - Service worker: `sw/sw.js` template → `dist/sw.js` via `scripts/vite-sw-plugin.ts`
   (precache = public shell + hashed assets, version = hash of that list). Navigations are

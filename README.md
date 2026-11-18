@@ -46,7 +46,10 @@ server-side secrets go in Supabase function secrets, never in `VITE_*` vars.
   `src/lib/astro/__tests__/fixtures.json`.
 - Component tests opt into jsdom with `// @vitest-environment jsdom` at the top of the file.
 
-## Deploy (Cloudflare Pages)
+## Deploy (Cloudflare)
+
+The live site runs as a Cloudflare **Worker with static assets** connected to this repo (the
+newer default; `_headers` and SPA fallback behave as on Pages). Classic Pages setup:
 
 1. Cloudflare dashboard → **Workers & Pages → Create → Pages → Connect to Git** → pick this repo.
 2. Build settings: production branch `main`, build command `npm run build`, output `dist`.

@@ -40,7 +40,8 @@ its acceptance items are checked.
       (2026-11-18, mobile profile: home 100/100, chart 97/100; chart page lazy-loaded)
 
 ### M6. Deploy Phase 1
-- [ ] Cloudflare Pages deploy (owner connects repo in dashboard)
+- [x] Cloudflare deploy (2026-11-18): Workers static assets on `*.workers.dev`, Git-connected;
+      live check passed — headers/CSP served, `/chart` deep link, SW offline reload, PRD F1
 - [x] SPA fallback, PWA manifest + service worker, `_headers` (CSP, caching), e2e tests
 - [ ] Basic analytics (Cloudflare Web Analytics — enable in dashboard; see README)
 
