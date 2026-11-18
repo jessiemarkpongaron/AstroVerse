@@ -8,10 +8,10 @@
     "Venus": "approved",
     "Mars": "approved",
     "Jupiter": "approved",
-    "Saturn": "draft",
-    "Uranus": "draft",
-    "Neptune": "draft",
-    "Pluto": "draft"
+    "Saturn": "approved",
+    "Uranus": "approved",
+    "Neptune": "approved",
+    "Pluto": "approved"
   },
   "planets": {
     "Sun": {
