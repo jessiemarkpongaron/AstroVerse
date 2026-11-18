@@ -1,0 +1,21 @@
+@import 'tailwindcss';
+
+/* Class-based dark mode: <html class="dark"> */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-ink: #1b1530;
+  --color-night: #0f0b1e;
+  --color-dusk: #1e1640;
+  --color-gold: #f5c96a;
+  --color-gold-dark: #b8862b;
+  --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  @apply bg-white text-ink antialiased dark:bg-night dark:text-slate-100;
+}

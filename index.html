@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta
+      name="description"
+      content="AstroVerse — your free birth chart, Big Three, and reading."
+    />
+    <meta name="theme-color" content="#0f0b1e" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>AstroVerse</title>
+    <script>
+      // Apply the saved/system theme before first paint to avoid a flash.
+      (function () {
+        var t = null;
+        try {
+          t = localStorage.getItem('astroverse-theme');
+        } catch (e) {}
+        var dark = t ? t === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.classList.toggle('dark', dark);
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
