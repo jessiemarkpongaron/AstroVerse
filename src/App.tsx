@@ -11,6 +11,9 @@ import { NotFoundPage } from './pages/NotFoundPage.tsx';
 const ChartPage = lazy(() =>
   import('./pages/ChartPage.tsx').then((m) => ({ default: m.ChartPage })),
 );
+const ReadingPage = lazy(() =>
+  import('./pages/ReadingPage.tsx').then((m) => ({ default: m.ReadingPage })),
+);
 
 export function App() {
   return (
@@ -32,6 +35,14 @@ export function App() {
         <Route path="login" element={<LoginPage />} />
         <Route path="auth/callback" element={<AuthCallbackPage />} />
         <Route path="charts" element={<MyChartsPage />} />
+        <Route
+          path="charts/:chartId/reading"
+          element={
+            <Suspense fallback={<p className="min-h-[200vh] text-center text-sm">Loading…</p>}>
+              <ReadingPage />
+            </Suspense>
+          }
+        />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>

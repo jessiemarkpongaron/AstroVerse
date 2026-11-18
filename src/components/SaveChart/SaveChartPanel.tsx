@@ -23,6 +23,7 @@ export function SaveChartPanel({ input, name, alreadySavedId, startOpen }: SaveC
   const [status, setStatus] = useState<'idle' | 'saving' | 'saved' | 'error'>(
     alreadySavedId ? 'saved' : 'idle',
   );
+  const [savedId, setSavedId] = useState(alreadySavedId);
   const [error, setError] = useState('');
 
   if (auth.status === 'unavailable') return null;
@@ -38,6 +39,14 @@ export function SaveChartPanel({ input, name, alreadySavedId, startOpen }: SaveC
           My charts
         </Link>
         .
+        {savedId && (
+          <>
+            {' '}
+            <Link to={`/charts/${savedId}/reading`} className="font-semibold underline">
+              Get the full reading
+            </Link>
+          </>
+        )}
       </p>
     );
   }
@@ -74,7 +83,8 @@ export function SaveChartPanel({ input, name, alreadySavedId, startOpen }: SaveC
     e.preventDefault();
     setStatus('saving');
     try {
-      await saveChart(client, input, { label, isSelf, consentConfirmed: consent });
+      const row = await saveChart(client, input, { label, isSelf, consentConfirmed: consent });
+      setSavedId(row.id);
       setStatus('saved');
     } catch (err) {
       setStatus('error');

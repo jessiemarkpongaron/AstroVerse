@@ -129,6 +129,10 @@ describe('Saving a chart', () => {
     expect(screen.getByLabelText('This is my own chart')).toBeChecked();
     fireEvent.click(screen.getByRole('button', { name: 'Save' }));
     expect(await screen.findByText(/Saved in/)).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'Get the full reading' })).toHaveAttribute(
+      'href',
+      '/charts/chart-1/reading',
+    );
     expect(charts.saveChart).toHaveBeenCalledWith(expect.anything(), input, {
       label: 'My chart',
       isSelf: true,
@@ -211,6 +215,7 @@ describe('MyChartsPage', () => {
     fireEvent.click(await screen.findByRole('button', { name: 'Open' }));
     expect(await screen.findByRole('heading', { name: "Mama's Big Three" })).toBeInTheDocument();
     expect(screen.getByText(/Saved in/)).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'Get the full reading' })).toBeInTheDocument();
   });
 
   it('Cancel keeps the chart', async () => {

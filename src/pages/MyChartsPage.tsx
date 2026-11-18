@@ -123,7 +123,7 @@ export function MyChartsPage() {
                   </div>
                 </div>
               ) : (
-                <div className="mt-3 flex gap-2">
+                <div className="mt-3 flex flex-wrap gap-2">
                   <button
                     type="button"
                     onClick={() => open(c)}
@@ -131,6 +131,13 @@ export function MyChartsPage() {
                   >
                     Open
                   </button>
+                  <Link
+                    to={`/charts/${c.id}/reading`}
+                    aria-label={`Full reading for ${c.label}`}
+                    className="flex min-h-11 items-center rounded-lg border border-gold px-4 font-medium text-gold-dark dark:text-gold"
+                  >
+                    Full reading
+                  </Link>
                   <button
                     type="button"
                     onClick={() => setConfirming(c.id)}
