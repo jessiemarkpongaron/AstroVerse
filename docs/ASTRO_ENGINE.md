@@ -81,6 +81,12 @@ Everything here lives in `src/lib/astro/`. Pure TypeScript, deterministic, fully
   separated by < 30 days (retrograde passes); store exact-hit dates (orb minimum) per pass.
 - Output: `{ transiting, natal, type, start, end, exactDates[], natalHouse, transitHouse }`.
 - Also output **ingresses**: when each slow planet enters a new natal house (Whole Sign or Placidus).
+- **Implemented** (`transits.ts`): daily UTC samples, exact hits refined by bisection to ~1 h
+  (reported as UTC dates), aspects measured to both aspect points (e.g. square at natal ±90°).
+  Without a birth time the Moon (≈13°/day) and the angles are left out and there are no houses
+  or ingresses. Validated against Swiss Ephemeris reference dates (Pluto's five crossings of
+  0° Aquarius 2023–24, Saturn/Jupiter sign ingresses incl. retrograde re-entry, the 2020
+  Jupiter–Saturn conjunction) to ±1 day; 24 months for one chart ≈ 0.2 s.
 
 ## 8. Uncertainty (uncertainty.ts)
 - `sign-cusp`: any point within 1° of a sign boundary (Moon: the larger of 1° and the Moon's
