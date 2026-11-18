@@ -97,6 +97,14 @@ describe('planetInSign.json', () => {
     checkEntry(e, 1, 2);
   });
 
+  it.each(snippets.filter(([id]) => id.startsWith('Jupiter.')))(
+    '%s avoids luck/money language (PRD §5: no financial or gambling advice)',
+    (_id, e) => {
+      const text = [e.meaning, ...e.keywords, ...e.strengths, ...e.challenges].join(' ');
+      expect(text).not.toMatch(/\b(luck|lucky|money|wealth|fortune|rich|win(ning)?s?)\b/i);
+    },
+  );
+
   it('snippets are unique and differ from Big Three text', () => {
     const texts = [...snippets.map(([, e]) => e.meaning), ...all.map(([, e]) => e.meaning)];
     expect(new Set(texts).size).toBe(texts.length);

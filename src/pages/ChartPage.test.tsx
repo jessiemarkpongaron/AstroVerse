@@ -63,6 +63,7 @@ describe('ChartPage', () => {
     expect(within(section).getByRole('heading', { name: /Venus in Taurus/ })).toBeInTheDocument();
     expect(within(section).getByText(/You tend to love in a steady, loyal/)).toBeInTheDocument();
     expect(within(section).getByRole('heading', { name: /Mars in Aries/ })).toBeInTheDocument();
+    expect(within(section).getByRole('heading', { name: /Jupiter in Cancer/ })).toBeInTheDocument();
   });
 
   it('renders the wheel with a text summary', async () => {

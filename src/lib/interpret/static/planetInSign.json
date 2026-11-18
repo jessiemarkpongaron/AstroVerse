@@ -4,7 +4,8 @@
   "review": {
     "Mercury": "approved",
     "Venus": "approved",
-    "Mars": "approved"
+    "Mars": "approved",
+    "Jupiter": "approved"
   },
   "planets": {
     "Mercury": {
@@ -239,6 +240,84 @@
         "keywords": ["Compassionate", "Creative", "Intuitive"],
         "strengths": ["Works hard for others", "Creative energy", "Flexible"],
         "challenges": ["Low energy when uninspired", "Avoiding conflict", "Drifting from goals"]
+      }
+    },
+    "Jupiter": {
+      "Aries": {
+        "meaning": "You tend to grow by taking the first step and trying new things with courage. Opportunities may open up when you lead, and patience helps your bold beginnings grow into something lasting.",
+        "keywords": ["Courageous", "Pioneering", "Hopeful"],
+        "strengths": ["Confident in new ventures", "Inspires action", "Bold faith in yourself"],
+        "challenges": ["Overconfidence", "Rushing ahead", "Starting too many things"]
+      },
+      "Taurus": {
+        "meaning": "You tend to grow through patience, steady effort and enjoying the good things in life. You may feel most blessed when you build something solid that lasts.",
+        "keywords": ["Steady", "Generous", "Grounded"],
+        "strengths": ["Patient growth", "Appreciates simple joys", "Builds lasting results"],
+        "challenges": ["Overindulgence", "Getting too comfortable", "Resisting new paths"]
+      },
+      "Gemini": {
+        "meaning": "You tend to grow through learning, reading, talking and meeting all kinds of people. Opportunities may come through your curiosity and your gift for connecting ideas.",
+        "keywords": ["Curious", "Sociable", "Versatile"],
+        "strengths": ["Lifelong learner", "Good networker", "Open to many views"],
+        "challenges": ["Spreading yourself thin", "Collecting facts without depth", "Restlessness"]
+      },
+      "Cancer": {
+        "meaning": "You tend to grow through caring for others and creating a warm, welcoming home. Your kindness and loyalty may open doors, and family can be a big source of strength.",
+        "keywords": ["Nurturing", "Generous", "Protective"],
+        "strengths": ["Big-hearted", "Creates a sense of belonging", "Emotionally wise"],
+        "challenges": ["Overprotecting others", "Clinging to comfort", "Taking on too much care"]
+      },
+      "Leo": {
+        "meaning": "You tend to grow by sharing your talents, warmth and creativity with others. People may respond to your generous spirit, and humility makes your confidence even more inspiring.",
+        "keywords": ["Generous", "Creative", "Confident"],
+        "strengths": ["Warm leadership", "Encourages others", "Creative vision"],
+        "challenges": ["Showing off", "Pride", "Overdoing it"]
+      },
+      "Virgo": {
+        "meaning": "You tend to grow through useful work, learning skills and helping others in practical ways. Small, careful improvements may add up to real progress over time.",
+        "keywords": ["Practical", "Helpful", "Skilled"],
+        "strengths": ["Improves things steadily", "Generous with help", "Good at details"],
+        "challenges": ["Overthinking", "Missing the big picture", "Being too self-critical"]
+      },
+      "Libra": {
+        "meaning": "You tend to grow through partnerships, fairness and bringing people together. Opportunities may come through the people you work with and the goodwill you create.",
+        "keywords": ["Fair", "Sociable", "Cooperative"],
+        "strengths": ["Builds strong partnerships", "Brings harmony", "Sees all sides"],
+        "challenges": ["Depending on others' approval", "Indecision", "Avoiding hard choices"]
+      },
+      "Scorpio": {
+        "meaning": "You tend to grow through deep experiences, honesty and facing hard truths. You may find real strength in times of change, and sharing what you learn can help others through hard times.",
+        "keywords": ["Deep", "Resilient", "Transformative"],
+        "strengths": ["Inner strength", "Insightful", "Turns setbacks into growth"],
+        "challenges": ["All-or-nothing thinking", "Secrecy", "Holding on too tightly"]
+      },
+      "Sagittarius": {
+        "meaning": "You tend to grow through adventure, learning and searching for meaning. Your optimism and open mind may lead you to new places, people and ideas.",
+        "keywords": ["Optimistic", "Adventurous", "Wise"],
+        "strengths": ["Big vision", "Open-minded", "Uplifting presence"],
+        "challenges": ["Overpromising", "Restlessness", "Preaching"]
+      },
+      "Capricorn": {
+        "meaning": "You tend to grow through hard work, responsibility and patient planning. Your efforts may build slowly but surely, and your success can feel well earned.",
+        "keywords": ["Disciplined", "Practical", "Ambitious"],
+        "strengths": ["Steady progress", "Responsible", "Long-term thinking"],
+        "challenges": [
+          "Too much caution",
+          "Being hard on yourself",
+          "Forgetting to enjoy the journey"
+        ]
+      },
+      "Aquarius": {
+        "meaning": "You tend to grow through new ideas, friendships and working for the good of the group. Opportunities may come when you think differently and connect with like-minded people.",
+        "keywords": ["Visionary", "Friendly", "Inventive"],
+        "strengths": ["Fresh perspectives", "Community-minded", "Open to all people"],
+        "challenges": ["Detachment", "Stubborn ideals", "Rebelling for its own sake"]
+      },
+      "Pisces": {
+        "meaning": "You tend to grow through compassion, faith, imagination and quiet reflection. Your kindness may come back to you in unexpected ways, and rest helps you hear your inner wisdom.",
+        "keywords": ["Compassionate", "Spiritual", "Imaginative"],
+        "strengths": ["Deep empathy", "Creative inspiration", "Forgiving"],
+        "challenges": ["Escapism", "Weak boundaries", "Giving too much"]
       }
     }
   }
