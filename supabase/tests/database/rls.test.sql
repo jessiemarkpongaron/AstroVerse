@@ -3,7 +3,7 @@
 begin;
 create extension if not exists pgtap with schema extensions;
 
-select plan(31);
+select plan(38);
 
 -- Fixed ids
 -- Alice  = 0000000a-0000-0000-0000-000000000001
@@ -149,6 +149,35 @@ reset role;
 select is(
   (select count(*)::int from public.readings where chart_id = 'c0000000-0000-0000-0000-00000000000a'), 0,
   'deleting a chart deletes its readings');
+
+-- ---------------------------------------------------------------- reading_generations (M8 rate limit)
+select ok(
+  (select relrowsecurity from pg_class where oid = 'public.reading_generations'::regclass),
+  'RLS is enabled on reading_generations');
+
+set local role authenticated;
+select set_config('request.jwt.claims', '{"sub":"0000000a-0000-0000-0000-000000000001","role":"authenticated"}', true);
+select throws_ok($$ select count(*) from public.reading_generations $$, '42501', null,
+  'users cannot read the generation log');
+select throws_ok($$ insert into public.reading_generations (user_id) values ('0000000a-0000-0000-0000-000000000001') $$,
+  '42501', null, 'users cannot write the generation log');
+select throws_ok($$ select public.consume_reading_generation('0000000a-0000-0000-0000-000000000001', 1000) $$,
+  '42501', null, 'users cannot call consume_reading_generation (Edge Function only)');
+
+set local role service_role;
+select is(
+  (select array_agg(public.consume_reading_generation('0000000b-0000-0000-0000-000000000002', 3)) from generate_series(1, 4)),
+  array[true, true, true, false], 'the 4th generation within 24 h is refused at limit 3');
+select is(
+  (select count(*)::int from public.reading_generations where user_id = '0000000b-0000-0000-0000-000000000002'),
+  3, 'a refused generation is not recorded');
+reset role;
+update public.reading_generations set created_at = now() - interval '25 hours'
+  where user_id = '0000000b-0000-0000-0000-000000000002';
+set local role service_role;
+select ok(public.consume_reading_generation('0000000b-0000-0000-0000-000000000002', 3),
+  'generations older than 24 h no longer count');
+reset role;
 
 -- ---------------------------------------------------------------- anon
 set local role anon;

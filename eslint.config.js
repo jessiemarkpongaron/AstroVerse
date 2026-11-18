@@ -17,5 +17,26 @@ export default tseslint.config(
       'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
     },
   },
+  {
+    // CLAUDE.md rule 5: the Claude API is called only from the Edge Function.
+    files: ['src/**/*.{ts,tsx}'],
+    rules: {
+      'no-restricted-imports': [
+        'error',
+        {
+          patterns: [
+            {
+              group: ['@anthropic-ai/*'],
+              message: 'Claude is called only from supabase/functions (never the browser).',
+            },
+            {
+              group: ['**/supabase/functions/*/**', '!**/supabase/functions/_shared/**'],
+              message: 'Browser code may import only supabase/functions/_shared.',
+            },
+          ],
+        },
+      ],
+    },
+  },
   prettier,
 );

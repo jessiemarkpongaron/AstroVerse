@@ -99,3 +99,14 @@ export async function deleteChart(client: AppSupabaseClient, id: string): Promis
   const { error } = await client.from('charts').delete().eq('id', id);
   if (error) throw new ChartsError(chartsErrorMessage(error));
 }
+
+/** One chart by id, as the signed-in user (RLS); null if missing or not theirs. */
+export async function getChart(client: AppSupabaseClient, id: string): Promise<ChartRow | null> {
+  const { data, error } = await client.from('charts').select('*').eq('id', id).maybeSingle();
+  if (error) {
+    // Postgres rejects a malformed uuid (22P02): treat as "not found".
+    if (error.code === '22P02') return null;
+    throw new ChartsError(chartsErrorMessage(error));
+  }
+  return data;
+}

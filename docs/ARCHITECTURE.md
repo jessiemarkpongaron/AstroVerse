@@ -41,7 +41,7 @@ astroverse/
 │  │  │  └─ __tests__/         fixtures.json (generated) + fixture helpers
 │  │  ├─ interpret/
 │  │  │  ├─ static/            JSON text: signs, houses, planets-in-signs, aspects
-│  │  │  └─ buildPayload.ts    compact chart summary sent to the AI function
+│  │  │  └─ buildPayload.ts    compact chart summary sent to the AI function (no birth data)
 │  │  ├─ geo.ts                Open-Meteo geocoding client (PH-first ranking, "name, hint" queries)
 │  │  ├─ display.ts            glyphs (text presentation, no emoji), labels, deg°min′ formatting
 │  │  ├─ flags.ts              which uncertainty flags belong on Big Three cards
@@ -164,13 +164,27 @@ purchases  (id uuid pk, user_id uuid, chart_id uuid, product text,
 - `purchases` rows are inserted/updated only by the webhook function (service role).
 
 ## 5. Edge Function: generate-reading
-1. Verify the user's JWT; load the chart (RLS) and check entitlement (free vs premium kind).
+Code: `supabase/functions/generate-reading/` — `index.ts` (Deno wiring), `handler.ts` (request
+logic, unit-tested with fakes), `claude.ts` (API call + validation), `prompt.ts`. Schemas,
+`PROMPT_VERSION` and `readingInputHash` live in `supabase/functions/_shared/reading.ts`, which
+the browser imports too (ESLint blocks any other `supabase/functions` or `@anthropic-ai/*`
+import from `src/`).
+1. Verify the user's JWT in code (`auth.getUser`; `verify_jwt = false` in config.toml so new
+   asymmetric signing keys work); load the chart **as the user** (RLS → 404 if not theirs).
+   Entitlement (free vs premium) arrives with payments in M11; for now any signed-in user.
 2. Recompute nothing server-side — the client sends the compact payload from
-   `buildPayload.ts`; the function validates it with zod and recomputes `input_hash`.
-3. If a cached reading with that hash exists → return it.
-4. Else call Claude with the system prompt in INTERPRETATION.md, ask for JSON sections,
-   validate, store, return.
-5. Rate limit: 20 generations per user per day.
+   `buildPayload.ts`; the function validates it with a strict zod schema (enums, numbers and
+   `HH:mm` only — no free text can reach the prompt), checks `timeAccuracy` matches the saved
+   chart, and recomputes `input_hash`. A forged payload can only produce a reading of a fake
+   chart for the forger's own account.
+3. If a cached reading with that hash exists → return it (the browser also reads cached
+   readings directly through RLS, so revisits don't call the function).
+4. Else `consume_reading_generation(user, 20)` (security definer, service role only, advisory
+   lock per user, rolling 24 h; rows survive chart deletion) → call Claude (`claude-opus-5-5`,
+   structured output, server-side refusal fallback, effort `medium`) → validate (zod + section
+   rules + guardrail regexes; one retry if time allows) → insert with the service role → return.
+5. Errors map to `{ ok: false, error, message }` with 401/400/404/429/502/503; logs carry ids
+   and reasons only, never birth data or reading text.
 
 ## 6. Environment variables (.env.example)
 ```
