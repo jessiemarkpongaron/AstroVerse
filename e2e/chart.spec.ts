@@ -41,6 +41,24 @@ test('share link opens the chart and removes birth data from the URL', async ({ 
   await expect(page.getByRole('heading', { name: 'Your Big Three' })).toBeVisible();
 });
 
+test('free full reading opens from the chart, at the top, with no network calls', async ({
+  page,
+}) => {
+  const external: string[] = [];
+  page.on('request', (r) => {
+    if (!r.url().startsWith('http://localhost')) external.push(r.url());
+  });
+  await page.goto(`/chart#${CARRASCAL_HASH}`);
+  await page.getByRole('link', { name: 'Read your full reading' }).click();
+  await expect(page.getByRole('heading', { name: 'Your full reading' })).toBeInViewport();
+  await expect(page.getByRole('region', { name: 'Personality' })).toContainText('Sun in Gemini');
+  await expect(page.getByRole('region', { name: 'Life Lessons' })).toContainText(
+    'Pluto in Scorpio',
+  );
+  expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBe(0);
+  expect(external).toEqual([]);
+});
+
 test('works offline after the first visit (service worker)', async ({ page, context }) => {
   await page.goto(`/chart#${CARRASCAL_HASH}`);
   await expect(page.getByRole('heading', { name: 'Your Big Three' })).toBeVisible();

@@ -131,7 +131,7 @@ describe('Saving a chart', () => {
     expect(await screen.findByText(/Saved in/)).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'Get the full reading' })).toHaveAttribute(
       'href',
-      '/charts/chart-1/reading',
+      '/reading',
     );
     expect(charts.saveChart).toHaveBeenCalledWith(expect.anything(), input, {
       label: 'My chart',

@@ -24,6 +24,13 @@ describe('AppLayout', () => {
     expect(screen.getByText(DISCLAIMER)).toBeInTheDocument();
   });
 
+  it('scrolls to the top when the page changes', () => {
+    renderAt('/nope');
+    vi.mocked(window.scrollTo).mockClear();
+    fireEvent.click(screen.getByRole('link', { name: 'Go home' }));
+    expect(window.scrollTo).toHaveBeenCalledWith(0, 0);
+  });
+
   it('renders a not-found page for unknown routes', () => {
     renderAt('/nope');
     expect(screen.getByRole('heading', { name: /page not found/i })).toBeInTheDocument();

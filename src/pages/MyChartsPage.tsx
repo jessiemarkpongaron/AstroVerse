@@ -132,7 +132,14 @@ export function MyChartsPage() {
                     Open
                   </button>
                   <Link
-                    to={`/charts/${c.id}/reading`}
+                    to="/reading"
+                    state={
+                      {
+                        input: rowToBirthInput(c),
+                        name: c.is_self ? '' : c.label,
+                        savedChartId: c.id,
+                      } satisfies ChartLocationState
+                    }
                     aria-label={`Full reading for ${c.label}`}
                     className="flex min-h-11 items-center rounded-lg border border-gold px-4 font-medium text-gold-dark dark:text-gold"
                   >

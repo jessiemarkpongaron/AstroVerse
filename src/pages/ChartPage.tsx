@@ -1,5 +1,5 @@
-import { useEffect, useMemo, useState, type ReactNode } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router';
+import { useMemo, useState, type ReactNode } from 'react';
+import { Link } from 'react-router';
 import { AspectsList } from '../components/AspectsList/AspectsList.tsx';
 import {
   BigThreeCard,
@@ -14,46 +14,17 @@ import { SegmentedControl } from '../components/ui/SegmentedControl.tsx';
 import { UncertaintyNotes } from '../components/ui/UncertaintyNotes.tsx';
 import { buildChart } from '../lib/astro/chart.ts';
 import { BirthInputError } from '../lib/astro/time.ts';
-import type { BirthInput, Chart, HouseSystemChoice } from '../lib/astro/types.ts';
+import type { Chart, HouseSystemChoice } from '../lib/astro/types.ts';
 import type { ChartLocationState } from '../lib/chartState.ts';
 import { isBigThreeCardFlag } from '../lib/flags.ts';
 import { bigThreeEntry } from '../lib/interpret/staticText.ts';
-import { buildShareUrl, decodeBirthHash } from '../lib/shareLink.ts';
+import { buildShareUrl } from '../lib/shareLink.ts';
+import { useBirthInput } from '../hooks/useBirthInput.ts';
 
 const HOUSE_OPTIONS = [
   { value: 'placidus', label: 'Placidus' },
   { value: 'whole-sign', label: 'Whole Sign' },
 ] as const satisfies readonly { value: HouseSystemChoice; label: string }[];
-
-function useBirthInput(): {
-  input: BirthInput | null;
-  name: string;
-  savedChartId?: string | undefined;
-  openSave?: boolean | undefined;
-} {
-  const location = useLocation();
-  const navigate = useNavigate();
-  const fromHash = location.hash ? decodeBirthHash(location.hash) : null;
-
-  // Privacy: once a share link is opened, move the birth data from the address bar into
-  // router state (kept across reloads by the browser), so it doesn't linger in the URL.
-  useEffect(() => {
-    if (!fromHash) return;
-    const state: ChartLocationState = { input: fromHash, name: '' };
-    navigate({ pathname: location.pathname, hash: '' }, { replace: true, state });
-    // fromHash is derived from location.hash; re-run only when the hash changes.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [location.hash]);
-
-  if (fromHash) return { input: fromHash, name: '' };
-  const state = location.state as ChartLocationState | null;
-  return {
-    input: state?.input ?? null,
-    name: state?.name ?? '',
-    savedChartId: state?.savedChartId,
-    openSave: state?.openSave,
-  };
-}
 
 function Section({
   title,
@@ -166,6 +137,13 @@ export function ChartPage() {
 
       <Section title="Your short reading">
         <ShortReading chart={chart} />
+        <Link
+          to="/reading"
+          state={{ input: chart.input, name, savedChartId } satisfies ChartLocationState}
+          className="flex min-h-11 w-full items-center justify-center rounded-lg bg-ink px-4 py-2 font-semibold text-white sm:w-auto dark:bg-gold dark:text-ink"
+        >
+          Read your full reading
+        </Link>
         <p className="text-xs text-slate-600 dark:text-slate-400">
           For entertainment and self-reflection. Not professional advice.
         </p>

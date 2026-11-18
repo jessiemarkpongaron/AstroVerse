@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router';
 import { useAuth } from '../../hooks/useAuth.ts';
 import type { BirthInput } from '../../lib/astro/types.ts';
 import { ChartsError, saveChart } from '../../lib/charts.ts';
+import type { ChartLocationState } from '../../lib/chartState.ts';
 import { setPendingChart } from '../../lib/pendingChart.ts';
 
 interface SaveChartPanelProps {
@@ -42,7 +43,11 @@ export function SaveChartPanel({ input, name, alreadySavedId, startOpen }: SaveC
         {savedId && (
           <>
             {' '}
-            <Link to={`/charts/${savedId}/reading`} className="font-semibold underline">
+            <Link
+              to="/reading"
+              state={{ input, name, savedChartId: savedId } satisfies ChartLocationState}
+              className="font-semibold underline"
+            >
               Get the full reading
             </Link>
           </>
