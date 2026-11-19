@@ -73,8 +73,9 @@ Hosted project setup (once):
    `https://<live domain>/auth/callback` and `http://localhost:5173/auth/callback`.
 3. Google: Google Cloud Console → OAuth client (Web). Authorized redirect URI =
    `https://<ref>.supabase.co/auth/v1/callback`. Paste the client ID/secret into Supabase →
-   Authentication → Providers → Google, enable it, then set the Cloudflare build variable
-   `VITE_GOOGLE_LOGIN=true` and redeploy. Until then the Google button is hidden.
+   Authentication → Providers → Google and enable it. The button is shown when
+   `VITE_GOOGLE_LOGIN=true`, which the committed `.env.production` sets (remove it there to hide
+   the button again).
 4. Email: Supabase's built-in email sender is heavily rate-limited; configure custom SMTP
    (Authentication → Emails → SMTP) before launch.
 5. Cloudflare build env: `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY` (publishable key), then
