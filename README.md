@@ -102,7 +102,10 @@ storing it.
 
 Live: **https://astroverse.digitalverseph.com** (custom domain on the `digitalverseph.com` Cloudflare
 zone). The site runs as a Cloudflare **Worker with static assets** connected to this repo (the
-newer default; `_headers` and SPA fallback behave as on Pages). Classic Pages setup:
+newer default; `_headers` and SPA fallback behave as on Pages). Its settings are in the committed
+`wrangler.jsonc` (assets from `dist`, SPA fallback, custom domain); keep that file, or Workers Builds
+auto-configures the project and rebuilds it with a plugin that breaks the pre-render step.
+Classic Pages setup:
 
 1. Cloudflare dashboard → **Workers & Pages → Create → Pages → Connect to Git** → pick this repo.
 2. Build settings: production branch `main`, build command `npm run build`, output `dist`.
