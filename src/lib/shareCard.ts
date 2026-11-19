@@ -19,12 +19,11 @@ export interface ShareCardRow {
   keywords: string[];
 }
 
-const ROWS: { point: PointName; key: BigThreeKey; label: ShareCardRow['label']; role: string }[] =
-  [
-    { point: 'Sun', key: 'sun', label: 'Sun', role: 'Core self' },
-    { point: 'Moon', key: 'moon', label: 'Moon', role: 'Emotions' },
-    { point: 'Ascendant', key: 'rising', label: 'Rising', role: 'First impression' },
-  ];
+const ROWS: { point: PointName; key: BigThreeKey; label: ShareCardRow['label']; role: string }[] = [
+  { point: 'Sun', key: 'sun', label: 'Sun', role: 'Core self' },
+  { point: 'Moon', key: 'moon', label: 'Moon', role: 'Emotions' },
+  { point: 'Ascendant', key: 'rising', label: 'Rising', role: 'First impression' },
+];
 
 /** U+FE0E asks for the text (not emoji) form of zodiac glyphs. */
 const TEXT_STYLE = '︎';
