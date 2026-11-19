@@ -20,7 +20,7 @@ describe('AppLayout', () => {
 
   it('shows header and the disclaimer footer on every page', () => {
     renderAt('/');
-    expect(screen.getByRole('link', { name: /astroverse/i })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'AstroVerse' })).toBeInTheDocument();
     expect(screen.getByText(DISCLAIMER)).toBeInTheDocument();
   });
 

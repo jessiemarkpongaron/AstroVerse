@@ -68,3 +68,14 @@ test.describe('horoscope', () => {
     expect(problems).toEqual([]);
   });
 });
+
+test('support page shows the QR image and it can be saved', async ({ page, request }) => {
+  await page.goto('/');
+  await page.getByRole('link', { name: 'Support AstroVerse' }).click();
+  const img = page.getByRole('img', { name: /InstaPay QR code for AstroVerse DigitalVersePH/ });
+  await expect(img).toBeVisible();
+  expect(await img.evaluate((el: HTMLImageElement) => el.complete && el.naturalWidth)).toBe(720);
+  const res = await request.get('/images/gcash-qr.png');
+  expect(res.headers()['content-type']).toContain('image/png');
+  expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBe(0);
+});

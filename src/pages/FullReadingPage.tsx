@@ -110,6 +110,13 @@ export function FullReadingPage() {
         </section>
       )}
 
+      <p className="text-sm text-slate-600 dark:text-slate-400">
+        Enjoyed your reading? AstroVerse is free.{' '}
+        <Link to="/support" className="text-gold-dark underline dark:text-gold">
+          Support it with a tip
+        </Link>
+      </p>
+
       <p className="border-t border-slate-200 pt-4 text-xs text-slate-600 dark:border-dusk dark:text-slate-400">
         For entertainment and self-reflection. Not professional advice.
       </p>

@@ -16,6 +16,10 @@ export function Footer() {
           <Link to="/signs" className="underline">
             Zodiac signs
           </Link>
+          {' · '}
+          <Link to="/support" className="underline">
+            Support AstroVerse
+          </Link>
         </p>
         <p className="mt-2">© {new Date().getFullYear()} AstroVerse · DigitalVerse Solutions</p>
       </div>
