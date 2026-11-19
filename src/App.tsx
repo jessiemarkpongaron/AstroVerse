@@ -4,6 +4,7 @@ import { AppLayout } from './components/layout/AppLayout.tsx';
 import { AuthCallbackPage } from './pages/AuthCallbackPage.tsx';
 import { aiReadingsEnabled } from './lib/features.ts';
 import { HomePage } from './pages/HomePage.tsx';
+import { LandingPage } from './pages/LandingPage.tsx';
 import { LoginPage } from './pages/LoginPage.tsx';
 import { MyChartsPage } from './pages/MyChartsPage.tsx';
 import { NotFoundPage } from './pages/NotFoundPage.tsx';
@@ -38,7 +39,8 @@ export function App() {
   return (
     <Routes>
       <Route element={<AppLayout />}>
-        <Route index element={<HomePage />} />
+        <Route index element={<LandingPage />} />
+        <Route path="start" element={<HomePage />} />
         <Route
           path="chart"
           element={

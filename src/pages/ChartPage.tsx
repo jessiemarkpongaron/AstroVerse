@@ -70,7 +70,7 @@ export function ChartPage() {
     return (
       <section className="space-y-4 text-center">
         <h1 className="text-2xl font-bold">No birth details yet</h1>
-        <Link to="/" className="text-gold-dark underline dark:text-gold">
+        <Link to="/start" className="text-gold-dark underline dark:text-gold">
           Enter your birth details
         </Link>
       </section>
@@ -81,7 +81,7 @@ export function ChartPage() {
       <section className="space-y-4 text-center" role="alert">
         <h1 className="text-2xl font-bold">We couldn't read these birth details</h1>
         <p>{result.error}</p>
-        <Link to="/" className="text-gold-dark underline dark:text-gold">
+        <Link to="/start" className="text-gold-dark underline dark:text-gold">
           Start again
         </Link>
       </section>
@@ -222,7 +222,7 @@ export function ChartPage() {
           Copy share link
         </button>
         <Link
-          to="/"
+          to="/start"
           state={{ input: chart.input, name } satisfies ChartLocationState}
           className="flex min-h-11 items-center justify-center rounded-lg px-4 py-2 font-medium text-gold-dark underline dark:text-gold"
         >

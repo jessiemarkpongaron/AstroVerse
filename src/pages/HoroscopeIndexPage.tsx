@@ -32,7 +32,7 @@ export function HoroscopeIndexPage() {
           </li>
         ))}
       </ul>
-      <Link to="/" className="text-sm text-gold-dark underline dark:text-gold">
+      <Link to="/start" className="text-sm text-gold-dark underline dark:text-gold">
         Don’t know your Rising sign? Get your free birth chart
       </Link>
     </div>

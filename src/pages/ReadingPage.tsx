@@ -103,7 +103,7 @@ export function ReadingPage() {
     }
   }, [client, row, payload]);
 
-  if (auth.status === 'unavailable') return <Navigate to="/" replace />;
+  if (auth.status === 'unavailable') return <Navigate to="/start" replace />;
   if (auth.status === 'signed-out') return <Navigate to="/login" replace />;
   if (auth.status === 'loading') return <p className="text-center text-sm">Loading…</p>;
 

@@ -15,7 +15,7 @@ test.describe('with production CSP', () => {
     await applyCsp(page);
     await mockPlaceSearch(page);
 
-    await page.goto('/');
+    await page.goto('/start');
     await page.getByLabel('Birth date').fill('1990-05-31');
     await page.getByLabel('Birth time').fill('15:30');
     await page.getByRole('combobox', { name: 'Birth place' }).fill('Carrascal');

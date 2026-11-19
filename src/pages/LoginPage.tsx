@@ -18,7 +18,7 @@ export function LoginPage() {
         <p className="text-sm text-slate-600 dark:text-slate-400">
           You can still make free charts.
         </p>
-        <Link to="/" className="text-gold-dark underline dark:text-gold">
+        <Link to="/start" className="text-gold-dark underline dark:text-gold">
           Make a chart
         </Link>
       </section>
@@ -65,9 +65,9 @@ export function LoginPage() {
   return (
     <section className="mx-auto max-w-sm space-y-6">
       <div className="space-y-1">
-        <h1 className="text-2xl font-bold">Sign in</h1>
+        <h1 className="text-2xl font-bold">Welcome to AstroVerse</h1>
         <p className="text-sm text-slate-600 dark:text-slate-400">
-          Save your charts and come back to them anytime. No password needed.
+          Sign in to save your charts and come back to them anytime. No password needed.
         </p>
       </div>
 
@@ -128,6 +128,13 @@ export function LoginPage() {
       >
         Continue with Google
       </button>
+
+      <Link
+        to="/start"
+        className="flex min-h-12 w-full items-center justify-center rounded-lg px-4 py-3 font-semibold text-gold-dark underline dark:text-gold"
+      >
+        Continue without an account
+      </Link>
 
       <p className="text-xs text-slate-600 dark:text-slate-400">
         We only use your email to sign you in. Your saved charts are private to your account.

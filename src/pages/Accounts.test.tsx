@@ -71,6 +71,23 @@ describe('Header', () => {
   });
 });
 
+describe('Landing (/)', () => {
+  it('sends signed-out visitors to the login page, which lets them skip to the form', () => {
+    render(renderApp(signedOut(), '/'));
+    expect(screen.getByRole('heading', { name: 'Welcome to AstroVerse' })).toBeInTheDocument();
+    fireEvent.click(screen.getByRole('link', { name: 'Continue without an account' }));
+    expect(screen.getByRole('heading', { name: 'Discover your Big Three' })).toBeInTheDocument();
+  });
+
+  it('shows the birth form to signed-in users and when accounts are off', () => {
+    const { unmount } = render(renderApp(signedIn(), '/'));
+    expect(screen.getByRole('heading', { name: 'Discover your Big Three' })).toBeInTheDocument();
+    unmount();
+    render(renderApp({ status: 'unavailable', client: null, user: null, session: null }, '/'));
+    expect(screen.getByRole('heading', { name: 'Discover your Big Three' })).toBeInTheDocument();
+  });
+});
+
 describe('LoginPage', () => {
   it('sends a magic link to the callback URL', async () => {
     const client = fakeClient();

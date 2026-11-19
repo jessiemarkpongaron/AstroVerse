@@ -79,3 +79,12 @@ test('support page shows the QR image and it can be saved', async ({ page, reque
   expect(res.headers()['content-type']).toContain('image/png');
   expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBe(0);
 });
+
+test('signed-out visitors land on the login page and can skip to the form', async ({ page }) => {
+  await page.goto('/');
+  await expect(page).toHaveURL(/\/login$/);
+  await expect(page.getByRole('heading', { name: 'Welcome to AstroVerse' })).toBeVisible();
+  await page.getByRole('link', { name: 'Continue without an account' }).click();
+  await expect(page).toHaveURL(/\/start$/);
+  await expect(page.getByRole('button', { name: 'See my chart' })).toBeVisible();
+});

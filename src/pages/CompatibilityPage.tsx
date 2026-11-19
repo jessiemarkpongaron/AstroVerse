@@ -90,7 +90,7 @@ export function CompatibilityPage() {
     return (
       <section className="space-y-4 text-center">
         <h1 className="text-2xl font-bold">Start with your own chart</h1>
-        <Link to="/" className="text-gold-dark underline dark:text-gold">
+        <Link to="/start" className="text-gold-dark underline dark:text-gold">
           Enter your birth details
         </Link>
       </section>

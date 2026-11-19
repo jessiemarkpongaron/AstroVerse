@@ -79,7 +79,7 @@ function HoroscopeContent({ sign }: { sign: SignIndex }) {
           for your own date, time and place.
         </p>
         <Link
-          to="/"
+          to="/start"
           className="flex min-h-11 w-full items-center justify-center rounded-lg bg-ink px-4 py-2 font-semibold text-white sm:w-auto dark:bg-gold dark:text-ink"
         >
           Get your free birth chart

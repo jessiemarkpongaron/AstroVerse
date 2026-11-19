@@ -22,7 +22,7 @@ export function SignsIndexPage() {
           What each sign means as your Sun (core self), Moon (emotions) and Rising (first
           impression). Sun sign dates are typical dates in Philippine time.
         </p>
-        <Link to="/" className="text-sm text-gold-dark underline dark:text-gold">
+        <Link to="/start" className="text-sm text-gold-dark underline dark:text-gold">
           Find your own Big Three, free
         </Link>
       </header>

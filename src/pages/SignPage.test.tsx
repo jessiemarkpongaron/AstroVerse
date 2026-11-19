@@ -24,7 +24,7 @@ describe('sign pages', () => {
     expect(document.title).toBe('Gemini Sun Sign: Traits, Strengths & Dates | AstroVerse');
     expect(screen.getByRole('link', { name: 'Get your free birth chart' })).toHaveAttribute(
       'href',
-      '/',
+      '/start',
     );
     expect(screen.getByRole('link', { name: 'Gemini Moon' })).toHaveAttribute(
       'href',

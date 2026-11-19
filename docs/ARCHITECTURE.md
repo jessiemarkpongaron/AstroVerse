@@ -66,7 +66,8 @@ astroverse/
 │  │  ├─ ShareCard/            "Share my Big Three image" (share sheet or download)
 │  │  ├─ TransitTimeline/
 │  │  └─ ui/                   SegmentedControl, UncertaintyNotes, …
-│  ├─ pages/                   Home, Chart, FullReading (/reading), Forecast, Career,
+│  ├─ pages/                   Landing (/ → /login when signed out), Home (birth form, /start),
+│  │                           Chart, FullReading (/reading), Forecast, Career,
 │  │                           Compatibility, Sign + SignsIndex (/signs, /moon, /rising), Horoscope
 │  │                           (/horoscope), MyCharts,
 │  │                           Login, Reading (AI, behind VITE_AI_READINGS); later Pricing

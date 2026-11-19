@@ -34,7 +34,7 @@ export function MyChartsPage() {
     void load();
   }, [load]);
 
-  if (auth.status === 'unavailable') return <Navigate to="/" replace />;
+  if (auth.status === 'unavailable') return <Navigate to="/start" replace />;
   if (auth.status === 'signed-out') return <Navigate to="/login" replace />;
   if (auth.status === 'loading') return <p className="text-center text-sm">Loading…</p>;
 
@@ -62,7 +62,7 @@ export function MyChartsPage() {
     <section className="space-y-5">
       <div className="flex items-center justify-between gap-3">
         <h1 className="text-2xl font-bold">My charts</h1>
-        <Link to="/" className="text-sm font-medium text-gold-dark underline dark:text-gold">
+        <Link to="/start" className="text-sm font-medium text-gold-dark underline dark:text-gold">
           New chart
         </Link>
       </div>

@@ -111,7 +111,7 @@ function SignPageContent({ kind, sign }: { kind: SignPageKind; sign: (typeof ALL
         <p className="font-medium">What are your Sun, Moon and Rising signs?</p>
         <p className="text-sm text-slate-600 dark:text-slate-400">{NEEDS[kind]}</p>
         <Link
-          to="/"
+          to="/start"
           className="flex min-h-11 w-full items-center justify-center rounded-lg bg-ink px-4 py-2 font-semibold text-white sm:w-auto dark:bg-gold dark:text-ink"
         >
           Get your free birth chart
