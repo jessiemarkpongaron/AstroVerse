@@ -1,6 +1,6 @@
 /* AstroVerse service worker. Generated into dist/sw.js by the swPlugin in vite.config.ts,
  * which fills in the version and precache list below. Strategy:
- *  - navigations: network first, fall back to the cached app shell (SPA, works offline)
+ *  - navigations: network first, then that page's cached copy, then the app shell (offline)
  *  - same-origin GETs (hashed assets, icons): cache first, then network (and cache it)
  *  - cross-origin (place search, analytics): not intercepted
  */
@@ -39,14 +39,22 @@ self.addEventListener('fetch', (event) => {
   if (url.origin !== self.location.origin) return;
 
   if (req.mode === 'navigate') {
+    // Pre-rendered pages (/signs/…) differ from the app shell, so each page is cached under
+    // its own URL; offline, a page never visited falls back to the precached shell.
+    const key = url.origin + url.pathname;
     event.respondWith(
       fetch(req)
         .then((res) => {
           const copy = res.clone();
-          if (res.ok) caches.open(CACHE).then((c) => c.put('/index.html', copy));
+          if (res.ok && !res.redirected) caches.open(CACHE).then((c) => c.put(key, copy));
           return res;
         })
-        .catch(() => caches.match('/index.html').then((r) => r || Response.error())),
+        .catch(() =>
+          caches
+            .match(key)
+            .then((r) => r || caches.match('/index.html'))
+            .then((r) => r || Response.error()),
+        ),
     );
     return;
   }

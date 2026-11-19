@@ -34,6 +34,7 @@ astroverse/
 │  │  │  ├─ houses.ts          Placidus + Whole Sign (+ Porphyry fallback)
 │  │  │  ├─ aspects.ts         major aspects with orbs
 │  │  │  ├─ transits.ts        2-year transit scanner
+│  │  │  ├─ signDates.ts       typical Sun sign start dates (SearchSunLongitude, Manila time)
 │  │  │  ├─ synastry.ts        cross-chart aspects (Phase 3)
 │  │  │  ├─ uncertainty.ts     cusp + birth-time sensitivity flags
 │  │  │  ├─ chart.ts           buildChart(input, {houseSystem, observedDst}) → Chart (single entry point)
@@ -48,6 +49,8 @@ astroverse/
 │  │  ├─ chartState.ts         router state type for form → /chart
 │  │  ├─ birthForm.ts          form validation → BirthInput
 │  │  ├─ shareLink.ts          encode/decode birth data in the URL fragment
+│  │  ├─ shareCard.ts          1080×1350 Big Three image (signs + keywords only, canvas)
+│  │  ├─ signPages.ts          public sign pages: slugs, Sun sign dates, titles/descriptions
 │  │  ├─ supabase.ts           browser client (publishable key; null if env missing)
 │  │  ├─ charts.ts             save/list/delete charts, row ↔ BirthInput mapping
 │  │  ├─ database.types.ts     generated: npm run gen:types
@@ -59,11 +62,14 @@ astroverse/
 │  │  ├─ AspectsList/
 │  │  ├─ PlacementsTable/
 │  │  ├─ ReadingView/
+│  │  ├─ ShareCard/            "Share my Big Three image" (share sheet or download)
 │  │  ├─ TransitTimeline/
 │  │  └─ ui/                   SegmentedControl, UncertaintyNotes, …
-│  ├─ pages/                   Home, Chart, FullReading (/reading), Forecast, Career, MyCharts,
-│  │                           Login, Reading (AI, behind VITE_AI_READINGS); later Compatibility, Pricing
+│  ├─ pages/                   Home, Chart, FullReading (/reading), Forecast, Career,
+│  │                           Compatibility, Sign + SignsIndex (/signs, /moon, /rising), MyCharts,
+│  │                           Login, Reading (AI, behind VITE_AI_READINGS); later Pricing
 │  ├─ hooks/
+│  ├─ prerender.tsx            build-time SSR entry for the sign pages (scripts/prerender.mjs)
 │  └─ main.tsx
 ├─ supabase/
 │  ├─ migrations/

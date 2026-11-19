@@ -104,7 +104,10 @@ its acceptance items are checked.
 - [ ] `purchases` table, entitlement checks, Pricing page, receipt email
 
 ### M12. Growth
-- [ ] Shareable Big Three image (1080×1350)
+- [x] Shareable Big Three image (1080×1350): signs + 3 keywords, no birth data; made on the
+      device, shared via the share sheet or downloaded
 - [ ] Filipino/Taglish locale for UI + readings
-- [ ] SEO pages: "/signs/gemini", "/rising/scorpio" etc. (static, prerendered)
+- [x] SEO pages: `/signs`, `/signs/gemini`, `/moon/virgo`, `/rising/scorpio` (37 pages, approved
+      Big Three text, Sun sign dates from astronomy-engine), pre-rendered at build with
+      canonical/OG tags, `sitemap.xml`, `robots.txt`
 - [ ] Daily/weekly horoscope (optional, generated + cached once per sign per day)

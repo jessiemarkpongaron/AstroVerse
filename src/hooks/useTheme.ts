@@ -14,7 +14,9 @@ function readStoredTheme(): Theme | null {
 }
 
 function systemTheme(): Theme {
-  return typeof window.matchMedia === 'function' &&
+  // No window during build-time pre-rendering.
+  return typeof window !== 'undefined' &&
+    typeof window.matchMedia === 'function' &&
     window.matchMedia('(prefers-color-scheme: dark)').matches
     ? 'dark'
     : 'light';

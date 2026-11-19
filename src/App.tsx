@@ -7,6 +7,9 @@ import { HomePage } from './pages/HomePage.tsx';
 import { LoginPage } from './pages/LoginPage.tsx';
 import { MyChartsPage } from './pages/MyChartsPage.tsx';
 import { NotFoundPage } from './pages/NotFoundPage.tsx';
+// Sign pages are pre-rendered at build time, so they load eagerly (no loading flash).
+import { SignPage } from './pages/SignPage.tsx';
+import { SignsIndexPage } from './pages/SignsIndexPage.tsx';
 
 // The chart page carries the astronomy engine; load it only when needed.
 const ChartPage = lazy(() =>
@@ -77,6 +80,10 @@ export function App() {
             </Suspense>
           }
         />
+        <Route path="signs" element={<SignsIndexPage />} />
+        <Route path="signs/:sign" element={<SignPage kind="sun" />} />
+        <Route path="moon/:sign" element={<SignPage kind="moon" />} />
+        <Route path="rising/:sign" element={<SignPage kind="rising" />} />
         <Route path="login" element={<LoginPage />} />
         <Route path="auth/callback" element={<AuthCallbackPage />} />
         <Route path="charts" element={<MyChartsPage />} />
