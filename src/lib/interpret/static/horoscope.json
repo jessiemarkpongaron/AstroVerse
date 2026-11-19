@@ -1,0 +1,39 @@
+{
+  "_comment": "Original AstroVerse text. Sign-based daily/weekly horoscope (solar houses). Tone and guardrails: docs/INTERPRETATION.md. Review status: DRAFT until the owner approves.",
+  "version": 1,
+  "review": "draft",
+  "moonHouse": {
+    "1": "The Moon is in your sign today, so your feelings sit close to the surface. Do one thing that is just for you.",
+    "2": "Today the Moon turns your attention to what you value and what helps you feel secure. A simple comfort can steady you.",
+    "3": "The Moon favors short chats, messages and errands today. Reach out to a sibling, neighbor or friend you have been meaning to text.",
+    "4": "Home and family are on your mind today. Time in a cozy space, or with the people you grew up with, can recharge you.",
+    "5": "The Moon brings a lighter, playful mood today. Make room for fun, a hobby or something creative.",
+    "6": "A good day for routines and getting things done. Tidy one small corner of your work or your daily habits.",
+    "7": "Today the focus is on the people close to you. Listening well may matter more than being right.",
+    "8": "Feelings may run deeper today. An honest talk with someone you trust can bring you closer.",
+    "9": "Your mind wants something new today. Read, learn, plan a trip, or try a different point of view.",
+    "10": "Work and your goals come into focus today. Show what you can do, and be proud of steady progress.",
+    "11": "Friends and groups can lift you up today. Reach out, join in, or share a hope you have been keeping to yourself.",
+    "12": "The Moon asks you to slow down today. Rest, quiet time or journaling can help you reset."
+  },
+  "phase": {
+    "new": "New Moon: a quiet time to set one small, clear intention.",
+    "waxing-crescent": "The Moon is growing: take the first small step on something you want to build.",
+    "first-quarter": "First Quarter Moon: if something feels stuck, a decision or a small push can help.",
+    "waxing-gibbous": "The Moon is almost full: keep refining what you have started.",
+    "full": "Full Moon: feelings can run high. Notice what has grown, and what you are ready to let go.",
+    "waning-gibbous": "After the Full Moon: a good time to share what you have learned and to say thank you.",
+    "last-quarter": "Last Quarter Moon: clear out what you no longer need, from old messages to old habits.",
+    "waning-crescent": "The Moon is fading: rest, reflect and get ready for a fresh start."
+  },
+  "moonChange": "Around {time}, the Moon moves into your {n} house and the mood shifts toward {topic}.",
+  "weekly": {
+    "Sun": "The Sun lights up your {n} house this week, so {topic} is where your energy goes.",
+    "Mercury": "Mercury in your {n} house makes this a good week to think, talk and plan around {topic}.",
+    "Venus": "Venus in your {n} house brings warmth to {topic}. Small kind gestures go a long way.",
+    "Mars": "Mars in your {n} house gives you drive around {topic}. Put it into steady action rather than arguments.",
+    "retrograde": "{body} is retrograde in your {n} house: a time to review and redo around {topic}, rather than rush. Double-check plans and messages.",
+    "newMoon": "New Moon in your {n} house on {day}: a good moment to set a fresh intention about {topic}.",
+    "fullMoon": "Full Moon in your {n} house on {day}: things around {topic} may come to a head. Notice what is ready to be finished or let go."
+  }
+}

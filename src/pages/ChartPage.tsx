@@ -20,6 +20,8 @@ import type { ChartLocationState } from '../lib/chartState.ts';
 import { isBigThreeCardFlag } from '../lib/flags.ts';
 import { bigThreeEntry } from '../lib/interpret/staticText.ts';
 import { buildShareUrl } from '../lib/shareLink.ts';
+import { horoscopePath } from '../lib/signPages.ts';
+import { SIGN_NAMES } from '../lib/astro/zodiac.ts';
 import { useBirthInput } from '../hooks/useBirthInput.ts';
 
 const HOUSE_OPTIONS = [
@@ -100,6 +102,7 @@ export function ChartPage() {
   }
 
   const fellBack = chart.houses?.system === 'porphyry';
+  const sun = chart.points.find((p) => p.name === 'Sun');
   const meanings: Partial<Record<BigThreePoint, BigThreeMeaning>> = {};
   for (const [point, key] of [
     ['Sun', 'sun'],
@@ -168,6 +171,14 @@ export function ChartPage() {
         >
           Check compatibility
         </Link>
+        {sun && (
+          <Link
+            to={horoscopePath(sun.sign)}
+            className="flex min-h-11 w-full items-center justify-center rounded-lg border border-gold px-4 py-2 font-semibold text-gold-dark sm:w-auto dark:text-gold"
+          >
+            Today’s {SIGN_NAMES[sun.sign]} horoscope
+          </Link>
+        )}
         <p className="text-xs text-slate-600 dark:text-slate-400">
           For entertainment and self-reflection. Not professional advice.
         </p>

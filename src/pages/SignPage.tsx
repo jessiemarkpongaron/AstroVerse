@@ -6,6 +6,7 @@ import { bigThreeEntry } from '../lib/interpret/staticText.ts';
 import {
   ALL_SIGNS,
   KIND_LABEL,
+  horoscopePath,
   SIGN_PAGE_KINDS,
   SIGNS_INDEX_PATH,
   signFromSlug,
@@ -118,6 +119,11 @@ function SignPageContent({ kind, sign }: { kind: SignPageKind; sign: (typeof ALL
       </section>
 
       <nav aria-label={`${name} as Sun, Moon and Rising`} className="flex flex-wrap gap-4 text-sm">
+        {kind !== 'moon' && (
+          <Link to={horoscopePath(sign)} className={link}>
+            Today’s {name} horoscope
+          </Link>
+        )}
         {SIGN_PAGE_KINDS.filter((k) => k !== kind).map((k) => (
           <Link key={k} to={signPagePath(k, sign)} className={link}>
             {name} {KIND_LABEL[k]}

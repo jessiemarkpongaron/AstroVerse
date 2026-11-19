@@ -10,10 +10,11 @@ import {
 } from './signPages.ts';
 
 describe('sign pages', () => {
-  it('has the index plus 36 pages, all unique', () => {
+  it('has 37 sign pages and 13 horoscope pages, all unique', () => {
     const paths = allSignPagePaths();
-    expect(paths).toHaveLength(37);
-    expect(new Set(paths).size).toBe(37);
+    expect(paths).toHaveLength(50);
+    expect(new Set(paths).size).toBe(50);
+    expect(paths).toContain('/horoscope/gemini');
     expect(paths).toContain('/signs/gemini');
     expect(paths).toContain('/moon/virgo');
     expect(paths).toContain('/rising/scorpio');

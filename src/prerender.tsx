@@ -12,6 +12,8 @@ import {
   SITE_URL,
   ALL_SIGNS,
   signPageMeta,
+  HOROSCOPE_INDEX_META,
+  horoscopeMeta,
   type PageMeta,
 } from './lib/signPages.ts';
 
@@ -21,6 +23,8 @@ export function pages(): PageMeta[] {
   return [
     SIGNS_INDEX_META,
     ...SIGN_PAGE_KINDS.flatMap((k) => ALL_SIGNS.map((s) => signPageMeta(k, s))),
+    HOROSCOPE_INDEX_META,
+    ...ALL_SIGNS.map(horoscopeMeta),
   ];
 }
 

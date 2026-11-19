@@ -40,10 +40,15 @@ export function signFromSlug(slug: string | undefined): SignIndex | null {
 export const signPagePath = (kind: SignPageKind, sign: SignIndex) =>
   `/${KIND_SEGMENT[kind]}/${signSlug(sign)}`;
 
+export const HOROSCOPE_INDEX_PATH = '/horoscope';
+export const horoscopePath = (sign: SignIndex) => `${HOROSCOPE_INDEX_PATH}/${signSlug(sign)}`;
+
 export function allSignPagePaths(): string[] {
   return [
     SIGNS_INDEX_PATH,
     ...SIGN_PAGE_KINDS.flatMap((k) => SIGNS.map((s) => signPagePath(k, s))),
+    HOROSCOPE_INDEX_PATH,
+    ...SIGNS.map(horoscopePath),
   ];
 }
 
@@ -93,4 +98,20 @@ export const SIGNS_INDEX_META: PageMeta = {
   description:
     'What each zodiac sign means as your Sun, Moon and Rising sign, with typical Sun sign dates. Then find your own Big Three free.',
   path: SIGNS_INDEX_PATH,
+};
+
+export function horoscopeMeta(sign: SignIndex): PageMeta {
+  const name = SIGN_NAMES[sign];
+  return {
+    title: `${name} Horoscope Today & This Week | AstroVerse`,
+    description: `Free daily and weekly ${name} horoscope from where the Moon and planets are today (Philippine time). Short, kind and for reflection.`,
+    path: horoscopePath(sign),
+  };
+}
+
+export const HOROSCOPE_INDEX_META: PageMeta = {
+  title: 'Daily Horoscope for Every Sign | AstroVerse',
+  description:
+    'Free daily and weekly horoscopes for all 12 signs, from where the Moon and planets are today (Philippine time). Read for your Sun or Rising sign.',
+  path: HOROSCOPE_INDEX_PATH,
 };

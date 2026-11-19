@@ -9,6 +9,10 @@ export function Footer() {
       <div className="mx-auto max-w-3xl px-4 py-6 text-center text-xs text-slate-600 dark:text-slate-400">
         <p>{DISCLAIMER}</p>
         <p className="mt-2">
+          <Link to="/horoscope" className="underline">
+            Daily horoscope
+          </Link>
+          {' · '}
           <Link to="/signs" className="underline">
             Zodiac signs
           </Link>
