@@ -58,6 +58,14 @@ Readings come from two layers:
   word (Strong/Some/Light), never a percentage. Tests block soulmate/destined/meant to be,
   perfect match/incompatible, jealousy, control, possessiveness, cheating, break-up, divorce,
   fate, guarantees, "never" and "%".
+- **Horoscope** (`horoscope.json`, `src/lib/interpret/horoscope.ts`, pages `/horoscope/<sign>`):
+  sign-based, houses counted from the reader's sign (solar houses). Daily: one focus per Moon
+  house, one line per Moon phase (8), and a line when the Moon changes sign that day. Weekly:
+  templates for the Sun, Mercury, Venus, Mars, retrograde, New Moon and Full Moon, filled with
+  the forecast house topics. Tests block "will", luck/money/winning, fate, never/always,
+  guarantees, accidents/illness, should/must and "%".
+- **Sign pages** (`/signs/<sign>`, `/moon/<sign>`, `/rising/<sign>`) reuse the approved Big
+  Three text; no new interpretive text.
 
 ## 2. AI payload (buildPayload.ts)
 Send only what the model needs — never names, emails or exact birth data. The schema

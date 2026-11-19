@@ -35,6 +35,7 @@ astroverse/
 │  │  │  ├─ aspects.ts         major aspects with orbs
 │  │  │  ├─ transits.ts        2-year transit scanner
 │  │  │  ├─ signDates.ts       typical Sun sign start dates (SearchSunLongitude, Manila time)
+│  │  │  ├─ horoscope.ts       daily/weekly sign horoscope sky (Moon, phase, Sun–Mars, lunations)
 │  │  │  ├─ synastry.ts        cross-chart aspects (Phase 3)
 │  │  │  ├─ uncertainty.ts     cusp + birth-time sensitivity flags
 │  │  │  ├─ chart.ts           buildChart(input, {houseSystem, observedDst}) → Chart (single entry point)
@@ -66,7 +67,8 @@ astroverse/
 │  │  ├─ TransitTimeline/
 │  │  └─ ui/                   SegmentedControl, UncertaintyNotes, …
 │  ├─ pages/                   Home, Chart, FullReading (/reading), Forecast, Career,
-│  │                           Compatibility, Sign + SignsIndex (/signs, /moon, /rising), MyCharts,
+│  │                           Compatibility, Sign + SignsIndex (/signs, /moon, /rising), Horoscope
+│  │                           (/horoscope), MyCharts,
 │  │                           Login, Reading (AI, behind VITE_AI_READINGS); later Pricing
 │  ├─ hooks/
 │  ├─ prerender.tsx            build-time SSR entry for the sign pages (scripts/prerender.mjs)

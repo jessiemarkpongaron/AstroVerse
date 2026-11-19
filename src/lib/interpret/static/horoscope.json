@@ -1,7 +1,7 @@
 {
-  "_comment": "Original AstroVerse text. Sign-based daily/weekly horoscope (solar houses). Tone and guardrails: docs/INTERPRETATION.md. Review status: DRAFT until the owner approves.",
+  "_comment": "Original AstroVerse text. Sign-based daily/weekly horoscope (solar houses). Tone and guardrails: docs/INTERPRETATION.md. Review status: APPROVED by owner 2026-11-19.",
   "version": 1,
-  "review": "draft",
+  "review": "approved",
   "moonHouse": {
     "1": "The Moon is in your sign today, so your feelings sit close to the surface. Do one thing that is just for you.",
     "2": "Today the Moon turns your attention to what you value and what helps you feel secure. A simple comfort can steady you.",

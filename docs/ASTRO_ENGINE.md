@@ -134,3 +134,15 @@ for the AI payload; chart-wide flags (time unknown, DST, Porphyry fallback) have
   Pluto ~Scorpio 16° ℞. (Mars sits at ~0° Aries — a good cusp-flag test case.)
 - Property tests: ASC/MC always in [0,360); houses strictly increasing (mod 360);
   12 cusps; opposite cusps 180° apart.
+
+## 7c. Horoscope sky and Sun sign dates (horoscope.ts, signDates.ts)
+- Days are Philippine calendar days (`Asia/Manila`). Daily: Moon sign at local noon, phase from
+  `MoonPhase` (8 buckets of 45°, centred on 0/45/…/315), and the Moon's sign change during the
+  day, bisected to 1 minute on `bodyLongitude('Moon')`.
+- Weekly (Monday–Sunday): Sun, Mercury, Venus, Mars at Thursday local noon (`bodyPosition`,
+  retrograde from speed), New/Full Moons from `SearchMoonPhase(0|180)` within the week.
+- Houses are whole signs counted from the reader's sign: `((sign − reader + 12) % 12) + 1`.
+- Sun sign dates: `SearchSunLongitude(sign × 30)`; `sunSignStarts.json` holds the most common
+  Manila start date over 2000–2039 and a test re-derives it from astronomy-engine.
+- Validated against the Swiss Ephemeris (sweph, Moshier): Moon ingresses Nov 2026 (±15 min),
+  New Moon 2026-11-09 (Scorpio), Full Moon 2026-11-24 (Gemini).

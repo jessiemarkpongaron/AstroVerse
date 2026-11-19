@@ -103,11 +103,14 @@ its acceptance items are checked.
 - [ ] `create-checkout` + `paymongo-webhook` functions (signature verification)
 - [ ] `purchases` table, entitlement checks, Pricing page, receipt email
 
-### M12. Growth
+### M12. Growth — done (2026-11-19), free and static
 - [x] Shareable Big Three image (1080×1350): signs + 3 keywords, no birth data; made on the
       device, shared via the share sheet or downloaded
 - [~] ~~Filipino/Taglish locale~~: dropped, English only (owner decision 2026-11-19)
 - [x] SEO pages: `/signs`, `/signs/gemini`, `/moon/virgo`, `/rising/scorpio` (37 pages, approved
       Big Three text, Sun sign dates from astronomy-engine), pre-rendered at build with
       canonical/OG tags, `sitemap.xml`, `robots.txt`
-- [ ] Daily/weekly horoscope (optional, generated + cached once per sign per day)
+- [x] Daily/weekly horoscope `/horoscope`, `/horoscope/<sign>` (`horoscope.ts`: Moon sign, phase
+      and sign change per Manila day; Sun–Mars and New/Full Moons per week; solar houses).
+      Computed on the device, so never stale; pre-rendered shells for search
+      (`horoscope.json`, approved). Sitemap: 51 URLs
