@@ -28,7 +28,7 @@
   },
   "moonChange": "Around {time}, the Moon moves into your {n} house and the mood shifts toward {topic}.",
   "weekly": {
-    "Sun": "The Sun lights up your {n} house this week, so {topic} is where your energy goes.",
+    "Sun": "The Sun lights up your {n} house this week, putting your energy into {topic}.",
     "Mercury": "Mercury in your {n} house makes this a good week to think, talk and plan around {topic}.",
     "Venus": "Venus in your {n} house brings warmth to {topic}. Small kind gestures go a long way.",
     "Mars": "Mars in your {n} house gives you drive around {topic}. Put it into steady action rather than arguments.",
