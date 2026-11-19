@@ -11,7 +11,7 @@ Business model: free core chart → paid premium reports (PayMongo: GCash/Maya/c
 
 ## 2. Goals
 - Accurate calculations (within 0.5° of professional software for planets; see ASTRO_ENGINE)
-- A reading that feels personal, clear and warm, in simple English (Filipino later)
+- A reading that feels personal, clear and warm, in simple English (English only: owner decision 2026-11-19)
 - Under 3 seconds from "Submit" to seeing the Big Three on a mid-range phone
 - Honest about uncertainty (approximate birth times, cusp placements)
 

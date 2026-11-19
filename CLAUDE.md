@@ -2,7 +2,7 @@
 
 Astrology web app: birth chart (natal), "Big Three", full planet/house reading,
 future reading (transits), compatibility, and career themes. Built for Filipino users
-(English first, Filipino/Taglish later). Part of the DigitalVerse Solutions product line.
+(English only, in simple, warm language). Part of the DigitalVerse Solutions product line.
 
 ## Read first
 - `docs/PRD.md` — what we're building and why, features, acceptance criteria
