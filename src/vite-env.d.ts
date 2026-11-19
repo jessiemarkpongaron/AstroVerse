@@ -6,6 +6,7 @@ interface ImportMetaEnv {
   readonly VITE_GEOCODING_URL?: string;
   /** 'true' shows the AI reading (needs ANTHROPIC_API_KEY on the Edge Function). */
   readonly VITE_AI_READINGS?: string;
+  readonly VITE_GOOGLE_LOGIN?: string;
 }
 
 interface ImportMeta {

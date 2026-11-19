@@ -6,3 +6,11 @@
 export function aiReadingsEnabled(env: { VITE_AI_READINGS?: string } = import.meta.env): boolean {
   return env.VITE_AI_READINGS === 'true';
 }
+
+/**
+ * "Continue with Google" appears only after the Google provider is enabled in Supabase
+ * (Authentication → Providers → Google) and the owner sets VITE_GOOGLE_LOGIN=true.
+ */
+export function googleLoginEnabled(env: { VITE_GOOGLE_LOGIN?: string } = import.meta.env): boolean {
+  return env.VITE_GOOGLE_LOGIN === 'true';
+}

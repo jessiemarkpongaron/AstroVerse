@@ -1,6 +1,7 @@
 import { useState, type FormEvent } from 'react';
 import { Link, Navigate } from 'react-router';
 import { useAuth } from '../hooks/useAuth.ts';
+import { googleLoginEnabled } from '../lib/features.ts';
 import { authRedirectUrl } from '../lib/supabase.ts';
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -116,18 +117,22 @@ export function LoginPage() {
         </p>
       )}
 
-      <div className="flex items-center gap-3 text-xs text-slate-500">
-        <span className="h-px flex-1 bg-slate-200 dark:bg-dusk" /> or{' '}
-        <span className="h-px flex-1 bg-slate-200 dark:bg-dusk" />
-      </div>
+      {googleLoginEnabled() && (
+        <>
+          <div className="flex items-center gap-3 text-xs text-slate-500">
+            <span className="h-px flex-1 bg-slate-200 dark:bg-dusk" /> or{' '}
+            <span className="h-px flex-1 bg-slate-200 dark:bg-dusk" />
+          </div>
 
-      <button
-        type="button"
-        onClick={google}
-        className="min-h-12 w-full rounded-lg border border-slate-300 px-4 py-3 font-semibold dark:border-dusk"
-      >
-        Continue with Google
-      </button>
+          <button
+            type="button"
+            onClick={google}
+            className="min-h-12 w-full rounded-lg border border-slate-300 px-4 py-3 font-semibold dark:border-dusk"
+          >
+            Continue with Google
+          </button>
+        </>
+      )}
 
       <Link
         to="/start"

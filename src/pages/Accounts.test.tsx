@@ -120,7 +120,13 @@ describe('LoginPage', () => {
     expect(await screen.findByRole('alert')).toHaveTextContent(/Too many sign-in emails/);
   });
 
+  it('hides Google sign-in until VITE_GOOGLE_LOGIN is on', () => {
+    render(renderApp(signedOut(), '/login'));
+    expect(screen.queryByRole('button', { name: 'Continue with Google' })).toBeNull();
+  });
+
   it('starts Google sign-in with the callback URL', () => {
+    vi.stubEnv('VITE_GOOGLE_LOGIN', 'true');
     const client = fakeClient();
     render(renderApp(signedOut(client), '/login'));
     fireEvent.click(screen.getByRole('button', { name: 'Continue with Google' }));
@@ -128,6 +134,7 @@ describe('LoginPage', () => {
       provider: 'google',
       options: { redirectTo: `${window.location.origin}/auth/callback` },
     });
+    vi.unstubAllEnvs();
   });
 });
 
