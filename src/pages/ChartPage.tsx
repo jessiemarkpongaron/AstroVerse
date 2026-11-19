@@ -8,6 +8,7 @@ import {
 } from '../components/BigThreeCard/BigThreeCard.tsx';
 import { ChartWheel } from '../components/ChartWheel/ChartWheel.tsx';
 import { PlacementsTable } from '../components/PlacementsTable/PlacementsTable.tsx';
+import { ShareCardButton } from '../components/ShareCard/ShareCardButton.tsx';
 import { SaveChartPanel } from '../components/SaveChart/SaveChartPanel.tsx';
 import { ShortReading } from '../components/ShortReading/ShortReading.tsx';
 import { SegmentedControl } from '../components/ui/SegmentedControl.tsx';
@@ -124,6 +125,8 @@ export function ChartPage() {
       </header>
 
       <BigThreeCard chart={chart} meanings={meanings} />
+
+      <ShareCardButton chart={chart} />
 
       <SaveChartPanel
         key={inputKey}

@@ -23,7 +23,8 @@ async function renderChart(input: BirthInput) {
       <App />
     </MemoryRouter>,
   );
-  await screen.findByRole('heading', { name: 'Your Big Three' });
+  // The first test loads the lazy chart page; allow for parallel load.
+  await screen.findByRole('heading', { name: 'Your Big Three' }, { timeout: 5000 });
 }
 
 const row = (label: string) =>
