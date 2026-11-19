@@ -56,8 +56,8 @@ export function SupportPage() {
         <p className="text-sm font-medium">On a computer</p>
         <p className="text-sm">Scan the code with GCash, Maya or your bank app.</p>
         <p className="text-sm text-slate-600 dark:text-slate-400">
-          This is an InstaPay QR, so Maya and most bank apps work too. Check that the name shown in
-          your app is {SUPPORT_NAME} before you confirm.
+          This is an InstaPay QR, so Maya and most bank apps work too. Before you confirm, your app
+          shows the account holder’s name (partly hidden) and the amount.
         </p>
       </section>
 
