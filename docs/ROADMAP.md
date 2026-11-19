@@ -99,7 +99,10 @@ its acceptance items are checked.
       each (`synastry.json`, approved), respect note and disclaimer
 - [ ] Later, with API credits: AI synastry reading (premium)
 
-### M11. Payments (PayMongo)
+### M11. Payments (PayMongo) — on hold (owner decision 2026-11-19)
+Everything is free. Voluntary tips instead: `/support` shows the owner's InstaPay QR
+(`public/images/gcash-qr.png`, works with GCash, Maya and banks); nothing is unlocked. Resume
+M11 only if paid features (e.g. the AI reading) are wanted.
 - [ ] `create-checkout` + `paymongo-webhook` functions (signature verification)
 - [ ] `purchases` table, entitlement checks, Pricing page, receipt email
 
