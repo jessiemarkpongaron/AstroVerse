@@ -152,6 +152,7 @@ export type Database = {
         Args: { p_limit: number; p_user_id: string };
         Returns: boolean;
       };
+      delete_my_account: { Args: Record<PropertyKey, never>; Returns: undefined };
     };
     Enums: {
       [_ in never]: never;

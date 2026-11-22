@@ -4,7 +4,7 @@
  */
 import { createClient } from '@supabase/supabase-js';
 import type { BirthInput } from './astro/types.ts';
-import { ChartsError, deleteChart, listCharts, saveChart } from './charts.ts';
+import { ChartsError, deleteAccount, deleteChart, listCharts, saveChart } from './charts.ts';
 import type { Database } from './database.types.ts';
 import type { AppSupabaseClient } from './supabase.ts';
 
@@ -123,5 +123,22 @@ describe.skipIf(!URL || !ANON || !SERVICE)('charts against local Supabase', () =
     await expect(
       saveChart(anon, input, { label: 'X', isSelf: true, consentConfirmed: false }),
     ).rejects.toBeInstanceOf(ChartsError);
+  });
+
+  it('deleteAccount removes the user and their charts, signs out, and leaves others alone', async () => {
+    const erin = await signedInClient('erin');
+    const frank = await signedInClient('frank');
+    const erinId = (await erin.auth.getUser()).data.user?.id as string;
+    await saveChart(erin, input, { label: 'Me', isSelf: true, consentConfirmed: false });
+    await saveChart(frank, input, { label: 'Me', isSelf: true, consentConfirmed: false });
+
+    await deleteAccount(erin);
+
+    expect((await erin.auth.getSession()).data.session).toBeNull();
+    const { data: gone } = await admin().auth.admin.getUserById(erinId);
+    expect(gone.user).toBeNull();
+    const { data: charts } = await admin().from('charts').select('id').eq('user_id', erinId);
+    expect(charts).toEqual([]);
+    expect(await listCharts(frank)).toHaveLength(1);
   });
 });

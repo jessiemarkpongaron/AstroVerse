@@ -100,6 +100,22 @@ export async function deleteChart(client: AppSupabaseClient, id: string): Promis
   if (error) throw new ChartsError(chartsErrorMessage(error));
 }
 
+/**
+ * Deletes the signed-in user's whole account (delete_my_account RPC): their sign-in, profile,
+ * charts and readings, via ON DELETE CASCADE. Then clears the now-invalid session on this device.
+ */
+export async function deleteAccount(client: AppSupabaseClient): Promise<void> {
+  const { error } = await client.rpc('delete_my_account');
+  if (error) {
+    throw new ChartsError(
+      error.code === '28000' || error.code === '42501' || error.code === 'PGRST301'
+        ? 'Please sign in again, then try deleting your account.'
+        : 'We couldn’t delete your account. Please check your connection and try again.',
+    );
+  }
+  await client.auth.signOut({ scope: 'local' });
+}
+
 /** One chart by id, as the signed-in user (RLS); null if missing or not theirs. */
 export async function getChart(client: AppSupabaseClient, id: string): Promise<ChartRow | null> {
   const { data, error } = await client.from('charts').select('*').eq('id', id).maybeSingle();

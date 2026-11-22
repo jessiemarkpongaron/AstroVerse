@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from 'react';
-import { Link, Navigate } from 'react-router';
+import { Link, Navigate, useLocation } from 'react-router';
 import { useAuth } from '../hooks/useAuth.ts';
 import { googleLoginEnabled } from '../lib/features.ts';
 import { authRedirectUrl } from '../lib/supabase.ts';
@@ -8,6 +8,8 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export function LoginPage() {
   const auth = useAuth();
+  const accountDeleted =
+    (useLocation().state as { accountDeleted?: boolean } | null)?.accountDeleted === true;
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
   const [error, setError] = useState('');
@@ -65,6 +67,14 @@ export function LoginPage() {
 
   return (
     <section className="mx-auto max-w-sm space-y-6">
+      {accountDeleted && (
+        <p
+          role="status"
+          className="rounded-xl bg-emerald-50 p-4 text-sm text-emerald-950 dark:bg-emerald-950/40 dark:text-emerald-100"
+        >
+          Your account and all your saved charts have been deleted.
+        </p>
+      )}
       <div className="space-y-1">
         <h1 className="text-2xl font-bold">Welcome to AstroVerse</h1>
         <p className="text-sm text-slate-600 dark:text-slate-400">

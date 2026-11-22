@@ -9,6 +9,7 @@ const charts = vi.hoisted(() => ({
   saveChart: vi.fn(),
   listCharts: vi.fn(),
   deleteChart: vi.fn(),
+  deleteAccount: vi.fn(),
 }));
 vi.mock('../lib/charts.ts', async (orig) => ({
   ...(await orig<typeof import('../lib/charts.ts')>()),
@@ -249,5 +250,41 @@ describe('MyChartsPage', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Cancel' }));
     expect(charts.deleteChart).not.toHaveBeenCalled();
     expect(screen.getByRole('button', { name: 'Open' })).toBeInTheDocument();
+  });
+});
+
+describe('Delete my account', () => {
+  it('asks first, deletes, then shows the login page with a notice', async () => {
+    charts.listCharts.mockResolvedValue([row]);
+    charts.deleteAccount.mockResolvedValue(undefined);
+    const client = fakeClient();
+    const { rerender } = render(renderApp(signedIn(client), '/charts', <Where />));
+    await screen.findByRole('heading', { name: 'Mama' });
+    fireEvent.click(screen.getByRole('button', { name: 'Delete my account' }));
+    const dialog = screen.getByRole('alertdialog', { name: 'Delete your account?' });
+    expect(dialog).toHaveTextContent('every saved chart and reading');
+    fireEvent.click(within(dialog).getByRole('button', { name: 'Delete my account' }));
+    await waitFor(() => expect(charts.deleteAccount).toHaveBeenCalledWith(client));
+    // deleteAccount signs out; the auth provider then reports signed-out.
+    rerender(renderApp(signedOut(client), '/charts', <Where />));
+    expect(screen.getByTestId('where')).toHaveTextContent('/login');
+    expect(screen.getByText(/Your account and all your saved charts/)).toBeInTheDocument();
+  });
+
+  it('Cancel keeps the account; errors are shown', async () => {
+    charts.listCharts.mockResolvedValue([]);
+    charts.deleteAccount.mockRejectedValue(
+      new (await import('../lib/charts.ts')).ChartsError('We couldn’t delete your account.'),
+    );
+    render(renderApp(signedIn(), '/charts'));
+    await screen.findByText(/No saved charts yet/);
+    fireEvent.click(screen.getByRole('button', { name: 'Delete my account' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Cancel' }));
+    expect(charts.deleteAccount).not.toHaveBeenCalled();
+    fireEvent.click(screen.getByRole('button', { name: 'Delete my account' }));
+    fireEvent.click(
+      within(screen.getByRole('alertdialog')).getByRole('button', { name: 'Delete my account' }),
+    );
+    expect(await screen.findByRole('alert')).toHaveTextContent('We couldn’t delete your account.');
   });
 });

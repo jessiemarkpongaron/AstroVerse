@@ -4,6 +4,7 @@ import { useAuth } from '../hooks/useAuth.ts';
 import type { ChartLocationState } from '../lib/chartState.ts';
 import {
   ChartsError,
+  deleteAccount,
   deleteChart,
   listCharts,
   rowToBirthInput,
@@ -16,6 +17,7 @@ export function MyChartsPage() {
   const [charts, setCharts] = useState<ChartRow[] | null>(null);
   const [error, setError] = useState('');
   const [confirming, setConfirming] = useState<string | null>(null);
+  const [accountStep, setAccountStep] = useState<'idle' | 'confirm' | 'deleting'>('idle');
   const client = auth.status === 'signed-in' ? auth.client : null;
 
   const load = useCallback(async () => {
@@ -35,7 +37,15 @@ export function MyChartsPage() {
   }, [load]);
 
   if (auth.status === 'unavailable') return <Navigate to="/start" replace />;
-  if (auth.status === 'signed-out') return <Navigate to="/login" replace />;
+  if (auth.status === 'signed-out') {
+    return (
+      <Navigate
+        to="/login"
+        replace
+        state={accountStep === 'deleting' ? { accountDeleted: true } : undefined}
+      />
+    );
+  }
   if (auth.status === 'loading') return <p className="text-center text-sm">Loading…</p>;
 
   function open(row: ChartRow) {
@@ -54,6 +64,19 @@ export function MyChartsPage() {
       setConfirming(null);
       await load();
     } catch (e) {
+      setError(e instanceof ChartsError ? e.message : 'Something went wrong.');
+    }
+  }
+
+  async function removeAccount() {
+    if (!client) return;
+    setAccountStep('deleting');
+    try {
+      // On success deleteAccount signs out, which re-renders this page into the redirect above
+      // while the step is still 'deleting'.
+      await deleteAccount(client);
+    } catch (e) {
+      setAccountStep('confirm');
       setError(e instanceof ChartsError ? e.message : 'Something went wrong.');
     }
   }
@@ -173,6 +196,53 @@ export function MyChartsPage() {
           ))}
         </ul>
       )}
+
+      <section
+        aria-labelledby="account-heading"
+        className="space-y-2 border-t border-slate-200 pt-5 dark:border-dusk"
+      >
+        <h2 id="account-heading" className="font-semibold">
+          Your account
+        </h2>
+        {accountStep === 'idle' ? (
+          <button
+            type="button"
+            onClick={() => setAccountStep('confirm')}
+            className="min-h-11 rounded-lg border border-red-700 px-4 text-sm font-medium text-red-700 dark:border-red-400 dark:text-red-400"
+          >
+            Delete my account
+          </button>
+        ) : (
+          <div
+            role="alertdialog"
+            aria-label="Delete your account?"
+            className="space-y-2 rounded-lg bg-red-50 p-3 text-sm dark:bg-red-950/40"
+          >
+            <p>
+              This deletes your account, your sign-in and every saved chart and reading, right
+              away. It can’t be undone.
+            </p>
+            <div className="flex flex-wrap gap-2">
+              <button
+                type="button"
+                onClick={() => void removeAccount()}
+                disabled={accountStep !== 'confirm'}
+                className="min-h-11 rounded-lg bg-red-700 px-4 font-semibold text-white disabled:opacity-60"
+              >
+                {accountStep === 'confirm' ? 'Delete my account' : 'Deleting…'}
+              </button>
+              <button
+                type="button"
+                onClick={() => setAccountStep('idle')}
+                disabled={accountStep !== 'confirm'}
+                className="min-h-11 rounded-lg border border-slate-300 px-4 dark:border-dusk"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        )}
+      </section>
     </section>
   );
 }
