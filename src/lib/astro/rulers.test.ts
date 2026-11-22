@@ -11,7 +11,15 @@ describe('TRADITIONAL_RULERS', () => {
       (a, b) => ({ ...a, [b]: (a[b] ?? 0) + 1 }),
       {},
     );
-    expect(counts).toEqual({ Mars: 2, Venus: 2, Mercury: 2, Moon: 1, Sun: 1, Jupiter: 2, Saturn: 2 });
+    expect(counts).toEqual({
+      Mars: 2,
+      Venus: 2,
+      Mercury: 2,
+      Moon: 1,
+      Sun: 1,
+      Jupiter: 2,
+      Saturn: 2,
+    });
     expect(rulerOf(9 as SignIndex)).toBe('Saturn'); // Capricorn
     expect(rulerOf(3 as SignIndex)).toBe('Moon'); // Cancer
   });
@@ -51,7 +59,7 @@ describe('houseRuler vs Swiss Ephemeris reference charts', () => {
   });
 
   it('is null without a birth time', () => {
-    const ref = charts[0]!;
+    const ref = charts[0] as (typeof charts)[number];
     const chart = buildChart({ ...ref.input, time: null, timeAccuracy: 'unknown' });
     expect(houseRuler(chart, 10)).toBeNull();
   });
