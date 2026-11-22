@@ -116,4 +116,4 @@ M11 only if paid features (e.g. the AI reading) are wanted.
 - [x] Daily/weekly horoscope `/horoscope`, `/horoscope/<sign>` (`horoscope.ts`: Moon sign, phase
       and sign change per Manila day; Sun–Mars and New/Full Moons per week; solar houses).
       Computed on the device, so never stale; pre-rendered shells for search
-      (`horoscope.json`, approved). Sitemap: 51 URLs
+      (`horoscope.json`, approved). Sitemap: 52 URLs (incl. /privacy)

@@ -15,7 +15,7 @@ test('sign pages are pre-rendered: real content and meta tags before any JavaScr
   expect(html).toContain('May 21 – June 20');
 
   const sitemap = await (await request.get('/sitemap.xml')).text();
-  expect(sitemap.match(/<url>/g)).toHaveLength(51);
+  expect(sitemap.match(/<url>/g)).toHaveLength(52);
   expect(await (await request.get('/robots.txt')).text()).toContain('Sitemap: ');
 });
 
@@ -87,4 +87,18 @@ test('signed-out visitors land on the login page and can skip to the form', asyn
   await page.getByRole('link', { name: 'Continue without an account' }).click();
   await expect(page).toHaveURL(/\/start$/);
   await expect(page.getByRole('button', { name: 'See my chart' })).toBeVisible();
+});
+
+test('privacy page is pre-rendered and linked from the footer and login page', async ({
+  page,
+  request,
+}) => {
+  const html = await (await request.get('/privacy')).text();
+  expect(html).toContain('<title>Privacy | AstroVerse</title>');
+  expect(html).toContain('Delete my account');
+  await page.goto('/login');
+  await page.getByRole('link', { name: 'How we handle your data' }).click();
+  await expect(page.getByRole('heading', { level: 1, name: 'Privacy' })).toBeVisible();
+  await expect(page.getByRole('contentinfo').getByRole('link', { name: 'Privacy' })).toBeVisible();
+  expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBe(0);
 });

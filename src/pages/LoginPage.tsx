@@ -2,6 +2,7 @@ import { useState, type FormEvent } from 'react';
 import { Link, Navigate, useLocation } from 'react-router';
 import { useAuth } from '../hooks/useAuth.ts';
 import { googleLoginEnabled } from '../lib/features.ts';
+import { PRIVACY_PATH } from '../lib/privacy.ts';
 import { authRedirectUrl } from '../lib/supabase.ts';
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -152,7 +153,10 @@ export function LoginPage() {
       </Link>
 
       <p className="text-xs text-slate-600 dark:text-slate-400">
-        We only use your email to sign you in. Your saved charts are private to your account.
+        We only use your email to sign you in. Your saved charts are private to your account.{' '}
+        <Link to={PRIVACY_PATH} className="underline">
+          How we handle your data
+        </Link>
       </p>
     </section>
   );
