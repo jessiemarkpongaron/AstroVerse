@@ -51,6 +51,14 @@ describe('CareerPage', () => {
       'Earth 6',
     );
     expect(within(style).getByRole('heading', { name: 'Mars in Aries' })).toBeInTheDocument();
+    const rulers = screen.getByRole('region', { name: 'Where your career energy flows' });
+    expect(
+      within(rulers).getByRole('heading', {
+        name: 'Sun, ruler of your 10th house, in the 8th house',
+      }),
+    ).toBeInTheDocument();
+    expect(rulers).toHaveTextContent('shared projects, research and work that goes deep');
+    expect(rulers).not.toHaveTextContent('approximate');
     expect(screen.getByRole('region', { name: 'Your strengths at work' })).toBeInTheDocument();
     expect(screen.getByRole('region', { name: 'Timing in the next two years' })).toHaveTextContent(
       /Saturn|Pluto/,
@@ -80,6 +88,24 @@ describe('CareerPage', () => {
       ),
     ).toBeInTheDocument();
     expect(screen.queryByRole('region', { name: 'Your career direction' })).not.toBeInTheDocument();
+    expect(
+      screen.queryByRole('region', { name: 'Where your career energy flows' }),
+    ).not.toBeInTheDocument();
     expect(screen.getByRole('region', { name: 'How you work' })).toBeInTheDocument();
+  });
+
+  it('approximate birth time: rulers come with a note', async () => {
+    render(
+      renderApp(signedOut(), {
+        pathname: '/career',
+        state: { input: { ...input, timeAccuracy: 'approximate' }, name: '' },
+      }),
+    );
+    const rulers = await screen.findByRole(
+      'region',
+      { name: 'Where your career energy flows' },
+      SLOW,
+    );
+    expect(rulers).toHaveTextContent('these house rulers may differ');
   });
 });

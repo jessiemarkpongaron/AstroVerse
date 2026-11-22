@@ -84,7 +84,7 @@
   },
   "rulers": {
     "_comment": "House rulers (traditional). Shown when review is approved. Frames take {destination}.",
-    "review": "draft",
+    "review": "approved",
     "intro": "Each house is ruled by a planet, set by the sign at the start of that house. Where the ruling planet sits shows where that part of life tends to find its energy.",
     "frames": {
       "10": "Your public role and reputation tend to grow through {destination}.",

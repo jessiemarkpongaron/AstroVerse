@@ -85,7 +85,7 @@ its acceptance items are checked.
       hits and "how to use this time", planets changing house (`forecast.json`, approved)
 - [x] Career page `/career` (PRD F6): Midheaven + 10th/6th/2nd-house planets, work style by
       element, Mars/Saturn, strengths, 5 paths, timing from career-themed transits
-      (`career.json`, approved). House rulers left out for now (owner decision).
+      (`career.json`, approved). House rulers of the 10th/6th/2nd (traditional) added later (approved 2026-11-22).
 - [ ] Later, with API credits: AI forecast + career readings (premium)
 
 ## Phase 3 — Monetize & grow
