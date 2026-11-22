@@ -76,8 +76,10 @@ Hosted project setup (once):
    Authentication → Providers → Google and enable it. The button is shown when
    `VITE_GOOGLE_LOGIN=true`, which the committed `.env.production` sets (remove it there to hide
    the button again).
-4. Email: Supabase's built-in email sender is heavily rate-limited; configure custom SMTP
-   (Authentication → Emails → SMTP) before launch.
+4. Email: custom SMTP via Resend (Authentication → Emails → SMTP): sender
+   `no-reply@digitalverseph.com` / `AstroVerse`, host `smtp.resend.com:465`, user `resend`, password =
+   a Resend API key with sending access (lives only in Supabase). Email rate limit 30/hour
+   (Authentication → Rate Limits); Resend's free plan allows 100/day.
 5. Cloudflare build env: `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY` (publishable key), then
    redeploy. The CSP in `public/_headers` already allows the project's `*.supabase.co` origin.
 
