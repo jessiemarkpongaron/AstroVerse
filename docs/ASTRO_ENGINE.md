@@ -146,3 +146,12 @@ for the AI payload; chart-wide flags (time unknown, DST, Porphyry fallback) have
   Manila start date over 2000–2039 and a test re-derives it from astronomy-engine.
 - Validated against the Swiss Ephemeris (sweph, Moshier): Moon ingresses Nov 2026 (±15 min),
   New Moon 2026-11-09 (Scorpio), Full Moon 2026-11-24 (Gemini).
+
+## 7d. House rulers (rulers.ts)
+- `TRADITIONAL_RULERS` (convention, not astronomy): Aries/Scorpio → Mars, Taurus/Libra → Venus,
+  Gemini/Virgo → Mercury, Cancer → Moon, Leo → Sun, Sagittarius/Pisces → Jupiter,
+  Capricorn/Aquarius → Saturn. Modern outer-planet co-rulers are not used.
+- `houseRuler(chart, n)`: sign on cusp n in the chart's own house system → ruler → that body's
+  sign and house. Null without houses (unknown birth time).
+- Tests compare against the Swiss Ephemeris reference charts (Placidus cusps, independent
+  house lookup).

@@ -6,7 +6,7 @@ import { BirthInputError } from '../lib/astro/time.ts';
 import { chartTransits } from '../lib/astro/transits.ts';
 import type { ChartLocationState } from '../lib/chartState.ts';
 import { formatDay, formatWindow } from '../lib/display.ts';
-import { composeCareer } from '../lib/interpret/career.ts';
+import { composeCareer, rulersIntro } from '../lib/interpret/career.ts';
 import { buildForecast } from '../lib/interpret/forecast.ts';
 import type { StaticReadingItem } from '../lib/interpret/staticReading.ts';
 
@@ -92,6 +92,25 @@ export function CareerPage() {
           {career.direction.map((it) => (
             <Item key={it.key} it={it} />
           ))}
+        </Section>
+      )}
+
+      {career.rulers.length > 0 && (
+        <Section id="rulers" title="Where your career energy flows">
+          <p className="text-sm leading-relaxed text-slate-700 dark:text-slate-300">
+            {rulersIntro()}
+          </p>
+          {career.rulers.map((r) => (
+            <article key={r.house} className="space-y-1.5">
+              <h3 className="font-medium text-gold-dark dark:text-gold">{r.placement}</h3>
+              <p className="leading-relaxed">{r.text}</p>
+            </article>
+          ))}
+          {chart.input.timeAccuracy === 'approximate' && (
+            <p className="text-xs text-slate-600 dark:text-slate-400">
+              Your birth time is approximate, so these house rulers may differ.
+            </p>
+          )}
         </Section>
       )}
 

@@ -121,3 +121,39 @@ describe('composeCareer (Carrascal)', () => {
     expect(c.timing).toEqual([]);
   });
 });
+
+describe('career house rulers', () => {
+  const R = CAREER_TEXT.rulers;
+  const chart = buildChart(carrascal);
+
+  it('texts follow the guardrails: tendencies, not promises', () => {
+    const texts = [R.intro, ...Object.values(R.frames), ...Object.values(R.destinations)];
+    for (const t of texts) {
+      for (const re of BANNED) expect(t).not.toMatch(re);
+      expect(t).not.toMatch(/\bwill\b/i);
+    }
+    expect(Object.keys(R.frames).sort()).toEqual(['10', '2', '6']);
+    expect(Object.keys(R.destinations)).toHaveLength(12);
+    for (const f of Object.values(R.frames)) expect(f).toContain('{destination}');
+  });
+
+  it('reads the 10th, 6th and 2nd house rulers with filled-in sentences', () => {
+    const { rulers } = composeCareer(chart, null, { includeDrafts: true });
+    expect(rulers.map((r) => r.house)).toEqual([10, 6, 2]);
+    for (const r of rulers) {
+      expect(r.placement).toMatch(
+        new RegExp(
+          `^${r.ruler}, ruler of your \\d+\\w\\w house, in the ${r.rulerHouse}\\w\\w house$`,
+        ),
+      );
+      expect(r.text).not.toContain('{');
+      expect(r.text).toContain(R.destinations[String(r.rulerHouse)]);
+    }
+  });
+
+  it('is empty without a birth time, and hidden until approved', () => {
+    const noTime = buildChart({ ...carrascal, time: null, timeAccuracy: 'unknown' });
+    expect(composeCareer(noTime, null, { includeDrafts: true }).rulers).toEqual([]);
+    if (R.review !== 'approved') expect(composeCareer(chart, null).rulers).toEqual([]);
+  });
+});

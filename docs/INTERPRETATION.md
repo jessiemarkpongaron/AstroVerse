@@ -51,7 +51,11 @@ Readings come from two layers:
 - **Career** (`career.json`, `src/lib/interpret/career.ts`, page `/career`): work style per
   dominant element and 4 paths per element (3 from the strongest, 2 from the next); the rest
   reuses approved texts (Midheaven, 10th/6th/2nd-house planets, Mars/Saturn, strengths) plus
-  career-themed forecast periods. Tests block promises, "should/must" and money words.
+  career-themed forecast periods. **House rulers** (`career.json` → `rulers`): the traditional
+  ruler of the sign on the 10th, 6th and 2nd cusps (`src/lib/astro/rulers.ts`) and the house it
+  sits in: one frame per career house + one career-flavoured phrase per destination house; needs
+  a birth time, noted as uncertain when the time is approximate. Tests block promises,
+  "should/must", "will" and money words.
 - **Compatibility** (`synastry.json`, `src/lib/interpret/synastry.ts`, page `/compatibility`):
   one template per aspect type filled with "your" theme + "their" theme, three band
   descriptions, an intro ("tendencies, not a verdict") and a closing respect note. Strength is a

@@ -1,4 +1,5 @@
-import type { Chart, PointName } from '../astro/types.ts';
+import { houseRuler } from '../astro/rulers.ts';
+import type { Body, Chart, PointName, SignIndex } from '../astro/types.ts';
 import { SIGN_NAMES } from '../astro/zodiac.ts';
 import { ordinal } from '../astro/uncertainty.ts';
 import careerJson from './static/career.json';
@@ -22,6 +23,12 @@ type CareerText = {
   review: ReviewStatus;
   workStyle: Record<Element, string>;
   paths: Record<Element, { title: string; why: string }[]>;
+  rulers: {
+    review: ReviewStatus;
+    intro: string;
+    frames: Record<string, string>;
+    destinations: Record<string, string>;
+  };
 };
 export const CAREER_TEXT = careerJson as unknown as CareerText;
 
@@ -44,6 +51,40 @@ export interface CareerReading {
   paths: { title: string; why: string; element: Element }[];
   /** Up to 4 upcoming career-themed forecast periods. */
   timing: ForecastPeriod[];
+  /** Rulers of the 10th, 6th and 2nd houses and where they sit (empty without a birth time or
+   *  until the text is approved). */
+  rulers: CareerRuler[];
+}
+
+export interface CareerRuler {
+  house: number;
+  ruler: Body;
+  cuspSign: SignIndex;
+  rulerHouse: number;
+  /** "Saturn, ruler of your 10th house, in the 3rd house" */
+  placement: string;
+  text: string;
+}
+
+export const rulersIntro = () => CAREER_TEXT.rulers.intro;
+
+function careerRulers(chart: Chart): CareerRuler[] {
+  const { frames, destinations } = CAREER_TEXT.rulers;
+  return CAREER_HOUSES.flatMap((house) => {
+    const r = houseRuler(chart, house);
+    if (!r) return [];
+    const frame = frames[String(house)] as string;
+    return [
+      {
+        house,
+        ruler: r.ruler,
+        cuspSign: r.cuspSign,
+        rulerHouse: r.rulerHouse,
+        placement: `${r.ruler}, ruler of your ${ordinal(house)} house, in the ${ordinal(r.rulerHouse)} house`,
+        text: frame.replace('{destination}', destinations[String(r.rulerHouse)] as string),
+      },
+    ];
+  });
 }
 
 const item = (key: string, placement: string, entry: StaticEntry | null) =>
@@ -144,5 +185,9 @@ export function composeCareer(
     strengths,
     paths,
     timing,
+    rulers:
+      opts.includeDrafts === true || CAREER_TEXT.rulers.review === 'approved'
+        ? careerRulers(chart)
+        : [],
   };
 }

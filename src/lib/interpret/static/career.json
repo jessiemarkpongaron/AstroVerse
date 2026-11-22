@@ -81,5 +81,29 @@
         "why": "Making people feel welcome and comfortable, in hotels, restaurants or homes, may come naturally to you."
       }
     ]
+  },
+  "rulers": {
+    "_comment": "House rulers (traditional). Shown when review is approved. Frames take {destination}.",
+    "review": "draft",
+    "intro": "Each house is ruled by a planet, set by the sign at the start of that house. Where the ruling planet sits shows where that part of life tends to find its energy.",
+    "frames": {
+      "10": "Your public role and reputation tend to grow through {destination}.",
+      "6": "Your everyday work tends to flow best through {destination}.",
+      "2": "What you value at work, and what helps you feel secure, tends to connect with {destination}."
+    },
+    "destinations": {
+      "1": "your own initiative and the way you present yourself",
+      "2": "practical skills, steady effort and things you truly value",
+      "3": "communication, writing, teaching or local connections",
+      "4": "home, family or work that builds a sense of belonging",
+      "5": "creativity, self-expression and work that feels like play",
+      "6": "service, useful routines and skills you build day by day",
+      "7": "partnerships, clients and one-to-one work",
+      "8": "shared projects, research and work that goes deep",
+      "9": "learning, travel, teaching or big-picture ideas",
+      "10": "visible roles and taking responsibility",
+      "11": "teams, networks and causes you believe in",
+      "12": "quiet, behind-the-scenes work, care or reflection"
+    }
   }
 }
