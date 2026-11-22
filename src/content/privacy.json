@@ -1,0 +1,78 @@
+{
+  "review": "draft",
+  "updated": "2026-11-22",
+  "intro": "Your birth details are personal, and we treat them that way. This page explains, in plain words, what AstroVerse keeps, where it goes, and how you can delete it.",
+  "sections": [
+    {
+      "heading": "Without an account",
+      "items": [
+        "Your chart is calculated on your own phone or computer. Your birth date, time and place are not sent to our servers.",
+        "When you search for a birthplace, the words you type are sent to Open-Meteo, a free place-search service, to find matching towns and cities.",
+        "Share links carry the birth details inside the link itself, after the # sign. That part never reaches our servers. Anyone you send the link to can see those details, so share it only with people you trust.",
+        "Your phone or browser remembers a few things on its own: your light or dark theme choice, pages saved for offline use, and, for one hour while you sign in, the chart you were about to save."
+      ]
+    },
+    {
+      "heading": "With an account",
+      "items": [
+        "Your email address, so we can send you sign-in links.",
+        "If you sign in with Google: the name, email address and profile picture that Google shares with us.",
+        "The charts you save: a label you choose, birth date, birth time (if known), birthplace and its map location, and whether it's your own chart.",
+        "Readings created for your saved charts."
+      ]
+    },
+    {
+      "heading": "Other people's charts",
+      "items": [
+        "You can save a chart for a friend or family member only after you confirm that you have their permission.",
+        "Please respect their privacy. Delete their chart if they ask you to."
+      ]
+    },
+    {
+      "heading": "Who can see your data",
+      "items": [
+        "Only you. Our database is set up so each account can read only its own charts and readings. The AstroVerse team can reach the database only to keep the service running.",
+        "We don't sell your data, we don't show ads, and we don't use advertising or tracking cookies."
+      ]
+    },
+    {
+      "heading": "Services we use",
+      "items": [
+        "Supabase stores accounts, saved charts and readings, and handles sign-in.",
+        "Cloudflare hosts the website. It may count visits with cookie-free analytics that don't identify you.",
+        "Resend delivers our sign-in emails, so it receives your email address.",
+        "Google handles sign-in if you choose “Continue with Google”.",
+        "Open-Meteo answers birthplace searches."
+      ],
+      "aiItems": [
+        "Anthropic (Claude) writes AI readings. It receives only a short summary of chart positions, never your name, email, birth date, birth time or birthplace."
+      ]
+    },
+    {
+      "heading": "Deleting your data",
+      "items": [
+        "Delete a saved chart: open My charts and tap Delete. Its readings are deleted with it.",
+        "Delete your whole account: open My charts and tap “Delete my account”. Your sign-in, profile, charts and readings are deleted right away.",
+        "Deleted data may stay in our database backups for a short time until those backups are replaced.",
+        "Clear what your browser remembers by clearing this site's data in your browser settings."
+      ]
+    },
+    {
+      "heading": "Your rights",
+      "items": [
+        "Under the Philippine Data Privacy Act of 2012, you have the right to know what we keep about you, to correct it, and to have it deleted.",
+        "My charts shows everything you have saved. To correct a chart, delete it and save a new one."
+      ]
+    },
+    {
+      "heading": "Young users",
+      "items": ["If you're under 18, please ask a parent or guardian before you create an account."]
+    },
+    {
+      "heading": "Changes to this page",
+      "items": [
+        "If we change how we handle your data, we'll update this page and the date at the top."
+      ]
+    }
+  ]
+}

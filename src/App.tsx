@@ -13,6 +13,7 @@ import { SignPage } from './pages/SignPage.tsx';
 import { SignsIndexPage } from './pages/SignsIndexPage.tsx';
 import { HoroscopeIndexPage } from './pages/HoroscopeIndexPage.tsx';
 import { HoroscopePage } from './pages/HoroscopePage.tsx';
+import { PrivacyPage } from './pages/PrivacyPage.tsx';
 import { SupportPage } from './pages/SupportPage.tsx';
 
 // The chart page carries the astronomy engine; load it only when needed.
@@ -92,6 +93,7 @@ export function App() {
         <Route path="horoscope" element={<HoroscopeIndexPage />} />
         <Route path="horoscope/:sign" element={<HoroscopePage />} />
         <Route path="support" element={<SupportPage />} />
+        <Route path="privacy" element={<PrivacyPage />} />
         <Route path="login" element={<LoginPage />} />
         <Route path="auth/callback" element={<AuthCallbackPage />} />
         <Route path="charts" element={<MyChartsPage />} />

@@ -16,6 +16,7 @@ import {
   horoscopeMeta,
   type PageMeta,
 } from './lib/signPages.ts';
+import { PRIVACY_META, privacyPublished } from './lib/privacy.ts';
 
 export { SITE_URL };
 
@@ -25,6 +26,7 @@ export function pages(): PageMeta[] {
     ...SIGN_PAGE_KINDS.flatMap((k) => ALL_SIGNS.map((s) => signPageMeta(k, s))),
     HOROSCOPE_INDEX_META,
     ...ALL_SIGNS.map(horoscopeMeta),
+    ...(privacyPublished() ? [PRIVACY_META] : []),
   ];
 }
 

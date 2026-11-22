@@ -68,7 +68,9 @@ Local Google sign-in needs `SUPABASE_AUTH_EXTERNAL_GOOGLE_CLIENT_ID` / `_SECRET`
 
 Hosted project setup (once):
 
-1. `npx supabase login`, `npx supabase link --project-ref <ref>`, `npx supabase db push`.
+1. `npx supabase login`, `npx supabase link --project-ref <ref>`, `npx supabase db push`
+   (re-run `db push` whenever a new file appears in `supabase/migrations/`; or paste the new
+   file into Supabase → SQL Editor and run it once).
 2. Supabase → Authentication → URL Configuration: Site URL = the live domain; Redirect URLs =
    `https://<live domain>/auth/callback` and `http://localhost:5173/auth/callback`.
 3. Google: Google Cloud Console → OAuth client (Web). Authorized redirect URI =

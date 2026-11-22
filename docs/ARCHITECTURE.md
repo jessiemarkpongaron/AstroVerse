@@ -69,7 +69,8 @@ astroverse/
 │  ├─ pages/                   Landing (/ → /login when signed out), Home (birth form, /start),
 │  │                           Chart, FullReading (/reading), Forecast, Career,
 │  │                           Compatibility, Sign + SignsIndex (/signs, /moon, /rising), Horoscope
-│  │                           (/horoscope), MyCharts,
+│  │                           (/horoscope), MyCharts (+ Delete my account), Support, Privacy
+│  │                           (hidden until src/content/privacy.json is approved),
 │  │                           Login, Reading (AI, behind VITE_AI_READINGS); later Pricing
 │  ├─ hooks/
 │  ├─ prerender.tsx            build-time SSR entry for the sign pages (scripts/prerender.mjs)
@@ -171,6 +172,11 @@ purchases  (id uuid pk, user_id uuid, chart_id uuid, product text,
   from charts to readings. Profiles are created by a `security definer` trigger on sign-up.
 - Tests: `supabase/tests/database/rls.test.sql` (pgTAP, 31 checks) and
   `src/lib/charts.integration.test.ts` (app data layer with two real users); `npm run test:db`.
+- **Delete my account:** `delete_my_account()` (`20261122000000_delete_my_account.sql`,
+  security definer, no arguments, `authenticated` only) deletes `auth.users` where
+  `id = auth.uid()`; profiles → charts → readings and reading_generations go by cascade. The
+  client then signs out locally (`deleteAccount` in `src/lib/charts.ts`). Tested in
+  `supabase/tests/database/delete_account.test.sql` and the integration test.
 - `purchases` rows are inserted/updated only by the webhook function (service role).
 
 ## 5. Edge Function: generate-reading

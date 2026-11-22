@@ -1,4 +1,5 @@
 import { Link } from 'react-router';
+import { PRIVACY_PATH, privacyPublished } from '../../lib/privacy.ts';
 
 export const DISCLAIMER =
   'For entertainment and self-reflection. Not a substitute for professional medical, legal, financial or psychological advice.';
@@ -20,6 +21,14 @@ export function Footer() {
           <Link to="/support" className="underline">
             Support AstroVerse
           </Link>
+          {privacyPublished() && (
+            <>
+              {' · '}
+              <Link to={PRIVACY_PATH} className="underline">
+                Privacy
+              </Link>
+            </>
+          )}
         </p>
         <p className="mt-2">© {new Date().getFullYear()} AstroVerse · DigitalVerse Solutions</p>
       </div>
